@@ -146,15 +146,3 @@ Route::get('del-img', 'FileController@imgDelete');
 Route::get('imges', 'FileController@showImg');
 
 // Admins ******************************************************
-
-Route::get('addadmin', function () {
-    return view('addAdd');
-});
-
-Route::post('addAdd', 'AdminController@addAdd');
-
-Route::get('adminlog', function () {
-    return view('adminLog');
-});
-
-Route::post('adlog', 'AdminController@adminLog');
