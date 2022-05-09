@@ -41,6 +41,18 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::namespace($this->namespace)
                 ->group(base_path('routes/admin.php'));
+
+            Route::namespace($this->namespace)
+                ->group(base_path('routes/accounts.php'));
+
+            Route::namespace($this->namespace)
+                ->group(base_path('routes/consultation.php'));
+
+            Route::namespace($this->namespace)
+                ->group(base_path('routes/answer.php'));
+
+            Route::namespace($this->namespace)
+                ->group(base_path('routes/comment.php'));
         });
     }
 

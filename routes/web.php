@@ -23,98 +23,6 @@ Route::get('/home', function () {
     return view('welcome');
 });
 
-// consultation ************************************************************
-Route::get('/addCons', function () {
-    return view('addConsultation');
-})->middleware('isUser');
-
-Route::post('/insertCon','ConsController@insCons')
-    ->name('cons');
-
-Route::get('/showcon','ConsController@showCons')
-    ->name('showcon');
-
-Route::get('showallcon','ConsController@showAllCons');
-
-Route::get('/delCon/{id?}','ConsController@deleteCons')
-    ->name('dcons')
-    ->middleware('ownCon');
-
-Route::get('getCon/{id}','ConsController@getCons');
-
-Route::get('lastid', 'ConsController@getID');
-
-// answers *****************************************************************
-Route::get('addAns', function () {
-    return view('addAnswer');
-})->middleware('isDoctor');
-
-Route::post('insertAns','AnsController@insAns')
-    ->name('answ');
-
-Route::get('dans/{id?}', 'AnsController@deleteAns')
-    ->name('dans');
-
-Route::get('/showans','AnsController@showAns')
-    ->name('showans');
-
-Route::get('showallans','AnsController@showAllAns');
-
-// comment *****************************************************************
-Route::post('insertCom','CommController@insComm');
-
-Route::get('dcom/{id?}', 'CommController@deleteCom')
-    ->name('dcom');
-
-Route::get('addCom', function () {
-    return view('addcoment');
-});
-
-Route::get('comment', 'CommController@showComm');
-
-
-// account ***************************************************************
-Route::get('/user', function () {
-    return "i'm user :)";
-})->middleware('isUser');
-
-Route::get('/doctor', function () {
-    return "i'm doctor 8)";
-})->middleware('isDoctor');
-
-Route::get('/test', function (){
-    return view('signup');
-});
-
-Route::get('/log', function(){
-    return view('login');
-})->middleware('log');
-
-Route::post('/sign','AccountsController@signup')
-    ->name('signup');
-
-Route::post('/login', 'AccountsController@login')
-    ->name('login');
-
-Route::get('/logout', 'AccountsController@logout');
-
-Route::get('/show', 'AccountsController@showInfo')
-    ->name('showInfo');
-
-Route::get('update', function () {
-    return view('update');
-});
-Route::post('upinfo', 'AccountsController@upInfo');
-
-Route::get('sess', function () {
-    return session()->all();
-});
-
-Route::get('del-acc', 'AccountsController@deleteAcc');
-
-Route::get('users', 'UsersController@showAll');
-
-Route::get('doctors', 'DoctorController@showAll');
 // report ********************************************************
 
 Route::get('addrep', function () {
@@ -145,4 +53,3 @@ Route::get('del-img', 'FileController@imgDelete');
 
 Route::get('imges', 'FileController@showImg');
 
-// Admins ******************************************************
