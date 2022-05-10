@@ -103,6 +103,9 @@ class AccountsController extends Controller
             (new FileController)->imgCheck();
 
             return redirect('show');
+            // return $userInfo;
+        }else{
+            return 'false';
         }
     }
 

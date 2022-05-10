@@ -14,7 +14,7 @@
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action=" {{route('login')}} " class="sign-in-form" method="POST">
+          <form action=" {{ url('/login') }} " class="sign-in-form" method="POST">
             @csrf
             <h2 class="title">Sign in</h2>
               <input type="checkbox" value="doctor" name="type" id="Doc" hidden/>
@@ -52,37 +52,37 @@
             <div class="input-field">
               <i class="fas fa-user"></i>
               <input type="text" name='username' placeholder="Username" />
-              @error('username')
+              {{-- @error('username')
                 {{$message}}
-              @enderror
+              @enderror --}}
             </div>
               <div class="input-field">
                   <i class="fas fa-user"></i>
                   <input type="text" name='name' placeholder="Fullname" />
               </div>
-              @error('name')
+              {{-- @error('name')
                 {{$message}}
-              @enderror
+              @enderror --}}
             <div class="input-field">
               <i class="fas fa-envelope"></i>
               <input type="email" name='email' placeholder="Email" />
             </div>
-            @error('email')
+            {{-- @error('email')
               {{$message}}
-            @enderror
+            @enderror --}}
             <div class="input-field">
               <i class="fas fa-lock"></i>
               <input type="password" name='password' placeholder="Password" />
-              @error('password')
+              {{-- @error('password')
                 {{$message}}
-              @enderror
+              @enderror --}}
             </div>
               <div class="input-field">
                   <i class="fas fa-lock"></i>
                   <input type="date"  name='birth'/>
-                  @error('birth')
+                  {{-- @error('birth')
                     {{$message}}
-                  @enderror
+                  @enderror --}}
               </div>
             <input type="submit" class="btn" value="Sign up" />
             <p class="social-text">Or Sign up with social platforms</p>
