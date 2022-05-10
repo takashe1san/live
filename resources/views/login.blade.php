@@ -19,10 +19,6 @@
             <h2 class="title">Sign in</h2>
               <input type="checkbox" value="doctor" name="type" id="Doc" hidden/>
               <input type="checkbox" value="user" name="type" id="User" hidden/>
-{{--              <select  name="soso">--}}
-{{--                  <option value="doc">Doc</option>--}}
-{{--                  <option value="user" selected>User</option>--}}
-{{--              </select>--}}
 
             <div class="input-field">
               <i class="fas fa-user"></i>
