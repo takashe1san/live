@@ -21,14 +21,14 @@
     </style>
 </head>
 <body>
-    
+
 @extends('parts.user')
-    @section('name', session('info.name'))
-    @section('img', session('img'))
+    @section('img',      session('img'))
+    @section('name',     session('info.name'))
     @section('username', session('info.username'))
-    @section('email', session('info.email'))
-    @section('bio', session('info.bio'))
-    @section('birth', session('info.birth'))
+    @section('email',    session('info.email'))
+    @section('bio',      session('info.bio'))
+    @section('birth',    session('info.birth'))
 
 </body>
 </html>
