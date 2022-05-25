@@ -18,7 +18,9 @@ Route::get('/test', function (){
 
 Route::get('/log', function(){
     return view('login');
-})->middleware('log');
+})
+    // ->middleware('log')
+    ->name('login');
 
 Route::post('/sign','AccountsController@signup')
     ->name('signup');

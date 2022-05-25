@@ -23,9 +23,7 @@ Route::get('/home', function () {
     return view('welcome');
 });
 
-Route::get('t', function (){
-    return view('parts.cons');
-});
+Route::get('/', 'ConsController@showAllCons');
 
 // report ********************************************************
 

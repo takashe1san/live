@@ -5,6 +5,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    user-select: none;
 }
 
 :root{
@@ -15,10 +16,15 @@
     --primary-color-light: #F6F5FF;
     --toggle-color: #DDD;
     --text-color: #707070;
+    --text-color5: #7070703b;
     --text-color2: #000;
     --text-color3: #00800080;
-
+    --toggle-color2: #E4E6EB;
+    --AlertBox-color1:#009700d4;
+    --AlertBox-color2:#e40000;
+    --AlertBox-color3:hsl(48deg 100% 53%);
     /* ====== Transition ====== */
+    --tran-02: all 0.1s ease;
     --tran-03: all 0.2s ease;
     --tran-03: all 0.3s ease;
     --tran-04: all 0.3s ease;
@@ -30,9 +36,11 @@ body{
     background-color: var(--body-color);
     transition: var(--tran-05);
 }
-
+.m-t{
+  margin-top: 15px;
+}
 ::selection{
-    background-color: var(--primary-color);
+    background-color: var(--text-color);
     color: #fff;
 }
 
@@ -42,6 +50,7 @@ body.dark{
     --primary-color: #3a3b3c;
     --primary-color-light: #3a3b3c;
     --toggle-color: #fff;
+    --toggle-color2: #7a7b7d;
     --text-color: #ccc;
     --text-color2: #fff;
     --text-color3: #93ff9380;
@@ -59,7 +68,7 @@ body.dark{
     padding: 10px 14px;
     background: var(--sidebar-color);
     transition: var(--tran-05);
-    /* z-index: 5;   */
+    z-index: 5;  
 }
 .sidebar.close{
     width: 88px;
@@ -105,6 +114,7 @@ body.dark{
 .sidebar.close .text{
     opacity: 0;
 }
+
 /* =========================== */
 
 .sidebar header{
@@ -191,7 +201,7 @@ body.dark .sidebar header .toggle{
     font-weight: 500;
     transition: var(--tran-05);
 }
-.sidebar li a{
+.sidebar li a,.Setting li,.postssett li,.Notifications li , .Likes li{
     list-style: none;
     height: 100%;
     background-color: transparent;
@@ -203,28 +213,34 @@ body.dark .sidebar header .toggle{
     text-decoration: none;
     transition: var(--tran-03);
 }
-
-.sidebar li a:hover{
+ul{padding-left: 0; }
+.sidebar li a:hover,.Setting li:hover,.postssett li:hover{
     background-color: var(--primary-color);
+    box-shadow: 6px 4px 7px var(--text-color5);
+    
 }
-#add.ac a{
+li.ac a{
   background-color: var(--primary-color);
   
 }
-#add.ac a .icon,
-#add.ac a .text{
+li.ac a .icon,
+li.ac a .text{
   color: var(--sidebar-color);
 }
-body.dark #add.ac a .icon,
-body.dark #add.ac a .text{
+body.dark li.ac a .icon,
+body.dark li.ac a .text{
     color: var(--text-color);
 }
 .sidebar li a:hover .icon,
-.sidebar li a:hover .text{
+.sidebar li a:hover .text,
+.Setting li:hover,
+.postssett li:hover{
     color: var(--sidebar-color);
 }
 body.dark .sidebar li a:hover .icon,
-body.dark .sidebar li a:hover .text{
+body.dark .sidebar li a:hover .text,
+body.Setting li:hover,
+body.postssett li:hover{
     color: var(--text-color);
 }
 
@@ -326,7 +342,7 @@ body.dark .switch::before{
 	position: sticky;
 	align-self: flex-start;
     left: 300px;
-    margin-top: 20px;
+    /* margin-top: 20px; */
     height: 100vh;
     width: calc(100% - 35%);
     
@@ -345,13 +361,175 @@ body.dark .switch::before{
   width: calc(100% - 250px);
     left: 130px;
 }
-.sidebar.close ~ .cont .left .container_post{width: 67%;}
+.sidebar.close  ~ .cont .left .container_post{width: 67%;}
 .sidebar.close ~ .cont  .right{
   flex-basis: 25%;
 }
 body.dark .left .text{
     color: var(--text-color);
 } 
+:is(.Setting , .postssett, .Likes ,.Notifications) li:not(:last-child){border-bottom: 1px solid var(--text-color5);}
+.Setting ,.postssett{
+  position: absolute;
+  width: 0;
+  overflow: hidden;
+  opacity: 0;
+  color: var(--text-color);
+  background-color: var(--sidebar-color);
+}
+.btnsetting.run ~ .Setting{
+  opacity: 1;
+  width: 222px;
+  height: 220px;
+  border-radius: 10px;
+  left: 14px;
+  box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+  top: 465px;
+}
+.btnpostssett.run ~ .postssett{
+  opacity: 1;
+  width: 226px;
+  height: 175px;
+  border-radius: 10px;
+  left: 12px;
+  box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+  top: 290px;
+}
+.sidebar.close .menu-bar .menu .menu-links .btnpostssett.run ~ .postssett{
+  opacity: 1;
+  width: 222px;
+  height: 175px;
+  border-radius: 10px;
+  left: 115px;
+  box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+  top: 290px;
+}
+.sidebar.close .menu-bar .menu .menu-links .btnsetting.run ~ .Setting {
+  position: absolute;
+  overflow: hidden;
+  opacity: 1;
+  width: 220px;
+  height: 220px;
+  background-color: var(--sidebar-color);
+  border-radius: 10px;
+  /* z-index: 23232; */
+  left: 120px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  top: 295px;
+}
+.sidebar.close .menu-bar .menu .menu-links .btnsetting.run::before,
+.sidebar.close .menu-bar .menu .menu-links .btnpostssett.run::before{
+opacity: 1;
+}
+.btnsetting::before,.btnpostssett::before ,.btnNotifications::before ,.btnLikes::before{
+  content: '';
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  border: 10px solid;
+  border-color: var(--sidebar-color);
+  transition:  .5s;
+  border-radius: 0px 0px 0px 4px;
+  transform: rotate(45deg);
+}
+.btnsetting::before{top: 485px;right: -42px;}
+
+.btnpostssett::before{top: 310px;right: -42px;}
+
+.btnsetting.run ~ .Setting li ,.btnpostssett.run ~ .postssett li ,.Notifications li , .Likes li{
+  padding: 10px;
+  margin-left: 10px;
+  position: relative;
+  transition: var(--tran-03);
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+.btnsetting.run ~ .Setting li:hover::before,.btnsetting.run ~ .Setting li:hover::after,
+.btnpostssett.run ~ .postssett li:hover::before, .btnpostssett.run ~ .postssett li:hover::after{
+  opacity: 1;
+}
+.btnsetting.run ~ .Setting li::before ,.btnpostssett.run ~ .postssett li::before{
+  content: '';
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  opacity: 0;
+  border: 10px solid;
+  border-color: var(--primary-color);
+  box-shadow: 10px -14px 0px var(--sidebar-color);
+  transition: .5s;
+  border-radius: 0 10px 0 0;
+
+}
+.btnsetting.run ~ .Setting li::after, .btnpostssett.run ~ .postssett li::after{
+  transition: var(--tran-03);
+  content: '';
+  position: absolute;
+  opacity: 0;
+  bottom: -3px;
+  border-radius: 25px 31px;
+  border: 10px solid;
+  border-color: var(--primary-color);
+  box-shadow: -9px -3px 14px var(--primary-color);
+  right: -5px;
+}
+.Likes ,.Notifications{
+  background-color: var(--sidebar-color);
+  position: absolute;
+  border-radius: 10px;
+  color: var(--text-color);
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  transition: var(--tran-03);
+  left: 105px;
+  top: 415px;
+}
+.btnNotifications::before {top: 370px;left: 105px;}
+.btnLikes::before{top: 430px;left: 105px;}
+.sidebar.close .menu-bar .menu .menu-links .btnNotifications.run::before,
+.sidebar.close .menu-bar .menu .menu-links .btnLikes.run::before{left: 105px;opacity: 1;}
+.sidebar .menu-bar .menu .menu-links .btnNotifications.run::before,
+.sidebar .menu-bar .menu .menu-links .btnLikes.run::before{left: 270px;opacity: 1;}
+
+.sidebar.close .menu-bar .menu .menu-links .btnNotifications.run ~ .Notifications,
+.sidebar.close .menu-bar .menu .menu-links .btnLikes.run ~ .Likes{height: 350px;width: 300px;top: 120px;left: 115px;}
+.btnNotifications.run ~ .Notifications  ,.btnLikes.run ~ .Likes{height: 350px;width: 300px;top: 120px;left: 280px;}
+/* .Likes{display: none;} */
+
+.Notifications li , .Likes li{
+  display: flex;
+  justify-content: space-between;
+  margin-left: -1px;
+  transition: var(--tran-04);
+}
+.backnot.roro {opacity: 1;z-index: 1;}
+.backnot{opacity: 0;z-index: -1;}
+:where(.elelment , .Notifications , .Likes) i{left: 270px;font-size: 20px;position: absolute;cursor: pointer;}
+.Notifications  .backnot:hover::before, .Likes .backnot:hover::before{content: "\F129";}
+.Notifications ul , .Likes ul{margin-top: 27px;}
+.Notifications  img, .Likes  img{width: 35px;border-radius: 50%;}
+.Notifications li p, .Likes li p{font-size: 18px;}
+.Notifications li span, .Likes li span{font-size: 10px;align-self: end;}
+.Notifications li:hover , .Likes li:hover{
+  box-shadow: 6px 4px 10px var(--text-color);
+}
+.Notifications .showNotifications{
+  position: absolute;
+  width: 100%;
+  top: 25px;
+  height: 100%;
+  background: var(--sidebar-color);
+  display: flex;
+  flex-direction: column;
+  left: 100%;
+  transition: var(--tran-03);
+}
+.Notifications .showNotifications div{display: flex;align-items: end;}
+.sender, .sub{padding: 4px 20px;border-bottom: 0.1px solid var(--text-color5);}
+.Notifications .showNotifications p{padding: 10px;width: 280px;}
+.Notifications .showNotifications *{margin-left: 10px;}
+
 
 /* //////////////////////////////////////// */
 
@@ -360,7 +538,9 @@ body.dark .left .text{
     background: #1a81ff;
   }
   .container_post{
+    margin-top: 15px;
     width: 80%;
+    z-index: 111;
     left: 75px;
     height: 300px;
     overflow: hidden;
@@ -410,8 +590,7 @@ body.dark .left .text{
   .user-profile img{
     border-radius: 50%;
   }
-  /* .left */
-  .posts img{
+  .left img{
     cursor: default;
     max-width: 52px;
   }
@@ -433,7 +612,7 @@ body.dark .left .text{
     border-radius: 5px;
     align-items: center;
     max-width: 98px;
-    background: #E4E6EB;
+    background: var(--toggle-color2);
     justify-content: space-between;
   }
   .details .privacy span{
@@ -741,7 +920,33 @@ body.dark .left .text{
 }
 
 /* ///////////////////////////////////////////// */
-
+.postes{
+  position: relative;
+  margin-top: 20px;
+}
+/* .postTime{} */
+.btt {
+  height: 30px;
+  width: 85px;
+  position: absolute;
+  top: 260px;
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+  color: var(--text-color);
+}
+.btt i{
+  font-size: 20px;
+}
+.btt:hover i{
+  font-size: 25px;
+}
+.btt.rrun i{
+  font-size: 25px;
+}
+.btncomm{left: 33%;}
+.btnlike{left: 3%;}
+.btnshear{left: 66%;}
 .posts{
 	width: 79%;
 	background:var(--sidebar-color);
@@ -774,40 +979,12 @@ body.dark .left .text{
 	border-radius: 4px;
 	margin-bottom: 5px;
 }
-.post-row{
-	margin-top:10px;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-}
-.activity-icons div svg{
-  color: var(--text-color2);
-  cursor: pointer;
-	width:22px;
-  height: 20px;
-	margin-right:10px;
-}
-.activity-icons div:hover svg{
-  width:25px;
-  height: 24px;
-}
-.activity-icons{
-  margin-top: 10px;
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-.activity-icons div{
-	display: inline-flex;
-	align-items: center;
-	/* margin-right:30px;
-   */
-   padding: 10px;
-}
+
 .media{
   border: 1px solid;
   border-radius: 6px;
   padding: 10px;
+  margin-bottom: 47px;
 }
 .media svg{
   cursor: pointer;
@@ -815,6 +992,14 @@ body.dark .left .text{
     width: 30px;
     height: 30px;
 }
+.btncomm.showcomm ~ .comm{
+  height: 250px;
+  max-height: 300px;
+}
+.btncomm.hiddcomm ~  .comm{
+  height: 0;
+} 
+
 .comm{
   overflow: hidden;
   background: rgb(0 0 0 / 2%);
@@ -822,10 +1007,10 @@ body.dark .left .text{
     border-radius: 10px;
     flex-direction: column;
     width: 79%;
-    max-height: 300px;
     transition: .5s;
 }
-
+/* .commSl{height: 0;}
+.commAc{} */
 .comm img{
   width: 35px;
     border-radius: 50%;
@@ -924,7 +1109,104 @@ body.dark .left .text{
 }
 .addAc{transform: rotate(45deg);}
 .addSl{transform: rotate(0);}
-.commSl{height: 0;}
-.commAc{height: 250px;max-height: 300px;}
+
 .container_postAc{top:0px;}
 .container_postSl{top: -1000px;}
+/*--elemt style strat here--*/
+.ExSetting.ChangPassword  .elelment{height: 360px;width: 500px;}
+.elelment ,.AlertBox{
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transition: var(--tran-04);
+  transform: translate(-50%,-50%);
+  box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+  overflow: hidden;
+}
+.element-main {
+  width:500px;
+  background: var(--sidebar-color);
+  border-radius: 5px;
+  padding:3em 2em;
+}
+.element-main h1 {
+  text-align: center;
+  font-size: 2.3em;
+  color:#0086E5;
+  font-weight: 700;
+}
+.element-main p {
+  font-size: 1em;
+  color: #696969;
+  line-height: 1.5em;
+  margin: 1.5em 0em;
+  text-align:center;
+}
+.element-main  input[type="text"] {
+  font-size: 1em;
+  color: var(--text-color);
+  padding: 1em 0.5em;
+  display: block;
+  width: 100%;
+  outline: none;
+  margin-bottom: 1em;
+  text-align:center;
+  border: 1px solid var(--text-color5);
+  border-radius: 6px;
+  background-color: inherit;
+}
+:where(.element-main , .AlertBox) button {
+  position: relative;
+  font-size: 1em;
+  color: #fff;
+  background: #0086E5;
+  width: 50%;
+  padding: 0.8em 0em;
+  outline: none;
+  border: none;
+  top: -210px;
+  border-radius: 5px;
+  cursor: pointer;
+  border-bottom: 3px solid #045B99;
+  display: block;
+  margin: 1.5em auto 0;
+}
+.element-main button:hover{
+  background:var(--primary-color);
+  border-bottom: 3px solid #2F2F2F;  
+  transition: 0.5s all;
+}
+.closeChPass{left: 460px;top: 10px;color: var(--text-color);}
+.closeChPass:hover::before{content: "\F622";}
+#ChangPass{transition: var(--tran-04);}
+#ChangPass .lh {position: relative;top: -205px;visibility: hidden;}
+#ChangPass.chaked .lh{visibility: visible;}
+#ChangPass.chaked .l {visibility: hidden;}
+.error1{color:var(--AlertBox-color1);}
+.error2{color:var(--AlertBox-color2);}
+.error3{color:var(--AlertBox-color3);}
+.AlertBox.runAlertBox{
+  z-index: 111;
+  width: 300px;
+  height: 330px;
+  background: var(--sidebar-color);
+  border-radius: 5px;
+  padding:3em 2em;
+  box-shadow: 1px 1px 15px rgb(0 0 0 / 10%);
+  text-align: center;
+  overflow: inherit;
+}
+.AlertBox p{color: var(--text-color);}
+.AlertBox i{font-size: 100px;}
+.AlertBox button{top: 0;}
+.AlertBox.runAlertBox ~.ooooh {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  position: absolute;
+  left: 0;
+  z-index: 99;
+    background: var(--text-color5);
+}
