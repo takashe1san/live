@@ -141,23 +141,21 @@
             </div>
 
             <div class="bottom-content">
-                @if (session('type') != null)
-                    
-                <li class="">
-                    <a href="/logout">
-                        <i class='bx bx-log-out icon' ></i>
-                        <span class="text nav-text">Logout</span>
-                    </a>
-                </li>
-                    
+
+                @if (session('type') != null)     
+                    <li class="">
+                        <a href="/logout">
+                            <i class='bx bx-log-out icon' ></i>
+                            <span class="text nav-text">Logout</span>
+                        </a>
+                    </li>    
                 @else
-                <li class="">
-                    <a href="/log">
-                        <i class='bx bx-log-out icon' ></i>
-                        <span class="text nav-text">Login</span>
-                    </a>
-                </li>
-                    
+                    <li class="">
+                        <a href="/log">
+                            <i class='bx bx-log-out icon' ></i>
+                            <span class="text nav-text">Login</span>
+                        </a>
+                    </li>        
                 @endif
                 <li class="mode">
                     <div class="sun-moon">
@@ -185,25 +183,25 @@
         
                     <form  action="#" method="post" id="formPost">
                         @csrf
-                    <div class=" user-profile">
-                        <img src="icons/logo.png" alt="logo">
-                        <div class="details">
-                        <p>CodingNepal</p>
-                        <div class="privacy">
-                            <input type="text" name="section" value="General" hidden>
-                            <i class="ii bi bi-globe"></i>
-                            <span alt="Anyone on or off Facebook">Public</span>
-                            <i class="bi bi-caret-down-fill"></i>
+                        <div class=" user-profile">
+                            <img src="icons/logo.png" alt="logo">
+                            <div class="details">
+                                <p>CodingNepal</p>
+                                <div class="privacy">
+                                    <input type="text" name="section" value="General" hidden>
+                                    <i class="ii bi bi-globe"></i>
+                                    <span alt="Anyone on or off Facebook">Public</span>
+                                    <i class="bi bi-caret-down-fill"></i>
+                                </div>
+                            </div>
                         </div>
+                        <textarea name="content" placeholder="What's on your mind, CodingNepal?" spellcheck="false" required></textarea>
+                        <div class="options">
+                            <p id="fileConfig">Add to Your Post</p>
+                            <i class="bi bi-images" alt="gallery" id="fileImg" ></i>
+                            <input type="file" name="fileImg" id="inputfile" hidden>
                         </div>
-                    </div>
-                    <textarea name="content" placeholder="What's on your mind, CodingNepal?" spellcheck="false" required></textarea>
-                    <div class="options">
-                        <p id="fileConfig">Add to Your Post</p>
-                    <i class="bi bi-images" alt="gallery" id="fileImg" ></i>
-                    <input type="file" name="fileImg" id="inputfile" hidden>
-                    </div>
-                    <button id="sendPost" name="s">Post</button>
+                        <button id="sendPost" name="s">Post</button>
                     </form>
                 </section>
                 <section class="audience">
