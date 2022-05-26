@@ -26,7 +26,10 @@ class ConsController extends Controller
 
     public function showAllCons(){
         $a = Consultation::orderByDesc('con_id')->get();
-        return view('index',['cons' => $a]);
+        foreach($a as $b){
+            $c[$b->con_id] = (new CommController)->showComm($b->con_id);
+        }
+        return view('index',['cons' => $a, 'com' => $c]);
     }
 
     public function getCons($id){

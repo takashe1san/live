@@ -30,9 +30,9 @@ class CommController extends Controller
         // return redirect('showallcon');
     }
 
-    public function showComm(){
-        $com = Comment::get();
-        return view('comment', ['value' => $com]);
+    public function showComm($con_id){
+        $com = Comment::where('consultation', $con_id)->get();
+        return $com;
     }
 
     public function deleteCom($id){
