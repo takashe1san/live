@@ -21,7 +21,7 @@
         <header>
             <div class="image-text">
                 <span class="image">
-                    <img src="icons/logo.png" alt="">
+                    <img src="{{URL::asset('post/icons/logo.png')}}" alt="">
                 </span>
 
                 <div class="text logo-text">
@@ -141,13 +141,24 @@
             </div>
 
             <div class="bottom-content">
+                @if (session('type') != null)
+                    
                 <li class="">
-                    <a href="#">
+                    <a href="/logout">
                         <i class='bx bx-log-out icon' ></i>
                         <span class="text nav-text">Logout</span>
                     </a>
                 </li>
-
+                    
+                @else
+                <li class="">
+                    <a href="/log">
+                        <i class='bx bx-log-out icon' ></i>
+                        <span class="text nav-text">Login</span>
+                    </a>
+                </li>
+                    
+                @endif
                 <li class="mode">
                     <div class="sun-moon">
                         <i class='bx bx-moon icon moon'></i>

@@ -26,6 +26,9 @@
     }else if($diff["s"]>0){
         $date='NOW';
     } 
+
+    //*****************
+    $img = "/images/users/".$con->username."/personal.jpg";
 @endphp
 
 <div class="postes">
