@@ -72,22 +72,54 @@
     </div>
     <div class="comm">
         <div class="comment">
-            {{$com[$con->con_id]}}
-            <div class="doc">
-                <img src="./icons/logo.png" alt="">
-                <p>Look Thats Good</p>
-                <span>3h ago</span>
-            </div>
-            <div class="users">
-                <img src="./icons/logo.png" alt="">
-                <p>OOOh What that</p>
-                <span>3h ago</span>
-            </div>
-            <div class="user">
-                <img src="./icons/logo.png" alt="">
-                <p>Ok </p>
-                <span>3h ago</span>
-            </div>
+            @forelse ($com[$con->con_id] as $item)
+                @php
+                     //Create a date object out of a string (e.g. from a database):
+                    $date1 = date_create_from_format('Y-m-d H:i:s', $item->com_date);
+                    //Create a date object out of today's date:
+                    $date2 = date_create_from_format('Y-m-d H:i:s', date('Y-m-d H:i:s'));
+                    //Create a comparison of the two dates and store it in an array:
+                    $diff = (array) date_diff($date1, $date2);
+                   
+                    if($diff["y"]>0){
+                        $dateC= $diff["y"] . "y";
+                    }else if($diff["m"]>0){
+                        $dateC= $diff["m"] . "mon";
+                    }else if($diff["d"]>0){
+                        $dateC= $diff["d"] . "d";
+                    }else if($diff["h"]>0){
+                        $dateC= $diff["h"] . "h";
+                    }else if($diff["i"]>0){
+                        $dateC= $diff["i"] . "min";
+                    }else if($diff["s"]>0){
+                        $dateC='NOW';
+                    }
+                @endphp
+
+                @if($item->doctor != null)
+                    <div class="doc">
+                        <img src="./icons/logo.png" alt="">
+                        <p>{{$item->com_content}}</p>
+                        <span>{{$dateC}} ago</span>
+                    </div>
+                @else
+                    @if($item->username == $con->username)
+                        <div class="user">
+                            <img src="./icons/logo.png" alt="">
+                            <p>{{$item->com_content}}</p>
+                            <span>{{$dateC}} ago</span>
+                        </div>
+                    @else
+                        <div class="users">
+                            <img src="./icons/logo.png" alt="">
+                            <p>{{$item->com_content}}</p>
+                            <span>{{$dateC}} ago</span>
+                        </div>
+                    @endif
+                @endif
+            @empty
+                there is no comment
+            @endforelse
         </div>
         <div class="writ-comment">
             <form action="/insertCom" method="post" id="Fwrit-comment">

@@ -19,16 +19,29 @@
 <body>
     <nav class="sidebar close">
         <header>
+            @if(session('type') != null)
+            <div class="image-text">
+                <span class="image">
+                    <img src="{{session('img')}}" alt="">
+                </span>
+
+                <div class="text logo-text">
+                    <span class="name">{{session('info.username')}}</span>
+                    <span class="profession">{{session('info.bio')}}</span>
+                </div>
+            </div>
+            @else
             <div class="image-text">
                 <span class="image">
                     <img src="{{URL::asset('post/icons/logo.png')}}" alt="">
                 </span>
 
                 <div class="text logo-text">
-                    <span class="name">Codinglab</span>
-                    <span class="profession">Web developer</span>
+                    <span class="name">LiveHealth</span>
+                    <span class="profession">consultation & answer</span>
                 </div>
             </div>
+            @endif
 
             <i class='bx bx-chevron-right toggle'></i>
         </header>
