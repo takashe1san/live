@@ -14,40 +14,58 @@ class AccountsController extends Controller
     //creating new account
     public function signup(Request $info){
 
-    // $rules = [
-    //     'username' => [
-    //             'required',
-    //             'max:40',
-    //             'min:5',
-    //         ],
-    //         'email' => [
-    //             'required',
-    //             'email',
-                
-    //             'max:60'
-    //         ],
-    //         'name' => [
-    //             'required',
-    //             'max:50'
-    //         ],
-    //         'password' => [
-    //             'required',
-    //             // 'regex:/^.*(?=.{7,})(?=.{,70})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/',
-    //             'max:70',
-    //             'min:7',
-    //         ],
-    //         'birth' => [
-    //             'required',
-    //             'date',
-    //         ]
-    //     ];
+        $rules = [
+            'username' => [
+                'required',
+                'max:40',
+                'min:5',
+                'unique:users,username'
+            ],
+            'email' => [
+                'required',
+                'email', 
+                'max:60',
+                'unique:users,email',
+            ],
+            'name' => [
+                'required',
+                'max:50'
+            ],
+            'password' => [
+                'required',
+                'max:70',
+                'min:7',
+            ],
+            'birth' => [
+                'required',
+                'date',
+            ]
+        ];
+
+        $msgs = [
+            'username.required' => 'username is required',
+            'username.max'      => 'username must be <40 character',
+            'username.min'      => 'username must be >5 character',
+            'username.unique'   => 'this username is used',
+            'email.required'    => 'email is required',
+            'email.email'       => 'wronge formula',
+            'email.max'         => 'email must be <60 character',
+            'email.unique'      => 'this email is exist',
+            'name.required'     => 'name is required',
+            'name.max'          => 'name must be <50 character',
+            'password.required' => 'password is required',
+            'password.max'      => 'password must be <70 character',
+            'password.min'      => 'password must be >7 character',
+            'birth.required'    => 'birth is required',
+            'birth.date'        => 'wronge formula',
+        ];
         
         
-    //     $valid = Validator::make($info->all() , $rules);
+        $valid = Validator::make($info->all() , $rules, $msgs);
         
-        // if($valid->fails()){
-        //     return redirect()->back()->withErrors($valid)->withInput($info->all());
-        // }
+        if($valid->fails()){
+            return redirect()->back()->withErrors($valid)->withInput($info->all());
+        }
         //checking account type
         if($info->type == 'user'){
             (new UsersController)->addUser($info);
@@ -68,20 +86,17 @@ class AccountsController extends Controller
 
         
         $rules = [
-                'username' => [
-                    'required',
-                ],
-                'password' => [
-                    'required',
-                ]
+            'username' => [
+                'required',
+            ],
+            'password' => [
+                'required',
+            ]
         ];
         
         $msgs = [
             'username.required' => 'the username is required',
-            'username.max'      => 'username must be less than 40 character',
-            'username.min'      => 'username must be more than 5 character',
             'password.required' => 'the password is required',
-            'password.regex'      => 'wrong formula',
         ];
 
         $valid = Validator::make($info->all() , $rules , $msgs);
@@ -109,7 +124,6 @@ class AccountsController extends Controller
         }
     }
 
-    //logout from your account
     public function logout(){
         session()->flush();
         return redirect('log');

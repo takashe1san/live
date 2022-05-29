@@ -22,11 +22,10 @@ class UserSeeder extends Seeder
             # code...
             User::create([
                 'username' => Str::random(10),
-                'name'     => Str::random(10),
+                'name'     => 'seeder'.$i,
                 'email'    => Str::random(10).'@seeder.com',
-                'password' => md5(''),
+                'password' => md5('testuser'),
                 'birth'    => date('Y-m-d'),
-                // 'blood_typ'=> $info->bloodtyp,
             ]);
         }
     }

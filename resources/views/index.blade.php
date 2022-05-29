@@ -14,7 +14,7 @@
     <!-- FontAweome CDN Link for Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     
-    <title>Dashboard Menu</title> 
+    <title>Live Health</title> 
 </head>
 <body>
     <nav class="sidebar close">
