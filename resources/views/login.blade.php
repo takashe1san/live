@@ -8,7 +8,7 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="{{URL::asset('asset/style.css') }}" />
-    <title>Sign in & Sign up Form</title>
+    <title>log | Live Health</title>
   </head>
   <body>
     <div class="container">
@@ -23,10 +23,16 @@
             <div class="input-field">
               <i class="fas fa-user"></i>
               <input type="text" name='username' placeholder="Username" />
+              @error('username')
+                {{$message}}
+              @enderror
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
               <input type="password" name='password' placeholder="Password" />
+              @error('password')
+                {{$message}}
+              @enderror
             </div>
             <input type="submit" value="Login" class="btn solid" />
             <p class="social-text">Or Sign in with social platforms</p>
@@ -47,8 +53,8 @@
             <input type="checkbox" value="user" name="type" id="User1" hidden/>            <h2 class="title">Sign up</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" name='username' placeholder="Username" />
-              @error('username')
+              <input type="text" name='susername' placeholder="Username" />
+              @error('susername')
                 {{$message}}
               @enderror
             </div>
@@ -68,8 +74,8 @@
             @enderror
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" name='password' placeholder="Password" />
-              @error('password')
+              <input type="password" name='spassword' placeholder="Password" />
+              @error('spassword')
                 {{$message}}
               @enderror
             </div>

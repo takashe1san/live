@@ -11,10 +11,10 @@ class DoctorController extends Controller
     public function addDoc(Request $info){
         //putting doctor information to database
         Doctor::create([
-            'username' => $info->username,
+            'username' => $info->susername,
             'name'     => $info->name,
             'email'    => $info->email,
-            'password' => md5($info->password),
+            'password' => md5($info->spassword),
             'birth'    => $info->birth,
             'blood_typ'=> $info->bloodtyp,
         ]);

@@ -13,10 +13,10 @@ class UsersController extends Controller
     public function addUser(Request $info){
         //putting user information to database
         User::create([
-            'username' => $info->username,
+            'username' => $info->susername,
             'name'     => $info->name,
             'email'    => $info->email,
-            'password' => md5($info->password),
+            'password' => md5($info->spassword),
             'birth'    => $info->birth,
             // 'blood_typ'=> $info->bloodtyp,
         ]);

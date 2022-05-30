@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\DoctorController;
-use App\Models\Media;
-use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Validator ;
 
 class AccountsController extends Controller
@@ -15,7 +13,7 @@ class AccountsController extends Controller
     public function signup(Request $info){
 
         $rules = [
-            'username' => [
+            'susername' => [
                 'required',
                 'max:40',
                 'min:5',
@@ -31,7 +29,7 @@ class AccountsController extends Controller
                 'required',
                 'max:50'
             ],
-            'password' => [
+            'spassword' => [
                 'required',
                 'max:70',
                 'min:7',
@@ -43,19 +41,19 @@ class AccountsController extends Controller
         ];
 
         $msgs = [
-            'username.required' => 'username is required',
-            'username.max'      => 'username must be <40 character',
-            'username.min'      => 'username must be >5 character',
-            'username.unique'   => 'this username is used',
+            'susername.required' => 'username is required',
+            'susername.max'      => 'username must be <40 character',
+            'susername.min'      => 'username must be >5 character',
+            'susername.unique'   => 'this username is used',
             'email.required'    => 'email is required',
             'email.email'       => 'wronge formula',
             'email.max'         => 'email must be <60 character',
             'email.unique'      => 'this email is exist',
             'name.required'     => 'name is required',
             'name.max'          => 'name must be <50 character',
-            'password.required' => 'password is required',
-            'password.max'      => 'password must be <70 character',
-            'password.min'      => 'password must be >7 character',
+            'spassword.required' => 'password is required',
+            'spassword.max'      => 'password must be <70 character',
+            'spassword.min'      => 'password must be >7 character',
             'birth.required'    => 'birth is required',
             'birth.date'        => 'wronge formula',
         ];
@@ -74,7 +72,7 @@ class AccountsController extends Controller
         }
         
         $this->login($info);
-        return redirect('show');
+        return redirect('/');
     }
 
     public function login(Request $info){
@@ -95,8 +93,8 @@ class AccountsController extends Controller
         ];
         
         $msgs = [
-            'username.required' => 'the username is required',
-            'password.required' => 'the password is required',
+            'username.required' => 'required field',
+            'password.required' => 'required field',
         ];
 
         $valid = Validator::make($info->all() , $rules , $msgs);
@@ -104,8 +102,6 @@ class AccountsController extends Controller
         if($valid->fails()){
             return redirect()->back()->withErrors($valid)->withInput($info->all());
         }
-
-        
 
         $password = md5($info->password);
         
@@ -117,10 +113,11 @@ class AccountsController extends Controller
 
             (new FileController)->imgCheck();
 
-            return redirect('show');
-            // return $userInfo;
+            return redirect('/');
         }else{
-            return 'false';
+            $valid->errors()->add('password', 'wronge password');
+            return redirect()->back()->withErrors($valid)->withInput($info->all());
+            // return $valid->errors();
         }
     }
 
