@@ -29,18 +29,28 @@
 
     //*****************
     $img = "/images/users/".$con->username."/personal.jpg";
+
+    //*****************
+    if($liked[$con->con_id]){
+        $lik_icon = 'bi-hand-thumbs-up-fill';
+    }else{
+        $lik_icon = 'bi-hand-thumbs-up';
+    }
 @endphp
 
 <div class="postes">
     <button class="btt btnlike notlike">
-        <i class="bi bi-hand-thumbs-up"></i>
-        11
+        <span hidden>{{$con->con_id}}</span>
+        <i class="bi {{$lik_icon}}"></i>
+        <likeCount>{{$likes[$con->con_id]}}</likeCount>
+        
     </button>
     <button class="btt btncomm hiddcomm">
         <i class="bi bi-chat-left-text"></i>
         20
     </button>
     <button class="btt btnshear notshare">
+        <span hidden>{{$_SERVER['HTTP_HOST'].'/'.$con->con_id}}</span>
         <i class="bi bi-share"></i>
         2
     </button>

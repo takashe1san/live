@@ -141,12 +141,26 @@
         })
     postes.forEach((item)=>
           item.querySelector(".btnlike").onclick =function ss(){
-            let s =this.querySelector('i');
-            this.classList.toggle('gitLike')
-            this.classList.toggle('notlike')
-            this.classList.toggle('rrun')
-            s.classList.toggle('bi-hand-thumbs-up')
-            s.classList.toggle('bi-hand-thumbs-up-fill')
+            let id = this.querySelector('span').innerHTML;
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET", "http://localhost:8000/like/"+id, true);
+            xhr.onload = ()=>{
+              if(xhr.readyState === XMLHttpRequest.DONE){
+                  if(xhr.status === 200){
+                    let data = xhr.response;
+                    let s =this.querySelector('i');
+                    this.classList.toggle('gitLike')
+                    this.classList.toggle('notlike')
+                    this.classList.toggle('rrun')
+                    s.classList.toggle('bi-hand-thumbs-up')
+                    s.classList.toggle('bi-hand-thumbs-up-fill')
+                    this.querySelector('likeCount').innerHTML = data;
+                    // console.log(data)
+                  }
+              }
+            }
+            xhr.send();
+            
           })
     postes.forEach((item)=>
             item.querySelector(".btnshear").onclick =function ss(){

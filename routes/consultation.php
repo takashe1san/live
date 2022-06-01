@@ -20,3 +20,7 @@ Route::get('/delCon/{id}','ConsController@deleteCons')
 Route::get('getCon/{id}','ConsController@getCons');
 
 Route::get('lastid', 'ConsController@getID');
+
+//********************** LIKES > *********************** */
+
+Route::get('/like/{id}', 'LikesController@like');
