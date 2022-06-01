@@ -1210,3 +1210,8 @@ opacity: 1;
   z-index: 99;
     background: var(--text-color5);
 }
+.settPost{cursor: pointer; transition: var(--tran-04); position: absolute;left: 775px;top: 10px;font-size: 25px;}
+.settPostList{transition: var(--tran-04); opacity: 0; z-index: -1; list-style: none;padding: 5px;position: absolute;background: var(--sidebar-color);border-radius: 6px;left: 680px;top: 10px;box-shadow: 0px 2px 3px #333;}
+.settPost.rrrun ~ .settPostList{opacity: 1; z-index: 3;}
+.settPostList li{padding: 7px;cursor: pointer;}
+.settPostList li:not(:last-child){border-bottom: 1px solid var(--text-color5);}

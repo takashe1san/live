@@ -98,6 +98,48 @@
           s.classList.toggle('bi-chat-left-text-fill')
         })
     postes.forEach((item)=>
+        item.querySelector(".settPost").onclick =function ss(){
+          this.classList.toggle('rrrun')
+          this.classList.toggle('bi-three-dots-vertical')
+          this.classList.toggle('bi-three-dots')
+        })
+        // Delet The Post
+    postes.forEach((item)=>
+        item.querySelector(".PostDelet").onclick =function ss(){
+          let id = this.querySelector('span').innerHTML,
+          csrf = this.querySelector('input').value;
+          let xhr = new XMLHttpRequest();
+          xhr.open("get", "http://localhost:8000/delCon/"+id, true);
+          // console.log('opnbjmhbv')
+          xhr.onload = ()=>{
+            // console.log('load00')
+            if(xhr.readyState === XMLHttpRequest.DONE){
+                if(xhr.status === 200){
+                  let data = xhr.response;
+                  console.log(data)
+                }
+            }
+          }
+          // console.log('aaaaaaaaaaaaaaaaaaa')
+          xhr.send();
+          // 'id='+id+'&_token='+csrf
+          // console.log('aaaaaaagfrtaaaaaaaaa')
+        })
+    postes.forEach((item)=>
+        item.querySelector(".PostRep").onclick =function ss(){
+          let id = this.querySelector('span').innerHTML;
+          let xhr = new XMLHttpRequest();
+          xhr.open("GET", "http://localhost:8000/insertCon/"+id, true);
+          xhr.onload = ()=>{
+            if(xhr.readyState === XMLHttpRequest.DONE){
+                if(xhr.status === 200){
+                  console.log('sgsfgw')
+                }
+            }
+          }
+          xhr.send();
+        })
+    postes.forEach((item)=>
           item.querySelector(".btnlike").onclick =function ss(){
             let s =this.querySelector('i');
             this.classList.toggle('gitLike')

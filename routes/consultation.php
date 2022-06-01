@@ -6,17 +6,16 @@ Route::get('/addCons', function () {
     return view('addConsultation');
 })->middleware('isUser');
 
-Route::post('/insertCon','ConsController@insCons')
-    ->name('cons');
+Route::post('/insertCon','ConsController@insCons');
 
 Route::get('/showcon','ConsController@showCons')
     ->name('showcon');
 
 Route::get('showallcon','ConsController@showAllCons');
 
-Route::get('/delCon/{id?}','ConsController@deleteCons')
-    ->name('dcons')
-    ->middleware('ownCon');
+Route::get('/delCon/{id}','ConsController@deleteCons')
+    ->name('dcons');
+    // ->middleware('ownCon');
 
 Route::get('getCon/{id}','ConsController@getCons');
 

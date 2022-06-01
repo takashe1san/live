@@ -43,6 +43,6 @@ class ConsController extends Controller
 
     public function deleteCons($id){
         Consultation::where('con_id',$id)->delete();
-        return redirect()->back();
+        return 'deleted';
     }
 }

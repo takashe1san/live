@@ -44,7 +44,20 @@
         <i class="bi bi-share"></i>
         2
     </button>
+    
     <div class="posts ">
+        <i class="settPost bi bi-three-dots-vertical"></i>
+        <ul class="settPostList">
+            <li class="PostDelet">
+                <span hidden>{{$con->con_id}}</span>
+                @csrf
+                delet
+            </li>
+            <li class="PostRep">
+                <span hidden>{{$con->con_id}}</span>
+                Ablagh
+            </li>
+        </ul>
         <div class="post-row">
             <div class="user-profile">
                 <img src="{{URL::asset('post/icons/logo.png')}}" alt="logo">

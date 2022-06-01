@@ -194,7 +194,7 @@
                 <div class="wrapper">
                 <section class="post">
         
-                    <form  action="#" method="post" id="formPost">
+                    <form  action="#" method="post" id="formPost" enctype="multipart/form-data">
                         @csrf
                         <div class=" user-profile">
                             <img src="icons/logo.png" alt="logo">
