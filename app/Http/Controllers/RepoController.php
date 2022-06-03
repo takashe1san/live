@@ -24,6 +24,8 @@ class RepoController extends Controller
             $reporter = 'user';
         }elseif(session('type') == 'doctor'){
             $reporter = 'doctor';
+        }else{
+            return 'login to report '.$typ.$id;
         }
         Report::create([
             $reporter     => session('info.username'),

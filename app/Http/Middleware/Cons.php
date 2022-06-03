@@ -16,9 +16,9 @@ class Cons
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, $id, Closure $next)
     {
-        $order = Consultation::where('con_id', $request->id)->first();
+        $order = Consultation::where('con_id', $id)->first();
         if($order->username != session('info.username')){
             return redirect(route('showcon'));
         }

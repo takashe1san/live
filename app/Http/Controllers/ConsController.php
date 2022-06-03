@@ -45,7 +45,12 @@ class ConsController extends Controller
     }
 
     public function deleteCons($id){
-        Consultation::where('con_id',$id)->delete();
-        return 'deleted';
+        $con = Consultation::where('con_id',$id)->first();
+        if($con->username == session('info.username') && session('type') == 'user'){
+            $con->delete();
+            return 'deleted';
+        }else{
+            return 'this is not your consultation!!';
+        }
     }
 }
