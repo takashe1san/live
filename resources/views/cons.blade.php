@@ -60,11 +60,11 @@
             <li class="PostDelet">
                 <span hidden>{{$con->con_id}}</span>
                 @csrf
-                delet
+                delete
             </li>
             <li class="PostRep">
                 <span hidden>{{$con->con_id}}</span>
-                Ablagh
+                report
             </li>
         </ul>
         <div class="post-row">
