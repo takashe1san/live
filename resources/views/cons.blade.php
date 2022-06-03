@@ -28,9 +28,6 @@
     } 
 
     //*****************
-    $img = "/images/users/".$con->username."/personal.jpg";
-
-    //*****************
     if($liked[$con->con_id]){
         $lik_icon = 'bi-hand-thumbs-up-fill';
     }else{
@@ -69,7 +66,7 @@
         </ul>
         <div class="post-row">
             <div class="user-profile">
-                <img src="{{URL::asset('post/icons/logo.png')}}" alt="logo">
+                <img src="{{$consImgs[$con->con_id]}}" alt="logo">
                 <div class="details">
                 <p>{{$con->username}}</p>
                 <div class="postTime">

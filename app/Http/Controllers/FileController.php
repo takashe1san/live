@@ -36,14 +36,7 @@ class FileController extends Controller
     }
     
     public function imgCheck(){
-        if(Media::where( session('type')  , session('info.username'))->exists()){
-            $imgInfo = Media::where( session('type') , session('info.username'))->first();
-            $img = $imgInfo->mediaDir."/$imgInfo->name";
-        }else{
-            $img = "/images/".session('type')."s/personal.png"; 
-            // $img = 'tester';
-        }
-
+        $img = $this->showImg(session('type'), session('info.username'));
         session(['img' => $img]);
     }
 
@@ -98,8 +91,13 @@ class FileController extends Controller
     
     }
 
-    public function showImg(){
-        $dir = public_path('/images/'.  session('type') .'s/'. session('info.username') .'/cons/30/');
-        return scandir($dir);
+    public function showImg($type, $username){
+        if(Media::where( $type  , $username)->exists()){
+            $imgInfo = Media::where( $type , $username)->first();
+            $img = $imgInfo->mediaDir."/$imgInfo->name";
+        }else{
+            $img = "/images/".session('type')."s/personal.png"; 
+        }
+        return $img;
     }
 }
