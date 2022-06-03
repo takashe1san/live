@@ -28,10 +28,11 @@ class ConsController extends Controller
         $cons = Consultation::orderByDesc('con_id')->get();
         foreach($cons as $con){
             $coms[$con->con_id] = (new CommController)->showComm($con->con_id);
+            $comc[$con->con_id] = (new CommController)->comCount($con->con_id);
             $like[$con->con_id] = (new LikesController)->likeCount($con->con_id);
             $love[$con->con_id] = (new LikesController)->likeCheck($con->con_id);
         }
-        return view('index',['cons' => $cons, 'com' => $coms, 'likes' => $like, 'liked' => $love]);
+        return view('index',['cons' => $cons, 'com' => $coms, 'comc' => $comc, 'likes' => $like, 'liked' => $love]);
     }
 
     public function getCons($id){

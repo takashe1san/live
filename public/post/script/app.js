@@ -129,11 +129,12 @@
         item.querySelector(".PostRep").onclick =function ss(){
           let id = this.querySelector('span').innerHTML;
           let xhr = new XMLHttpRequest();
-          xhr.open("GET", "http://localhost:8000/insertCon/"+id, true);
+          xhr.open("GET", "http://localhost:8000/report/con/"+id, true);
           xhr.onload = ()=>{
             if(xhr.readyState === XMLHttpRequest.DONE){
                 if(xhr.status === 200){
-                  console.log('sgsfgw')
+                  let data = xhr.response;
+                  console.log(data)
                 }
             }
           }

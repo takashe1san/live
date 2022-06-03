@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 class RepoController extends Controller
 {
     //
-    public function addRepo (Request $info){
-        switch($info->type){
+    public function addRepo ($typ, $id){
+        switch($typ){
             case 'con':
                 $type = 'reported_con';
                 break;
@@ -21,16 +21,14 @@ class RepoController extends Controller
                 break;
         }
         if(session('type') == 'user'){
-            $reporter = 'username';
+            $reporter = 'user';
         }elseif(session('type') == 'doctor'){
             $reporter = 'doctor';
         }
         Report::create([
-            'rep_raison'  => $info->raison,
-            // 'rep_details' => $info->detail,
             $reporter     => session('info.username'),
-            $type         => $info->id,
+            $type         => $id,
         ]);
-        return redirect()->back();
+        return 'reported '.$typ.$id;
     }
 }

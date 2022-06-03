@@ -47,12 +47,11 @@
     </button>
     <button class="btt btncomm hiddcomm">
         <i class="bi bi-chat-left-text"></i>
-        20
+        <comCount>{{$comc[$con->con_id]}}</comCount>
     </button>
     <button class="btt btnshear notshare">
         <span hidden>{{$_SERVER['HTTP_HOST'].'/'.$con->con_id}}</span>
         <i class="bi bi-share"></i>
-        2
     </button>
     
     <div class="posts ">

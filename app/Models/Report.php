@@ -9,9 +9,7 @@ class Report extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'rep_raison',
-        'rep_details',
-        'username',
+        'user',
         'doctor',
         'reported_usr',
         'reported_doc',
