@@ -192,13 +192,13 @@
             <div class="container_post container_postSl">
                 <div class="wrapper">
                 <section class="post">
-        
+                    @if (session('type') == 'user')
                     <form  action="#" method="post" id="formPost" enctype="multipart/form-data">
                         @csrf
                         <div class=" user-profile">
                             <img src="icons/logo.png" alt="logo">
                             <div class="details">
-                                <p>CodingNepal</p>
+                                <p>{{session('info.username')}}</p>
                                 <div class="privacy">
                                     <input type="text" name="section" value="General" hidden>
                                     <i class="ii bi bi-globe"></i>
@@ -207,7 +207,7 @@
                                 </div>
                             </div>
                         </div>
-                        <textarea name="content" placeholder="What's on your mind, CodingNepal?" spellcheck="false" required></textarea>
+                        <textarea name="content" placeholder="Write your Consultation here" spellcheck="false" required></textarea>
                         <div class="options">
                             <p id="fileConfig">Add to Your Post</p>
                             <i class="bi bi-images" alt="gallery" id="fileImg" ></i>
@@ -215,6 +215,9 @@
                         </div>
                         <button id="sendPost" name="s">Post</button>
                     </form>
+                    @else
+
+                    @endif
                 </section>
                 <section class="audience">
                     <header>

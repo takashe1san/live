@@ -9,13 +9,17 @@ class ConsController extends Controller
 {
     //
     public function insCons(Request $info){
-        Consultation::create([
-            'con_section' => $info->section,
-            'con_content' => $info->content,
-            'username' => session('info.username'),
-        ]);
-        (new FileController)->multiFile($info, 'cons');
-        return 'consultation added';
+        if(session('type') == 'user'){
+            Consultation::create([
+                'con_section' => $info->section,
+                'con_content' => $info->content,
+                'username' => session('info.username'),
+            ]);
+            (new FileController)->multiFile($info, 'cons');
+            return 'consultation added';
+        }else{
+            return "you can't add consultation!!";
+        }
     }
 
     public function showCons(){
