@@ -1001,7 +1001,7 @@ opacity: 1;
 } 
 
 .comm{
-  overflow: hidden;
+  overflow: auto;
   background: rgb(0 0 0 / 2%);
     display: flex;
     border-radius: 10px;

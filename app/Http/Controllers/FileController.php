@@ -18,44 +18,45 @@ class FileController extends Controller
             
             $this->imgDelete();
 
+            // $imgDir =;
+
             $file->storeAs('images/' . session('type') . 's/' . session('info.username') , $filename);
 
             Media::create([
-                'name' => 'personal',
-                'ext'  => $ext,
+                'name'          => $filename,
+                'ext'           => $ext,
+                'mediaDir'      => 'images/' . session('type') . 's/' . session('info.username'),
                 session('type') => session('info.username'),
             ]);
 
             $this->imgCheck();
 
-            return redirect('show');
+            return redirect('/');
         }
     }
     
     public function imgCheck(){
-        if(Media::where(['name' => 'personal', session('type')  => session('info.username')])->exists()){
-            $imgInfo = Media::where(['name' => 'personal', session('type') => session('info.username')])->first();
-            $img = "/images/".session('type')."s/".session('info.username')."/$imgInfo->name.$imgInfo->ext";
+        if(Media::where( session('type')  , session('info.username'))->exists()){
+            $imgInfo = Media::where( session('type') , session('info.username'))->first();
+            $img = $imgInfo->mediaDir."/$imgInfo->name";
         }else{
             $img = "/images/".session('type')."s/personal.png"; 
+            // $img = 'tester';
         }
 
         session(['img' => $img]);
     }
 
     public function imgDelete(){
-        if(Media::where(['name' => 'personal', session('type')  => session('info.username')])->exists()){
-            $eImg = Media::where([
-                'name' => 'personal',
-                session('type') => session('info.username'),
-                ])->first();
-            unlink("images/". session('type') . "s/" . session('info.username') ."/".$eImg->name.'.'.$eImg->ext);
+        if(Media::where( session('type')  , session('info.username'))->exists()){
+            $eImg = Media::where([session('type') => session('info.username')])->first();
+            unlink("images/". session('type') . "s/" . session('info.username') ."/".$eImg->name);
             $eImg->delete();
         }
 
         $this->imgCheck();
 
-        return redirect('show');
+        return redirect('/');
     }
 
     //second section -> Atachments <- *************************
