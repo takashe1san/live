@@ -9,14 +9,13 @@ class ConsController extends Controller
 {
     //
     public function insCons(Request $info){
-        // return $info->section;
         Consultation::create([
             'con_section' => $info->section,
             'con_content' => $info->content,
             'username' => session('info.username'),
         ]);
         (new FileController)->multiFile($info, 'cons');
-        // return redirect('showallcon');
+        return 'consultation added';
     }
 
     public function showCons(){

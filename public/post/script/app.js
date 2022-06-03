@@ -110,20 +110,15 @@
           csrf = this.querySelector('input').value;
           let xhr = new XMLHttpRequest();
           xhr.open("get", "http://localhost:8000/delCon/"+id, true);
-          // console.log('opnbjmhbv')
           xhr.onload = ()=>{
-            // console.log('load00')
             if(xhr.readyState === XMLHttpRequest.DONE){
                 if(xhr.status === 200){
                   let data = xhr.response;
-                  console.log(data)
+                  console.log(`server say: ${data}`)
                 }
             }
           }
-          // console.log('aaaaaaaaaaaaaaaaaaa')
           xhr.send();
-          // 'id='+id+'&_token='+csrf
-          // console.log('aaaaaaagfrtaaaaaaaaa')
         })
     postes.forEach((item)=>
         item.querySelector(".PostRep").onclick =function ss(){
@@ -134,7 +129,7 @@
             if(xhr.readyState === XMLHttpRequest.DONE){
                 if(xhr.status === 200){
                   let data = xhr.response;
-                  console.log(data)
+                  console.log(`server say: ${data}`)
                 }
             }
           }
@@ -156,7 +151,7 @@
                     s.classList.toggle('bi-hand-thumbs-up')
                     s.classList.toggle('bi-hand-thumbs-up-fill')
                     this.querySelector('likeCount').innerHTML = data;
-                    // console.log(data)
+                    console.log(`server say: ${data}`)
                   }
               }
             }
@@ -224,7 +219,7 @@
           if(xhr.status === 200){
             
             let data = xhr.response;
-             console.log(data)
+             console.log(`server say: ${data}`)
              formPost.querySelector('textarea').value='';
           }
       }
