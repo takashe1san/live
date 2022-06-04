@@ -101,11 +101,6 @@ class FileController extends Controller
         return $img;
     }
     public function test(Request $info){
-            $res = '';
-            if ($info->content && $info->con_id)
-            {$res='scess'.$info->content .$info->con_id;}
-            else{$res = 'error';}
-        
-        return $res;
+        return $info;
     }
 }
