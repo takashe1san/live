@@ -2,12 +2,13 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use App\Models\Doctor;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
-class UserSeeder extends Seeder
+
+class DoctorSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -19,11 +20,11 @@ class UserSeeder extends Seeder
         //
         for ($i=0; $i < 10; $i++) { 
             # code...
-            User::create([
+            Doctor::create([
                 'username' => Str::random(10),
                 'name'     => 'seeder'.$i,
                 'email'    => Str::random(10).'@seeder.com',
-                'password' => md5('testuser'),
+                'password' => md5('testDoctor'),
                 'birth'    => date('Y-m-d'),
             ]);
         }
