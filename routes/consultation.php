@@ -15,7 +15,6 @@ Route::get('showallcon','ConsController@showAllCons');
 
 Route::get('/delCon/{id}','ConsController@deleteCons')
     ->name('dcons');
-    // ->middleware('ownCon');
 
 Route::get('getCon/{id}','ConsController@getCons');
 

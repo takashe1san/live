@@ -35,6 +35,11 @@ class CommController extends Controller
         return $com;
     }
 
+    public function comCount($id){
+        $count = Comment::where('consultation', $id)->count();
+        return $count;
+    }
+
     public function deleteCom($id){
         Comment::where('com_id', $id)->delete();
         return redirect()->back();

@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Consultation extends Model
 {
     use HasFactory, SoftDeletes;
+
+    protected $primaryKey = 'con_id';
+    
     protected $fillable = [
         'con_section',
         'con_content',

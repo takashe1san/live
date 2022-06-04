@@ -9,14 +9,17 @@ class ConsController extends Controller
 {
     //
     public function insCons(Request $info){
-        // return $info->section;
-        Consultation::create([
-            'con_section' => $info->section,
-            'con_content' => $info->content,
-            'username' => session('info.username'),
-        ]);
-        (new FileController)->multiFile($info, 'cons');
-        // return redirect('showallcon');
+        if(session('type') == 'user'){
+            Consultation::create([
+                'con_section' => $info->section,
+                'con_content' => $info->content,
+                'username' => session('info.username'),
+            ]);
+            (new FileController)->multiFile($info, 'cons');
+            return 'consultation added';
+        }else{
+            return "you can't add consultation!!";
+        }
     }
 
     public function showCons(){
@@ -27,11 +30,13 @@ class ConsController extends Controller
     public function showAllCons(){
         $cons = Consultation::orderByDesc('con_id')->get();
         foreach($cons as $con){
-            $coms[$con->con_id] = (new CommController)->showComm($con->con_id);
+            $coms[$con->con_id] = (new CommController) ->showComm($con->con_id);
+            $comc[$con->con_id] = (new CommController) ->comCount($con->con_id);
             $like[$con->con_id] = (new LikesController)->likeCount($con->con_id);
             $love[$con->con_id] = (new LikesController)->likeCheck($con->con_id);
+            $imgs[$con->con_id] = (new FileController) ->showImg('user',$con->username);
         }
-        return view('index',['cons' => $cons, 'com' => $coms, 'likes' => $like, 'liked' => $love]);
+        return view('index',['cons' => $cons, 'com' => $coms, 'comc' => $comc, 'likes' => $like, 'liked' => $love, 'consImgs' => $imgs]);
     }
 
     public function getCons($id){
@@ -44,7 +49,12 @@ class ConsController extends Controller
     }
 
     public function deleteCons($id){
-        Consultation::where('con_id',$id)->delete();
-        return 'deleted';
+        $con = Consultation::where('con_id',$id)->first();
+        if($con->username == session('info.username') && session('type') == 'user'){
+            $con->delete();
+            return 'deleted cons'.$id;
+        }else{
+            return 'this is not your consultation!!';
+        }
     }
 }

@@ -18,44 +18,38 @@ class FileController extends Controller
             
             $this->imgDelete();
 
+            // $imgDir =;
+
             $file->storeAs('images/' . session('type') . 's/' . session('info.username') , $filename);
 
             Media::create([
-                'name' => 'personal',
-                'ext'  => $ext,
+                'name'          => $filename,
+                'ext'           => $ext,
+                'mediaDir'      => 'images/' . session('type') . 's/' . session('info.username'),
                 session('type') => session('info.username'),
             ]);
 
             $this->imgCheck();
 
-            return redirect('show');
+            return redirect('/');
         }
     }
     
     public function imgCheck(){
-        if(Media::where(['name' => 'personal', session('type')  => session('info.username')])->exists()){
-            $imgInfo = Media::where(['name' => 'personal', session('type') => session('info.username')])->first();
-            $img = "/images/".session('type')."s/".session('info.username')."/$imgInfo->name.$imgInfo->ext";
-        }else{
-            $img = "/images/".session('type')."s/personal.png"; 
-        }
-
+        $img = $this->showImg(session('type'), session('info.username'));
         session(['img' => $img]);
     }
 
     public function imgDelete(){
-        if(Media::where(['name' => 'personal', session('type')  => session('info.username')])->exists()){
-            $eImg = Media::where([
-                'name' => 'personal',
-                session('type') => session('info.username'),
-                ])->first();
-            unlink("images/". session('type') . "s/" . session('info.username') ."/".$eImg->name.'.'.$eImg->ext);
+        if(Media::where( session('type')  , session('info.username'))->exists()){
+            $eImg = Media::where([session('type') => session('info.username')])->first();
+            unlink("images/". session('type') . "s/" . session('info.username') ."/".$eImg->name);
             $eImg->delete();
         }
 
         $this->imgCheck();
 
-        return redirect('show');
+        return redirect('/');
     }
 
     //second section -> Atachments <- *************************
@@ -97,9 +91,14 @@ class FileController extends Controller
     
     }
 
-    public function showImg(){
-        $dir = public_path('/images/'.  session('type') .'s/'. session('info.username') .'/cons/30/');
-        return scandir($dir);
+    public function showImg($type, $username){
+        if(Media::where( $type  , $username)->exists()){
+            $imgInfo = Media::where( $type , $username)->first();
+            $img = $imgInfo->mediaDir."/$imgInfo->name";
+        }else{
+            $img = "/images/".session('type')."s/personal.png"; 
+        }
+        return $img;
     }
     public function test(Request $info){
             $res = '';
