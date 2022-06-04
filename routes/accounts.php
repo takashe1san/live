@@ -44,4 +44,4 @@ Route::get('doctors', 'DoctorController@showAll');
 
 // ***************** search > *********************
 
-Route::get('docsearch', 'DoctorController@search');
+Route::get('/docsearch/{username}', 'DoctorController@Dsearch');
