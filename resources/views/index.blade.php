@@ -215,8 +215,28 @@
                         </div>
                         <button id="sendPost" name="s">Post</button>
                     </form>
-                    @else
-
+                    @elseif(session('type') == 'doctor')
+                    <form  action="#" method="post" id="formPost" enctype="multipart/form-data">
+                        @csrf
+                        <div class=" user-profile">
+                            <img src="icons/logo.png" alt="logo">
+                            <div class="details">
+                                <p>{{session('info.username')}}</p>
+                                <div class="privacy">
+                                    <input type="text" name="section" value="General" hidden>
+                                    <i class="ii bi bi-globe"></i>
+                                    <span alt="Anyone on or off Facebook">Public</span>
+                                    <i class="bi bi-caret-down-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <textarea name="content" placeholder="Write your Consultation here" spellcheck="false" required></textarea>
+                        <div class="options">
+                            <p id="fileConfig">Add to Your Post</p>
+                            <i class="bi bi-images" alt="gallery" id="fileImg" ></i>
+                            <input type="file" name="fileImg" id="inputfile" hidden>
+                        </div>
+                        <button id="sendPost" name="s">Post</button>
                     @endif
                 </section>
                 <section class="audience">

@@ -151,7 +151,7 @@
                     s.classList.toggle('bi-hand-thumbs-up')
                     s.classList.toggle('bi-hand-thumbs-up-fill')
                     this.querySelector('likeCount').innerHTML = data;
-                    console.log(`server say: ${data}`)
+                    // console.log(`server say: ${data}`)
                   }
               }
             }
