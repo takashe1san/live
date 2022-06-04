@@ -82,10 +82,14 @@
         
         <p class="post-text">{{$con->con_content}}</p>
         <div class="media">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-play" viewBox="0 0 16 16">
-                <path d="M6 6.883v4.234a.5.5 0 0 0 .757.429l3.528-2.117a.5.5 0 0 0 0-.858L6.757 6.454a.5.5 0 0 0-.757.43z"/>
-                <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
-              </svg>
+            <div class="fFile" data-tooltip="Image"><i class="bi biImage" ></i></div>
+            <div class="fFile" data-tooltip="Music"><i class="bi biMusic" ></i></div>
+            <div class="fFile" data-tooltip="Pdf"><i class="bi biPdf" ></i></div>
+            <div class="fFile" data-tooltip="Play"><i class="bi biPlay" ></i></div>
+            
+            
+            
+            
         </div>
         
     </div>
@@ -118,6 +122,7 @@
                 @if($item->doctor != null)
                     <div class="doc">
                         <img src="./icons/logo.png" alt="">
+                        <span class="commUserName">{{$dateC}} ago</span>
                         <p>{{$item->com_content}}</p>
                         <span>{{$dateC}} ago</span>
                     </div>
@@ -125,12 +130,14 @@
                     @if($item->username == $con->username)
                         <div class="user">
                             <img src="./icons/logo.png" alt="">
+                            <span class="commUserName">{{$dateC}} ago</span>
                             <p>{{$item->com_content}}</p>
                             <span>{{$dateC}} ago</span>
                         </div>
                     @else
                         <div class="users">
                             <img src="./icons/logo.png" alt="">
+                            <span class="commUserName">{{$dateC}} ago</span>
                             <p>{{$item->com_content}}</p>
                             <span>{{$dateC}} ago</span>
                         </div>

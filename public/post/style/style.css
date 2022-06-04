@@ -137,8 +137,9 @@ header .image-text .name {
 
 header .image-text .profession{
     font-size: 16px;
-    margin-top: -2px;
-    display: block;
+    position: absolute;
+    top: 50px;
+    left: 1px;
 }
 
 .sidebar header .image{
@@ -325,9 +326,9 @@ body.dark .switch::before{
 
 .right{
     flex-basis: 20%;
-    position: sticky;
-    top: 20px;
-    right: 31px;
+    position: fixed;
+    z-index: -1;
+    right: -500px;
     height: 720px;
     align-self: flex-start;
     background-color: var(--sidebar-color);
@@ -336,15 +337,16 @@ body.dark .switch::before{
     border-radius: 10px;
     color: #626262;
     overflow: hidden;
+    transition: var(--tran-05);
 }
 .left{
-    /* flex-basis: 25%; */
+    flex-basis: 25%;
 	position: sticky;
 	align-self: flex-start;
     left: 300px;
     /* margin-top: 20px; */
+    width: 665px;
     height: 100vh;
-    width: calc(100% - 35%);
     
     background-color: var(--body-color);
     transition: var(--tran-05);
@@ -358,12 +360,12 @@ body.dark .switch::before{
 }
 
 .sidebar.close ~ .cont .left{
-  width: calc(100% - 250px);
     left: 130px;
 }
-.sidebar.close  ~ .cont .left .container_post{width: 67%;}
+.sidebar.close  ~ .cont .left .container_post{left:130px;}
 .sidebar.close ~ .cont  .right{
   flex-basis: 25%;
+  right: 31px;
 }
 body.dark .left .text{
     color: var(--text-color);
@@ -539,16 +541,16 @@ opacity: 1;
   }
   .container_post{
     margin-top: 15px;
-    width: 80%;
+    width: 71%;
     z-index: 111;
-    left: 75px;
+    left: 300px;
     height: 300px;
     overflow: hidden;
     background:var(--sidebar-color);
     border-radius: 10px;
     transition: all 0.4s ease;
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
-    position: absolute;
+    position: fixed;
     /* transition: .5s; */
   
   
@@ -929,7 +931,7 @@ opacity: 1;
   height: 30px;
   width: 85px;
   position: absolute;
-  top: 260px;
+  top: 245px;
   border: none;
   background-color: inherit;
   cursor: pointer;
@@ -944,11 +946,10 @@ opacity: 1;
 .btt.rrun i{
   font-size: 25px;
 }
-.btncomm{left: 33%;}
-.btnlike{left: 3%;}
-.btnshear{left: 66%;}
+.btncomm{left: 45%;}
+.btnshear{left: 85%;}
 .posts{
-	width: 79%;
+	width: 100%;
 	background:var(--sidebar-color);
 	border-radius: 6px;
 	padding: 5px 20px;
@@ -983,15 +984,52 @@ opacity: 1;
 .media{
   border: 1px solid;
   border-radius: 6px;
-  padding: 10px;
-  margin-bottom: 47px;
+  font-size: 35px;
+  margin-bottom: 40px;
+  color: var(--text-color);
+  position: relative;
+  display: flex;
 }
-.media svg{
+.media i{
   cursor: pointer;
-    color: var(--text-color);
-    width: 30px;
-    height: 30px;
+  transition: var(--tran-05);
 }
+.media .fFile{position: relative;}
+.media .fFile::after,.media .fFile::before{
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translate(-50% , 3px);
+  visibility: hidden;
+  transition: var(--tran-03);
+  box-shadow: 0 0 10px var(--text-color5);
+}
+.media .fFile::before{
+  top: -10px;
+  border: 5px solid transparent;
+  border-top-color:var(--text-color2);
+  /* box-shadow: 0 0 10px var(--text-color5); */
+
+}
+.media .fFile::after{
+  content: attr(data-tooltip);
+  border-radius: 5px;
+  background-color: var(--sidebar-color);
+  position: absolute;
+  top: -30px;
+  padding: 2px 5px;
+  font-size: 12px;
+  color: var(--text-color);
+}
+.media .fFile:hover::before,.media .fFile:hover::after{visibility: visible;transform: translate(-50%,0);}
+.biImage::before {content: "\f36d";}
+.biImage:hover::before {content: "\F36C";}
+.biMusic::before {content: "\f377";}
+.biMusic:hover::before {content: "\F376";}
+.biPdf::before {content: "\f63e";}
+.biPdf:hover::before {content: "\F63D";}
+.biPlay::before {content: "\f37b";}
+.biPlay:hover::before {content: "\F37A";}
 .btncomm.showcomm ~ .comm{
   height: 250px;
   max-height: 300px;
@@ -1006,7 +1044,6 @@ opacity: 1;
     display: flex;
     border-radius: 10px;
     flex-direction: column;
-    width: 79%;
     transition: .5s;
 }
 /* .commSl{height: 0;}
@@ -1020,6 +1057,7 @@ opacity: 1;
   display: flex;
   flex-direction: column;
   width: 100%;
+  position: relative;
 }
 .comment *{
   margin: 5px;
@@ -1030,6 +1068,12 @@ opacity: 1;
   background: var(--sidebar-color);
   padding: 5px 12px;
   border-radius: 0 10px;
+  margin-top: 15px;
+}
+.comment .commUserName {
+  position: absolute;
+  top: -2px;
+  left: 50px;
 }
 .comment span{
   font-size: 10px;
@@ -1215,8 +1259,8 @@ form.Fwrit-comment {
   z-index: 99;
     background: var(--text-color5);
 }
-.settPost{cursor: pointer; transition: var(--tran-04); position: absolute;left: 775px;top: 10px;font-size: 25px;}
-.settPostList{transition: var(--tran-04); opacity: 0; z-index: -1; list-style: none;padding: 5px;position: absolute;background: var(--sidebar-color);border-radius: 6px;left: 680px;top: 10px;box-shadow: 0px 2px 3px #333;}
+.settPost{cursor: pointer; transition: var(--tran-04); position: absolute;left: 95%;top: 10px;font-size: 25px;}
+.settPostList{transition: var(--tran-04); opacity: 0; z-index: -1; list-style: none;padding: 5px;position: absolute;background: var(--sidebar-color);border-radius: 6px;left: 82%;top: 10px;box-shadow: 0px 2px 3px #333;}
 .settPost.rrrun ~ .settPostList{opacity: 1; z-index: 3;}
 .settPostList li{padding: 7px;cursor: pointer;}
 .settPostList li:not(:last-child){border-bottom: 1px solid var(--text-color5);}
