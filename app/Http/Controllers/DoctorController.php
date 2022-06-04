@@ -52,4 +52,9 @@ class DoctorController extends Controller
         $acc = Doctor::get();
         return view('userlist', ['info' => $acc]);
     }
+
+    public function search($id){
+        $docs = Doctor::where('username', "LIKE","%{$id}%")->get();
+        return $docs;
+    }
 }
