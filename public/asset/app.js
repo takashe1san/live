@@ -1,40 +1,38 @@
-const sign_in_btn = document.querySelector("#sign-in-btn");
-const sign_up_btn = document.querySelector("#sign-up-btn");
-const container = document.querySelector(".container");
-const typeb = document.querySelector('.select i img');
-const typed = document.querySelector('.select_s i img');
-const docB = document.querySelector("#Doc");
-const userB = document.querySelector('#User');
-const docA = document.querySelector("#Doc1");
-const userA = document.querySelector('#User1');
-userB.click();
-userA.click();
-function changeTypeUser(){
-    typeb.classList.toggle('soso');
-    typeb.classList.toggle('soosoo');
-    typed.classList.toggle('soso');
-    typed.classList.toggle('soosoo');
-    userB.click();
-    docB.click();
-    userA.click();
-    docA.click();
-};
 
-function changeTypeDoc(){
-    docB.click();
-    userB.click();
-    docA.click();
-    userA.click();
-    typeb.classList.toggle('soso');
-    typeb.classList.toggle('soosoo');
-    typed.classList.toggle('soso');
-    typed.classList.toggle('soosoo');
-};
+let switchCtn = document.querySelector("#switch-cnt"),
+switchC1 = document.querySelector("#switch-c1"),
+switchC2 = document.querySelector("#switch-c2"),
+switchCircle = document.querySelectorAll(".switch__circle"),
+switchBtn = document.querySelectorAll(".switch-btn"),
+aContainer = document.querySelector("#a-container"),
+bContainer = document.querySelector("#b-container"),
+allButtons = document.querySelectorAll(".submit");
 
-sign_up_btn.addEventListener("click", () => {
-  container.classList.add("sign-up-mode");
-});
+// let getButtons = (e) => e.preventDefault()
 
-sign_in_btn.addEventListener("click", () => {
-  container.classList.remove("sign-up-mode");
-});
+let changeForm = (e) => {
+
+   switchCtn.classList.add("is-gx");
+   setTimeout(function(){
+       switchCtn.classList.remove("is-gx");
+   }, 1500)
+
+   switchCtn.classList.toggle("is-txr");
+   switchCircle[0].classList.toggle("is-txr");
+   switchCircle[1].classList.toggle("is-txr");
+
+   switchC1.classList.toggle("is-hidden");
+   switchC2.classList.toggle("is-hidden");
+   aContainer.classList.toggle("is-txl");
+   bContainer.classList.toggle("is-txl");
+   bContainer.classList.toggle("is-z200");
+}
+
+let mainF = (e) => {
+  //  for (var i = 0; i < allButtons.length; i++)
+  //      allButtons[i].addEventListener("click", getButtons );
+   for (var i = 0; i < switchBtn.length; i++)
+       switchBtn[i].addEventListener("click", changeForm)
+}
+
+window.addEventListener("load", mainF);

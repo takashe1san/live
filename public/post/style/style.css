@@ -1056,29 +1056,34 @@ opacity: 1;
 }
 .writ-comment input{
   background: var(--sidebar-color);
-  border: none;
   outline: none;
   padding: 5px;
   width: 500px;
+  height: 40px;
   color: var(--text-color2);
   font-size: 16px;
-  border-radius: 5px;
+  border-radius: 5px 0 0 5px;
   margin: 10px 100px;
-  border: 1px solid;
+  border: 1px solid #ccc;
 }
 .writ-comment button{
   cursor: pointer;
-  background-color: var(--text-color2);
-  color: var(--text-color3);
+  background-color: var(--primary-color);
+  color: var(--text-color);
   position: relative;
-  margin: 0 -75px;
-  padding: 10px;
-  bottom: 5px;
+  /* margin: 0 75px; */
+  font-size: 25px;
+  left: -100px;
+  /* bottom: 5px; */
   border: none;
   outline: none;
-  border-radius: 50%;
+  border-radius: 0 5px 5px 0;
   width: 40px;
-  height: 40px;
+}
+form.Fwrit-comment {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .writ-comment button svg{
   width: 40px;
@@ -1215,3 +1220,6 @@ opacity: 1;
 .settPost.rrrun ~ .settPostList{opacity: 1; z-index: 3;}
 .settPostList li{padding: 7px;cursor: pointer;}
 .settPostList li:not(:last-child){border-bottom: 1px solid var(--text-color5);}
+span.commEmpty {
+    align-self: center;
+}

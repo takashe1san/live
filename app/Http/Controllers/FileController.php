@@ -101,4 +101,12 @@ class FileController extends Controller
         $dir = public_path('/images/'.  session('type') .'s/'. session('info.username') .'/cons/30/');
         return scandir($dir);
     }
+    public function test(Request $info){
+            $res = '';
+            if ($info->content && $info->con_id)
+            {$res='scess'.$info->content .$info->con_id;}
+            else{$res = 'error';}
+        
+        return $res;
+    }
 }

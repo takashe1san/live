@@ -28,7 +28,7 @@
       closeChangPassword= document.querySelector(".closeChPass"),
       FormChangPass= document.querySelector("#ChangPass"),
       btnFormChangPass= document.querySelector("#ChangPass button"),
-      Fwrit_comment= document.querySelector("#Fwrit-comment"),
+      Fwrit_comment= document.querySelectorAll(".Fwrit-comment"),
       backnot = document.querySelector(".backnot");
       
       formPost.onsubmit = (e)=>{
@@ -37,9 +37,9 @@
     FormChangPass.onsubmit = (e)=>{
       e.preventDefault();
   }
-  Fwrit_comment.onsubmit = (e)=>{
+  Fwrit_comment.forEach((item)=>item.onsubmit = (e)=>{
     e.preventDefault();
-}
+})
     fileImg.onclick = ()=>{
       inputfile.click();
     }
@@ -171,6 +171,27 @@
               s.classList.toggle('bi-share-fill')
               s.classList.toggle('bi-share')
             })
+            ///   This is Tha takekat
+    postes.forEach((item)=>{
+            const form = item.querySelector(".Fwrit-comment");
+          postes.forEach((item)=>
+            item.querySelector(".btnFwrit-comment").onclick =function ss(){
+              let xhr = new XMLHttpRequest();
+              xhr.open("POST", "http://localhost:8000/test", true);
+              xhr.onload = ()=>{
+                if(xhr.readyState === XMLHttpRequest.DONE){
+                    if(xhr.status === 200){
+                      
+                      let data = xhr.response;
+                       console.log(data)
+                       form.querySelector('.comm_content').value='';
+                    }
+                }
+              }
+              let formData = new FormData(form);
+              xhr.send(formData);
+              // console.log(formData);
+            })})
     Add.onclick = ()=>{
       container_post.classList.toggle('container_postSl');
       container_post.classList.toggle('container_postAc');

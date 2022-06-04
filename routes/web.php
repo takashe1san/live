@@ -55,3 +55,5 @@ Route::get('del-img', 'FileController@imgDelete');
 
 Route::get('imges', 'FileController@showImg');
 
+Route::post('test', 'FileController@test');
+
