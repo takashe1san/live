@@ -202,7 +202,7 @@ body.dark .sidebar header .toggle{
     font-weight: 500;
     transition: var(--tran-05);
 }
-.sidebar li a,.Setting li,.postssett li,.Notifications li , .Likes li{
+.sidebar li a,.Setting li,.postssett li,.Notifications li , .search_box_sl li{
     list-style: none;
     height: 100%;
     background-color: transparent;
@@ -370,7 +370,7 @@ body.dark .switch::before{
 body.dark .left .text{
     color: var(--text-color);
 } 
-:is(.Setting , .postssett, .Likes ,.Notifications) li:not(:last-child){border-bottom: 1px solid var(--text-color5);}
+:is(.Setting , .postssett, .search_box_sl ,.Notifications) li:not(:last-child){border-bottom: 1px solid var(--text-color5);}
 .Setting ,.postssett{
   position: absolute;
   width: 0;
@@ -423,7 +423,7 @@ body.dark .left .text{
 .sidebar.close .menu-bar .menu .menu-links .btnpostssett.run::before{
 opacity: 1;
 }
-.btnsetting::before,.btnpostssett::before ,.btnNotifications::before ,.btnLikes::before{
+.btnsetting::before,.btnpostssett::before ,.btnNotifications::before ,.search-box::before{
   content: '';
   position: absolute;
   z-index: -1;
@@ -438,7 +438,7 @@ opacity: 1;
 
 .btnpostssett::before{top: 310px;right: -42px;}
 
-.btnsetting.run ~ .Setting li ,.btnpostssett.run ~ .postssett li ,.Notifications li , .Likes li{
+.btnsetting.run ~ .Setting li ,.btnpostssett.run ~ .postssett li ,.Notifications li , .search_box_sl li{
   padding: 10px;
   margin-left: 10px;
   position: relative;
@@ -475,7 +475,7 @@ opacity: 1;
   box-shadow: -9px -3px 14px var(--primary-color);
   right: -5px;
 }
-.Likes ,.Notifications{
+.search_box_sl ,.Notifications{
   background-color: var(--sidebar-color);
   position: absolute;
   border-radius: 10px;
@@ -486,20 +486,20 @@ opacity: 1;
   transition: var(--tran-03);
   left: 105px;
   top: 415px;
+  box-shadow: 0 0 10px rgb(0 0 0 / 10%);
 }
 .btnNotifications::before {top: 370px;left: 105px;}
-.btnLikes::before{top: 430px;left: 105px;}
-.sidebar.close .menu-bar .menu .menu-links .btnNotifications.run::before,
-.sidebar.close .menu-bar .menu .menu-links .btnLikes.run::before{left: 105px;opacity: 1;}
-.sidebar .menu-bar .menu .menu-links .btnNotifications.run::before,
-.sidebar .menu-bar .menu .menu-links .btnLikes.run::before{left: 270px;opacity: 1;}
+.search-box.runSearch::before{top: 115px;left: 270px;opacity: 1;}
+.sidebar.close .menu-bar .menu .menu-links .btnNotifications.run::before{left: 105px;opacity: 1;}
+.sidebar .menu-bar .menu .menu-links .btnNotifications.run::before{left: 270px;opacity: 1;}
 
 .sidebar.close .menu-bar .menu .menu-links .btnNotifications.run ~ .Notifications,
-.sidebar.close .menu-bar .menu .menu-links .btnLikes.run ~ .Likes{height: 350px;width: 300px;top: 120px;left: 115px;}
-.btnNotifications.run ~ .Notifications  ,.btnLikes.run ~ .Likes{height: 350px;width: 300px;top: 120px;left: 280px;}
-/* .Likes{display: none;} */
+.sidebar.close .menu-bar .menu .menu-links .search-box.runSearch ~ .search_box_sl{height: 350px;width: 300px;top: 120px;left: 115px;}
+.btnNotifications.run ~ .Notifications{height: 350px;width: 300px;top: 120px;left: 280px;}
+.search-box.runSearch ~ .search_box_sl {height: 350px;width: 200px;top: 99px;left: 280px;}
+/* .search_box_sl{display: none;} */
 
-.Notifications li , .Likes li{
+.Notifications li , .search_box_sl li{
   display: flex;
   justify-content: space-between;
   margin-left: -1px;
@@ -507,13 +507,13 @@ opacity: 1;
 }
 .backnot.roro {opacity: 1;z-index: 1;}
 .backnot{opacity: 0;z-index: -1;}
-:where(.elelment , .Notifications , .Likes) i{left: 270px;font-size: 20px;position: absolute;cursor: pointer;}
-.Notifications  .backnot:hover::before, .Likes .backnot:hover::before{content: "\F129";}
-.Notifications ul , .Likes ul{margin-top: 27px;}
-.Notifications  img, .Likes  img{width: 35px;border-radius: 50%;}
-.Notifications li p, .Likes li p{font-size: 18px;}
-.Notifications li span, .Likes li span{font-size: 10px;align-self: end;}
-.Notifications li:hover , .Likes li:hover{
+:where(.elelment , .Notifications , .search_box_sl) i{left: 270px;font-size: 20px;position: absolute;cursor: pointer;}
+.Notifications  .backnot:hover::before{content: "\F129";}
+.Notifications ul , .search_box_sl ul{margin-top: 27px;}
+.Notifications  img, .search_box_sl  img{width: 35px;border-radius: 50%;}
+.Notifications li p, .search_box_sl li p{font-size: 18px;}
+.Notifications li span, .search_box_sl li span{font-size: 10px;align-self: end;}
+.Notifications li:hover , .search_box_sl li:hover{
   box-shadow: 6px 4px 10px var(--text-color);
 }
 .Notifications .showNotifications{

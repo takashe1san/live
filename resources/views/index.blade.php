@@ -52,7 +52,11 @@
                     <i class='bx bx-search icon'></i>
                     <input type="text" placeholder="Search...">
                 </li>
+                <div class="search_box_sl">
+                        <ul>
 
+                        </ul>
+                    </div>
                 <ul class="menu-links" >
                     <li class="nav-link ac">
                         <a href="#">
@@ -70,7 +74,7 @@
 
                     <li class="btnpostssett nav-link sle">
                         <a href="#">
-                            <i class='bx bx-bar-chart-alt-2 icon' ></i>
+                            <i class='bi bi-bookmarks icon' ></i>
                             <span class="text nav-text">Revenue</span>
                         </a>
                     </li>
@@ -118,22 +122,14 @@
                     </div>
 
 
-                    <li class="btnLikes nav-link sle">
+                    <!-- <li class="btnLikes nav-link sle">
                         <a href="#">
                             <i class=' bi bi-heart icon' ></i>
                             <span class="text nav-text">Likes</span>
                         </a>
                         
                     </li>
-                    <div class="Likes">
-                        <ul>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                        </ul>
-                    </div>
+                     -->
                     <li class="btnsetting nav-link sle">
                         <a href="#">
                             <i class='bi bi-gear icon' ></i>
@@ -192,9 +188,10 @@
             <div class="container_post container_postSl">
                 <div class="wrapper">
                 <section class="post">
-                    @if (session('type') == 'user')
+                @if (session('type') == 'user')
                     <form  action="#" method="post" id="formPost" enctype="multipart/form-data">
                         @csrf
+                        <i id="postType" hidden>user</i>
                         <div class=" user-profile">
                             <img src="icons/logo.png" alt="logo">
                             <div class="details">
@@ -215,9 +212,10 @@
                         </div>
                         <button id="sendPost" name="s">Post</button>
                     </form>
-                    @elseif(session('type') == 'doctor')
+                    @else
                     <form  action="#" method="post" id="formPost" enctype="multipart/form-data">
                         @csrf
+                        <i id="postType" hidden>doctor</i>
                         <div class=" user-profile">
                             <img src="icons/logo.png" alt="logo">
                             <div class="details">
@@ -234,9 +232,10 @@
                         <div class="options">
                             <p id="fileConfig">Add to Your Post</p>
                             <i class="bi bi-images" alt="gallery" id="fileImg" ></i>
-                            <input type="file" name="fileImg" id="inputfile" hidden>
+                            <input type="file" name="attach[]" id="inputfile" hidden>
                         </div>
                         <button id="sendPost" name="s">Post</button>
+                    </form>
                     @endif
                 </section>
                 <section class="audience">
