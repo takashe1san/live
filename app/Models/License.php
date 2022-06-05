@@ -16,5 +16,6 @@ class License extends Model
         'lic_issuing_place',
     ];
 
+    protected $primaryKey = 'lic_id';
     public $timestamps = false;
 }
