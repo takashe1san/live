@@ -72,18 +72,17 @@ class FileController extends Controller
 
 
         if($info->hasFile('attach')) {
-            $path = session('type') .'s/'. session('info.username') .'/'. $sec .'/'. $id .'/';
-
+            $path = 'images/' . session('type') .'s/'. session('info.username') .'/'. $sec .'/'. $id .'/';
             foreach($info->file('attach') as $file){
-                // print_r($file->getClientOriginalName());
                 $name = $file->getClientOriginalName();
                 $ext  = $file->getClientOriginalExtension();
 
-                $file->storeAs('images/' . $path , $name);
+                $file->storeAs($path, $name);
 
                 Media::create([
                     'name' => $name,
                     'ext'  => $ext,
+                    'mediaDir' => 'images/' . session('type') .'s/'. session('info.username') .'/'. $sec .'/'. $id .'/'.$name,
                     $sec => $id,
                 ]);
             }

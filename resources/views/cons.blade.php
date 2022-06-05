@@ -83,9 +83,9 @@
         <p class="post-text">{{$con->con_content}}</p>
         <div class="media">
             <div class="fFile" data-tooltip="Image"><i class="bi biImage" ></i></div>
-            <div class="fFile" data-tooltip="Music"><i class="bi biMusic" ></i></div>
+            <div class="fFile" data-tooltip="Sound"><i class="bi biMusic" ></i></div>
             <div class="fFile" data-tooltip="Pdf"><i class="bi biPdf" ></i></div>
-            <div class="fFile" data-tooltip="Play"><i class="bi biPlay" ></i></div>
+            <div class="fFile" data-tooltip="Video"><i class="bi biPlay" ></i></div>
             
             
             
