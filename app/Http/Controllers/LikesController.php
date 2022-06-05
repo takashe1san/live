@@ -26,7 +26,6 @@ class LikesController extends Controller
             'cons' => $id,
             $typ   => session('info.username'),
         ]);
-        return 'liked '.$id;
     }
 
     public function unlike($id){
