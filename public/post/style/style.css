@@ -210,14 +210,13 @@ body.dark .sidebar header .toggle{
     background-color: transparent;
     display: flex;
     align-items: center;
-    height: 100%;
     width: 100%;
     border-radius: 6px;
     text-decoration: none;
     transition: var(--tran-03);
 }
 ul{padding-left: 0; }
-.sidebar li a:hover,.postssett li:hover{
+.sidebar li a:hover,.postssett li:hover {
     background-color: var(--primary-color);
     box-shadow: 6px 4px 7px var(--text-color5);
     
@@ -327,12 +326,12 @@ body.dark .switch::before{
 .right{
     flex-basis: 20%;
     position: fixed;
-    z-index: -1;
+    z-index: 0;
     right: -500px;
     height: 720px;
     align-self: flex-start;
     background-color: var(--sidebar-color);
-    padding: 10px;
+    width: 230px;
     margin-top: 20px;
     border-radius: 10px;
     color: #626262;
@@ -785,8 +784,6 @@ opacity: 1;
 
   .right-sidebar{
     height: 100%;
-	flex-basis: 25%;
-	position: sticky;
 	top: 70px;
 	align-self: flex-start;
 	background:var(--sidebar-color);
@@ -794,113 +791,34 @@ opacity: 1;
 	border-radius: 4px;
 	color:#626262;
 }
-.main-content{
-	width: 47%;
-}
-.imp-links a, .shortcut-links a{
-	text-decoration: none;
-	display: flex;
-	align-items: center;
-	margin-bottom: 30px;
-	color: #626262;
-	width: fit-content;
-}
-.imp-links a img{
-	width: 25px;
-  height: 25px;
-	margin-right: 15px;	
-}
-.imp-links a:last-child{
-	color: var(--nav-color);
-}
-.imp-links{
-	border-bottom: 1px solid #ccc;
-}
-.shortcut-links a img{
-	width: 40px;
-  height: 40px;
-	border-radius: 4px;
-	margin-right: 15px;
-}
-.shortcut-links p{
-	margin: 25px 0;
-	color: #626262;
-	font-weight: 500;
-}
 .sidebar-title{
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	margin-bottom: 18px;
 }
-.right-sidebar h4{
-	font-weight: 600;
-	font-size: 16px;
-}
-.sidebar-title a{
-	text-decoration: none;
-	color:var(--nav-color);
-	font-size: 12px;
-}
 .event{
 	display: flex;
 	font-size: 14px;
 	margin-bottom: 20px;
+  height: 90%;
 }
-.left-event{
-	border-radius: 10px;
-	height:65px;
-	width:65px;
-	margin-right:15px;
-	padding-top:10px;
-	text-align: center;
-	position: relative;
-	overflow:hidden;
-	box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
+.right-event {width: 100%;display: flex;flex-direction: column;}
 .event p{
 	font-size:12px;
 }
+.event ul {
+  list-style: none;
+  width: 100%;
+}
+.event ul li{margin: 15px 0px;}
 .event a{
+  cursor: pointer;
 	font-size: 12px;
 	text-decoration: none;
-	color:var(--nav-color);
+	color:var(--primary-color);
+  align-self: flex-end;
 }
-.left-event span{
-	position: absolute;
-	bottom:0;
-	left:0;
-	width: 100%;
-	background: var(--nav-color);
-	color: var(--text-color);
-	font-size:10px;
-	padding:4px 0;
-}
-.sidebar-ads{
-	width: 100%;
-	margin-bottom: 20px;
-	border-radius: 4px;
-}
-.online-list{
-	display: flex;
-	align-items: center;
-	margin-bottom: 20px;
-}
-.online-list .online img{
-	width:40px;
-  height: 40px;
-	border-radius: 50%;
-}
-.online-list .online{
-	width: 40px;
-	border-radius: 50%;
-	margin-right: 15px;
-}
-.online-list .online:after{
-	top:unset;
-	bottom: 0;
-}
-
 /* ///////////////////////////////////////////// */
 .postes{
   position: relative;
@@ -1213,7 +1131,8 @@ form.Fwrit-comment {
 .settPostList{transition: var(--tran-04); opacity: 0; z-index: -1; list-style: none;padding: 5px;position: absolute;background: var(--sidebar-color);border-radius: 6px;left: 82%;top: 10px;box-shadow: 0px 2px 3px #333;}
 .settPost.rrrun ~ .settPostList{opacity: 1; z-index: 3;}
 .settPostList li{padding: 7px;cursor: pointer;}
-.settPostList li:not(:last-child){border-bottom: 1px solid var(--text-color5);}
+ 
+:is(.event, .settPostList) li:not(:last-child){border-bottom: 1px solid var(--text-color5);}
 span.commEmpty {
     align-self: center;
 }

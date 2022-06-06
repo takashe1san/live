@@ -47,7 +47,7 @@
         <comCount>{{$comc[$con->con_id]}}</comCount>
     </button>
     <button class="btt btnshear notshare">
-        <span hidden>{{$_SERVER['HTTP_HOST'].'/'.$con->con_id}}</span>
+        <input type="text" hidden value="{{$_SERVER['HTTP_HOST'].'/'.$con->con_id}}">
         <i class="bi bi-share"></i>
     </button>
     

@@ -220,12 +220,12 @@ postes.forEach((item)=>
     })
 postes.forEach((item)=>
       item.querySelector(".btnshear").onclick =function ss(){
-        let s =this.querySelector('i');
-        this.classList.toggle('share')
-        this.classList.toggle('notshare')
-        this.classList.toggle('rrun')
-        s.classList.toggle('bi-share-fill')
-        s.classList.toggle('bi-share')
+        const s =this.querySelector('i'),
+        url = this.querySelector("input");
+        url.select();
+        url.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(url.value);
+        s.classList.add('bi-check-lg')
       })
       ///   This is Tha takekat
 postes.forEach((item)=>{

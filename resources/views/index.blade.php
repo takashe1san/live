@@ -237,10 +237,7 @@
                     </div>
                     <p>Select Audience</p>
                     </header>
-                    <div class="content">
-                    <p>Who can see your post?</p>
-                    <span>Your post will show up in News Feed, on your profile and in search results.</span>
-                    </div>
+
                     <ul class="list">
                     <li class="active">
                         <div class="column">
@@ -249,8 +246,8 @@
                             <i class="bi bi-globe"></i>
                         </div>
                         <div class="details">
-                            <p>Public</p>
-                            <span>Anyone on or off Facebook</span>
+                            <p>General</p>
+                            <span>To General Doctors</span>
                         </div>
                         </div>
                         <div class="radio"></div>
@@ -258,25 +255,35 @@
                     <li>
                         <div class="column">
                         <div class="icon">
-                            <!-- <i class="fas fa-user-friends"></i> -->
-                            <i class="bi bi-people-fill"></i>
-                        </div>
-                        <div class="details">
-                            <p>Friends</p>
-                            <span>Your friends on Facebook</span>
-                        </div>
-                        </div>
-                        <div class="radio"></div>
-                    </li>
-                    <li>
-                        <div class="column">
-                        <div class="icon">
-                            <!-- <i class="fas fa-lock"></i> -->
                             <i class="bi bi-shield-lock"></i>
                         </div>
                         <div class="details">
-                            <p>Only me</p>
-                            <span>Only you can see your post</span>
+                            <p>Internal</p>
+                            <span>To Internal Doctors</span>
+                        </div>
+                        </div>
+                        <div class="radio"></div>
+                    </li>
+                    <li>
+                        <div class="column">
+                        <div class="icon">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+                        <div class="details">
+                            <p>Pediatrics</p>
+                            <span>To Pediatrics Doctors</span>
+                        </div>
+                        </div>
+                        <div class="radio"></div>
+                    </li>
+                    <li>
+                        <div class="column">
+                        <div class="icon">
+                            <i class="bi bi-heart-pulse"></i>
+                        </div>
+                        <div class="details">
+                            <p>Cardiology</p>
+                            <span>To Cardiology Doctors</span>
                         </div>
                         </div>
                         <div class="radio"></div>
@@ -290,29 +297,29 @@
         <section class="right">
             <div class="right-sidebar">
                 <div class="sidebar-title">
-                    <h4>Events</h4>
-                    <a href="#">See All</a>
+                    <h4>Quick Info</h4>
                 </div>
                 <div class="event">
-                    <div class="left-event">
-                        <h3>18</h3>
-                        <span>March</span>
-                    </div>
-                    <div class="right-event">
-                        <h4>Social Media</h4>
-                        <p>
-                            <i class="fa fa-map-marker"></i>
-                            Willson Tech Park
-                        </p>
-                        <a href="#">More Info</a>
-                    </div>
+                    <ul>
+                        <li class="eventSel">
+                            <div class="right-event">
+                                <p>
+                                    Willson Tech Park
+                                </p>
+                                <a>More Info</a>
+                            </div>
+                        </li>
+                        <li class="eventSel">
+                            <div class="right-event">
+                                <p>
+                                    Willson Tech Park
+                                </p>
+                                <a>More Info</a>
+                            </div>
+                        </li>
+                    </ul>
+                    
                 </div>
-
-                <div class="sidebar-title">
-                    <h4>Advertisement</h4>
-                    <a href="#">Close</a>
-                </div>
-                <img src="images/advertisement.png" class="sidebar-ads">
             </div>
         </section>
     
