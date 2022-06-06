@@ -17,8 +17,6 @@ class CommController extends Controller
         }
         if(isset($info->con_id)){
             $commentTo = 'consultation';
-        }else if(isset($info->ans_id)){
-            $commentTo = 'answer';
         }
 
         

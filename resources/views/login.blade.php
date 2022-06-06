@@ -35,7 +35,7 @@
               </li>
             </ul>
           </div>
-          <input class="form__input" type="text" name="username" placeholder="Name">
+          <input class="form__input" type="text" name="username" placeholder="Username">
           @error('susername')
           <span class="spanError">{{$message}}</span>
           @enderror

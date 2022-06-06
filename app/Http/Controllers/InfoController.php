@@ -20,4 +20,9 @@ class InfoController extends Controller
             return "you can't add information!!";
         }
     }
+
+    public function showInfo(){
+        $Info = Information::orderByDesc('id')->get();
+        return $Info;
+    }
 }
