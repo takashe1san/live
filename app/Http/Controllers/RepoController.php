@@ -22,4 +22,9 @@ class RepoController extends Controller
         ]);
         return 'reported '.$id;
     }
+
+    public function getReports(){
+        $repo = Report::orderByDesc('rep_id')->get();
+        return $repo;
+    }
 }

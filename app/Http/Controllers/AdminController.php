@@ -38,6 +38,7 @@ class AdminController extends Controller
         $count['doctors'] = (new DoctorController)->doctorCount();
         $count['users']   = (new UsersController) ->usersCount();
         $count['cons']    = (new ConsController)  ->consCount();
-        return view('admin', ['counter' => $count]);
+        $reports          = (new RepoController)  ->getReports();
+        return view('admin', ['counter' => $count, 'reports' => $reports]);
     }
 }
