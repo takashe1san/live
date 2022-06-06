@@ -59,4 +59,9 @@ class ConsController extends Controller
             return 'this is not your consultation!!';
         }
     }
+
+    public function consCount(){
+        $count = Consultation::count();
+        return $count;
+    }
 }

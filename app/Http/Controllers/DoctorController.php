@@ -57,4 +57,9 @@ class DoctorController extends Controller
         $docs = Doctor::where('username', 'LIKE','%'.$username.'%')->get();
         return $docs;
     }
+
+    public function doctorCount(){
+        $count = Doctor::count();
+        return $count;
+    }
 }

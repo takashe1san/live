@@ -55,5 +55,8 @@ class UsersController extends Controller
         return view('userlist', ['info' => $acc]);
     }
     
-
+    public function usersCount(){
+        $count = User::count();
+        return $count;
+    }
 }

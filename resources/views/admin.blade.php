@@ -49,22 +49,22 @@
     </div>
     <div class="projects-section">
       <div class="projects-section-header">
-        <p>Projects</p>
-        <p class="time">December, 12</p>
+        <p>Statistics</p>
+        <p class="time">{{date('j \of F, Y')}}</p>
       </div>
       <div class="projects-section-line">
         <div class="projects-status">
           <div class="item-status">
-            <span class="status-number">45</span>
-            <span class="status-type">In Progress</span>
+            <span class="status-number">{{$counter['cons']}}</span>
+            <span class="status-type">Consultations</span>
           </div>
           <div class="item-status">
-            <span class="status-number">24</span>
-            <span class="status-type">Upcoming</span>
+            <span class="status-number">{{$counter['users']}}</span>
+            <span class="status-type">users</span>
           </div>
           <div class="item-status">
-            <span class="status-number">62</span>
-            <span class="status-type">Total Projects</span>
+            <span class="status-number">{{$counter['doctors']}}</span>
+            <span class="status-type">Doctors</span>
           </div>
         </div>
         <div class="view-actions">
@@ -87,10 +87,11 @@
         </div>
       </div>
       <div class="project-boxes jsGridView">
+        @foreach ($reports as $repo)
         <div class="project-box-wrapper">
           <div class="project-box" style="background-color: #fee4cb;">
             <div class="project-box-header">
-              <span>December 10, 2020</span>
+              <span>{{$repo->rep_date}}</span>
               <div class="more-wrapper">
                 <button class="project-btn-more">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical">
@@ -98,27 +99,38 @@
                     <circle cx="12" cy="5" r="1" />
                     <circle cx="12" cy="19" r="1" /></svg>
                 </button>
+              </div>
+            </div>
+            @php
+                if($repo->user != null){
+                  $reporter = $repo->user;
+                }elseif($repo->doctor != null){
+                  $reporter = $repo->doctor;
+                }else{
+                  $reporter = 'Unknown';
+                }
+            @endphp
+            <div class="project-box-content-header">
+              <p class="box-content-header">{{$reporter}}</p>
+              <p class="box-content-subheader">Consultation id : {{$repo->reported_con}}</p>
+            </div>
+            <div class="box-progress-wrapper">
+              <p class="box-progress-header">Progress</p>
+            </div>
+            <div class="project-box-footer">
+              <div class="participants">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80" alt="participant">
+                <img src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTB8fG1hbnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60" alt="participant">
+              </div>
+              <div class="days-left" style="color: #ff942e;">
+                2 Days Left
+              </div>
+            </div>
           </div>
         </div>
-        <div class="project-box-content-header">
-          <p class="box-content-header">Web Designing</p>
-          <p class="box-content-subheader">Prototyping</p>
-        </div>
-        <div class="box-progress-wrapper">
-          <p class="box-progress-header">Progress</p>
-        </div>
-        <div class="project-box-footer">
-          <div class="participants">
-            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80" alt="participant">
-            <img src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTB8fG1hbnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60" alt="participant">
-          </div>
-          <div class="days-left" style="color: #ff942e;">
-            2 Days Left
-          </div>
-        </div>
+        @endforeach
       </div>
-    </div>
-  </div>
+
 </div>
 <div class="messages-section">
   <button class="messages-close">
