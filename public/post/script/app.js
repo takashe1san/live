@@ -12,22 +12,16 @@ fileImg= formPost.querySelector("#fileImg"),
 fileConfig= formPost.querySelector("#fileConfig"),
 inputfile= formPost.querySelector("#inputfile"),
 postes = document.querySelectorAll(".postes"),
-sett_sl = document.querySelectorAll(".sett_sl"),
-btnsetting = document.querySelector(".btnsetting"), 
 menu_links = document.querySelectorAll(".sle"),
 po_sl = document.querySelectorAll(".po_sl"),
 NotificationsSle = document.querySelectorAll(".NotificationsSle"),
 btnNotifications = document.querySelector(".btnNotifications"),
 showNotificationsv = document.querySelector(".showNotifications"),
 btnpostssett= document.querySelector(".btnpostssett"),
-ExSetting= document.querySelector(".ExSetting"),
 AlertBox= document.querySelector(".AlertBox"),
 AlertBoxI= document.querySelector(".AlertBox i"),
 btnAlertBox= document.querySelector(".AlertBox button"),
 AlertBoxP= document.querySelector(".AlertBox p"),
-closeChangPassword= document.querySelector(".closeChPass"),
-FormChangPass= document.querySelector("#ChangPass"),
-btnFormChangPass= document.querySelector("#ChangPass button"),
 Fwrit_comment= document.querySelectorAll(".Fwrit-comment"),
 backnot = document.querySelector(".backnot"),
 Profile = document.querySelector(".profile"),
@@ -44,9 +38,6 @@ formPost.onsubmit = (e)=>{
 }
 formProfile.onsubmit = (e)=>{
   e.preventDefault();
-}
-FormChangPass.onsubmit = (e)=>{
-e.preventDefault();
 }
 Fwrit_comment.forEach((item)=>item.onsubmit = (e)=>{
 e.preventDefault();
@@ -151,13 +142,6 @@ if(this.classList.contains('isac'))
 { this.classList.remove('ac','run','isac');}
 else{ this.classList.add('ac','run');}
  })
-sett_sl.forEach((item)=>
- item.onclick = function activeLink(){
-  // sett_sl.forEach((item)=>item.classList.remove('ac','run'));
-   btnsetting.classList.remove('ac','run','isac')
-   ExSetting.classList.add(this.innerHTML)
-    })
-closeChangPassword.onclick = ()=>{ExSetting.classList.remove('ChangPassword')}
 po_sl.forEach((item)=>
     item.onclick = function activeLink(){
       po_sl.forEach((item)=>item.classList.remove('ac','run'));
@@ -333,39 +317,7 @@ let formData = new FormData(formPost);
 xhr.send(formData);
 // 
 }
-btnFormChangPass.onclick= ()=>{
-let xhr = new XMLHttpRequest();
-xhr.open("POST", "ss.php", true);
-xhr.onload = ()=>{
-if(xhr.readyState === XMLHttpRequest.DONE){
-  if(xhr.status === 200){
-    
-    let data = xhr.response;
-     console.log(data)
-     if (data == 'sended Code') {
-      FormChangPass.classList.add('chaked')
-      AlertBox.classList.add('runAlertBox')
-      AlertBoxI.classList.remove('bi-exclamation-circle-fill','bi-x-circle-fill','error3','error2')
-      AlertBoxI.classList.add('bi-check-circle-fill','error1')
-      AlertBoxP.innerHTML = "OK It's Sended";
-     } else if(data == 'Error'){
-      FormChangPass.classList.remove('chaked')
-      AlertBox.classList.add('runAlertBox')
-      AlertBoxI.classList.remove('bi-check-circle-fill','bi-exclamation-circle-fill','error1','error3')
-      AlertBoxI.classList.add('bi-x-circle-fill','error2')
-      AlertBoxP.innerHTML = "Email Or Password Wrong!!";
-     }else{
-      AlertBox.classList.add('runAlertBox')
-      AlertBoxI.classList.remove('bi-check-circle-fill','bi-x-circle-fill','error1','error2')
-      AlertBoxI.classList.add('bi-exclamation-circle-fill','error3')
-      AlertBoxP.innerHTML = "Error";
-     }
-  }
-}
-}
-let formData = new FormData(FormChangPass);
-xhr.send(formData);
-}
+
 function formatSizeUnits(bytes){
 if      (bytes >= 1073741824) { bytes = (bytes / 1073741824).toFixed(2) + " GB"; }
 else if (bytes >= 1048576)    { bytes = (bytes / 1048576).toFixed(2) + " MB"; }
@@ -377,3 +329,22 @@ return bytes;
 }
 
 btnAlertBox.onclick = ()=>{AlertBox.classList.remove('runAlertBox')}
+function alertBox(str,color) {
+  if (color == 'G') {
+    AlertBox.classList.add('runAlertBox')
+    AlertBoxI.classList.remove('bi-exclamation-circle-fill','bi-x-circle-fill','error3','error2')
+    AlertBoxI.classList.add('bi-check-circle-fill','error1')
+    AlertBoxP.innerHTML = str;
+   } else if(color == 'R'){
+    AlertBox.classList.add('runAlertBox')
+    AlertBoxI.classList.remove('bi-check-circle-fill','bi-exclamation-circle-fill','error1','error3')
+    AlertBoxI.classList.add('bi-x-circle-fill','error2')
+    AlertBoxP.innerHTML = str;
+   }else{
+    AlertBox.classList.add('runAlertBox')
+    AlertBoxI.classList.remove('bi-check-circle-fill','bi-x-circle-fill','error1','error2')
+    AlertBoxI.classList.add('bi-exclamation-circle-fill','error3')
+    AlertBoxP.innerHTML = str;
+   }
+  
+}

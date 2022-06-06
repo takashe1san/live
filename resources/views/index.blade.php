@@ -25,7 +25,7 @@
             $bio = session('info.bio');
             @endphp
             <div class="image-text">
-                <span class="image" id="showProfile">
+                <span class="image">
                     <img src="{{session('img')}}" alt="" >
                 </span>
 
@@ -41,7 +41,7 @@
             $bio = "consultation & answer";
             @endphp
             <div class="image-text">
-                <span class="image" id="showProfile">
+                <span class="image" >
                     <img src="{{$imgProfil}}" alt="">
                 </span>
 
@@ -130,30 +130,12 @@
                             <p class="pNotlarg"></p>
                         </div>
                     </div>
-
-
-                    <!-- <li class="btnLikes nav-link sle">
+                    <li class="nav-link sle" >
                         <a href="#">
-                            <i class=' bi bi-heart icon' ></i>
-                            <span class="text nav-text">Likes</span>
+                            <i class='bi bi-gear icon' id="showProfile"></i>
+                            <span class="text nav-text">Profile</span>
                         </a>
-                        
                     </li>
-                     -->
-                    <li class="btnsetting nav-link sle">
-                        <a href="#">
-                            <i class='bi bi-gear icon' ></i>
-                            <span class="text nav-text">Setting</span>
-                        </a>
-                        
-                    </li>
-                    <div class="Setting">
-                        <ul>
-                            <li class="sett_sl" >ChangPassword</li>
-                            <li class="sett_sl" >ChangViow</li>
-                            <li class="sett_sl" >ChangLang</li>
-                        </ul>
-                    </div>
                 </ul>
             </div>
 
@@ -380,24 +362,7 @@
             <button>Ok</button>
         </div>
         <div class="ooooh"></div>
-        <div class="elelment">
-            <div class="element-main">
-                <form action="#"  method="post" id="ChangPass" class="">
-                <i class="closeChPass bi bi-x-circle"></i>
-                <div class="l">
-                    <h1>Forgot Password</h1>
-                    <p> Plz.. Enter Your Email</p>
-                        <input type="text" name="ss" placeholder="Your e-mail address">
-                </div>
-                <div class="lh">
-                    <input type="text"  placeholder="Your Coden">
-                    <input type="text"  placeholder="Your new Password">
-                    <input type="text"  placeholder="Your new Password">
-                </div>
-                    <button>Reset my Password</button>
-                </form>
-            </div>
-        </div>
+        
         @if (session('type') == 'user')
         <div class="profile">
             <i id="closeShowProfile" class="bi bi-x-circle"></i>

@@ -204,7 +204,7 @@ body.dark .sidebar header .toggle{
     font-weight: 500;
     transition: var(--tran-05);
 }
-.sidebar li a,.Setting li,.postssett li,.Notifications li , .search_box_sl li{
+.sidebar li a,.postssett li,.Notifications li , .search_box_sl li{
     list-style: none;
     height: 100%;
     background-color: transparent;
@@ -217,7 +217,7 @@ body.dark .sidebar header .toggle{
     transition: var(--tran-03);
 }
 ul{padding-left: 0; }
-.sidebar li a:hover,.Setting li:hover,.postssett li:hover{
+.sidebar li a:hover,.postssett li:hover{
     background-color: var(--primary-color);
     box-shadow: 6px 4px 7px var(--text-color5);
     
@@ -236,13 +236,11 @@ body.dark li.ac a .text{
 }
 .sidebar li a:hover .icon,
 .sidebar li a:hover .text,
-.Setting li:hover,
 .postssett li:hover{
     color: var(--sidebar-color);
 }
 body.dark .sidebar li a:hover .icon,
 body.dark .sidebar li a:hover .text,
-body.Setting li:hover,
 body.postssett li:hover{
     color: var(--text-color);
 }
@@ -372,23 +370,14 @@ body.dark .switch::before{
 body.dark .left .text{
     color: var(--text-color);
 } 
-:is(.Setting , .postssett, .search_box_sl ,.Notifications) li:not(:last-child){border-bottom: 1px solid var(--text-color5);}
-.Setting ,.postssett{
+:is(.postssett, .search_box_sl ,.Notifications) li:not(:last-child){border-bottom: 1px solid var(--text-color5);}
+.postssett{
   position: absolute;
   width: 0;
   overflow: hidden;
   opacity: 0;
   color: var(--text-color);
   background-color: var(--sidebar-color);
-}
-.btnsetting.run ~ .Setting{
-  opacity: 1;
-  width: 222px;
-  height: 220px;
-  border-radius: 10px;
-  left: 14px;
-  box-shadow: 0 0 10px rgb(0 0 0 / 10%);
-  top: 465px;
 }
 .btnpostssett.run ~ .postssett{
   opacity: 1;
@@ -408,19 +397,6 @@ body.dark .left .text{
   box-shadow: 0 0 10px rgb(0 0 0 / 10%);
   top: 290px;
 }
-.sidebar.close .menu-bar .menu .menu-links .btnsetting.run ~ .Setting {
-  position: absolute;
-  overflow: hidden;
-  opacity: 1;
-  width: 220px;
-  height: 220px;
-  background-color: var(--sidebar-color);
-  border-radius: 10px;
-  /* z-index: 23232; */
-  left: 120px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  top: 295px;
-}
 .sidebar.close .menu-bar .menu .menu-links .btnsetting.run::before,
 .sidebar.close .menu-bar .menu .menu-links .btnpostssett.run::before{
 opacity: 1;
@@ -439,8 +415,7 @@ opacity: 1;
 .btnsetting::before{top: 485px;right: -42px;}
 
 .btnpostssett::before{top: 310px;right: -42px;}
-
-.btnsetting.run ~ .Setting li ,.btnpostssett.run ~ .postssett li ,.Notifications li , .search_box_sl li{
+.btnpostssett.run ~ .postssett li ,.Notifications li , .search_box_sl li{
   padding: 10px;
   margin-left: 10px;
   position: relative;
@@ -448,11 +423,10 @@ opacity: 1;
   margin-bottom: 5px;
   cursor: pointer;
 }
-.btnsetting.run ~ .Setting li:hover::before,.btnsetting.run ~ .Setting li:hover::after,
 .btnpostssett.run ~ .postssett li:hover::before, .btnpostssett.run ~ .postssett li:hover::after{
   opacity: 1;
 }
-.btnsetting.run ~ .Setting li::before ,.btnpostssett.run ~ .postssett li::before{
+.btnpostssett.run ~ .postssett li::before{
   content: '';
   position: absolute;
   top: 0px;
@@ -465,7 +439,7 @@ opacity: 1;
   border-radius: 0 10px 0 0;
 
 }
-.btnsetting.run ~ .Setting li::after, .btnpostssett.run ~ .postssett li::after{
+ .btnpostssett.run ~ .postssett li::after{
   transition: var(--tran-03);
   content: '';
   position: absolute;
@@ -1168,9 +1142,7 @@ form.Fwrit-comment {
 
 .container_postAc{top:0px;}
 .container_postSl{top: -1000px;}
-/*--elemt style strat here--*/
-.ExSetting.ChangPassword  .elelment{height: 360px;width: 500px;}
-.elelment ,.AlertBox,.profile{
+/*--elemt style strat here--*/.AlertBox,.profile{
   width: 0;
   height: 0;
   position: absolute;
@@ -1181,40 +1153,15 @@ form.Fwrit-comment {
   box-shadow: 0 0 10px rgb(0 0 0 / 10%);
   overflow: hidden;
 }
-.element-main ,.profile{
+.profile{
   width:500px;
   background: var(--sidebar-color);
   border-radius: 5px;
   padding:3em 2em;
   box-shadow: 1px 1px 15px rgb(0 0 0 / 10%);
 }
-.element-main h1 {
-  text-align: center;
-  font-size: 2.3em;
-  color:#0086E5;
-  font-weight: 700;
-}
-.element-main p {
-  font-size: 1em;
-  color: #696969;
-  line-height: 1.5em;
-  margin: 1.5em 0em;
-  text-align:center;
-}
-.element-main  input[type="text"]{
-  font-size: 1em;
-  color: var(--text-color);
-  padding: 1em 0.5em;
-  display: block;
-  width: 100%;
-  outline: none;
-  margin-bottom: 1em;
-  text-align:center;
-  border: 1px solid var(--text-color5);
-  border-radius: 6px;
-  background-color: inherit;
-}
-:where(.element-main , .AlertBox , .profile) button {
+
+:where(.AlertBox , .profile) button {
   position: relative;
   font-size: 1em;
   color: #fff;
@@ -1230,17 +1177,11 @@ form.Fwrit-comment {
   display: block;
   margin: 1.5em auto 0;
 }
-.element-main button:hover ,.profile button:hover{
+.profile button:hover{
   background:var(--primary-color);
   border-bottom: 3px solid #2F2F2F;  
   transition: 0.5s all;
 }
-.closeChPass{left: 460px;top: 10px;color: var(--text-color);}
-.closeChPass:hover::before{content: "\F622";}
-#ChangPass{transition: var(--tran-04);}
-#ChangPass .lh {position: relative;top: -205px;visibility: hidden;}
-#ChangPass.chaked .lh{visibility: visible;}
-#ChangPass.chaked .l {visibility: hidden;}
 .error1{color:var(--AlertBox-color1);}
 .error2{color:var(--AlertBox-color2);}
 .error3{color:var(--AlertBox-color3);}
@@ -1277,9 +1218,9 @@ span.commEmpty {
 }
 .profile{transition: var(--tran-03);height:0;width: 0;opacity: 0;top: -1000px;visibility: hidden;}
 .profile.showProfileRun{transition: var(--tran-03);height: 500px;width: 700px;opacity: 1;visibility: visible;top: 300px;}
-.profile :where(i , label){transition: var(--tran-03);cursor: pointer;position: absolute;font-size: 20px;right: 10px;top: 5px;}
+.profile :where(i , #btneditImgProfile){transition: var(--tran-03);cursor: pointer;position: absolute;font-size: 20px;right: 10px;top: 5px;}
 .profile i:hover::before{content: "\F622";}
-.profile label:hover i::before{content: "\F4C9";}
+.profile #btneditImgProfile:hover i::before{content: "\F4C9";}
 #formEditProfile{display: flex;position: relative;}
 #formEditProfile img{height: 150px;width: 150px;align-self: center;margin-top: 20px;}
 #formEditProfile :where(textarea , input ,select, .labelInput){
@@ -1299,7 +1240,7 @@ span.commEmpty {
 #formEditProfile textarea{height: 230px;margin-top: 35px;}
 #formEditProfile select{width: 49%;}
 #formEditProfile .labelInput{cursor: pointer;padding: 3% 18.5%;}
-#formEditProfile label{top: 25px; right: 80px;}
+#formEditProfile #btneditImgProfile{top: 25px; right: 80px;}
 #formEditProfile button{position: absolute;height: 40px;width: 300px;left: 10px;top: 82%;}
 .rightProfile{align-items: flex-end;display: flex;flex-direction: column;}
 .leftProfile{margin: 5px 10px;width: 50%;}
