@@ -3,9 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('addadmin', function () {
-    return view('addAdd');
-});
+Route::get('dashboard', 'AdminController@dash');
 
 Route::post('addAdd', 'AdminController@addAdd');
 

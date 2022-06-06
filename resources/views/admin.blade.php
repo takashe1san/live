@@ -49,22 +49,22 @@
     </div>
     <div class="projects-section">
       <div class="projects-section-header">
-        <p>Projects</p>
-        <p class="time">December, 12</p>
+        <p>Statistics</p>
+        <p class="time">{{date('j \of F, Y')}}</p>
       </div>
       <div class="projects-section-line">
         <div class="projects-status">
           <div class="item-status">
-            <span class="status-number">45</span>
-            <span class="status-type">In Progress</span>
+            <span class="status-number">{{$counter['cons']}}</span>
+            <span class="status-type">Consultations</span>
           </div>
           <div class="item-status">
-            <span class="status-number">24</span>
-            <span class="status-type">Upcoming</span>
+            <span class="status-number">{{$counter['users']}}</span>
+            <span class="status-type">users</span>
           </div>
           <div class="item-status">
-            <span class="status-number">62</span>
-            <span class="status-type">Total Projects</span>
+            <span class="status-number">{{$counter['doctors']}}</span>
+            <span class="status-type">Doctors</span>
           </div>
         </div>
         <div class="view-actions">

@@ -33,4 +33,11 @@ class AdminController extends Controller
             return redirect('show');
         }
     }
+
+    public function dash(){
+        $count['doctors'] = (new DoctorController)->doctorCount();
+        $count['users']   = (new UsersController) ->usersCount();
+        $count['cons']    = (new ConsController)  ->consCount();
+        return view('admin', ['counter' => $count]);
+    }
 }
