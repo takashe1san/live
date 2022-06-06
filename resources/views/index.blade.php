@@ -369,17 +369,17 @@
           <form action="#" method="post" id="formEditProfile">
             <div class="leftProfile">
                 <input type="file" hidden name=""  >
-                <input type="text" name=""  value="{{$username}}">
-                <input type="text" name=""  value="Full Name">
-                <input type="text" name=""  value="Email">
+                <input type="text" name=""  value="{{session('info.username')}}">
+                <input type="text" name=""  value="{{session('info.name')}}">
+                <input type="text" name=""  value="{{session('info.email')}}">
                 <input type="password" name=""  value="**********">
                 <div class="selectProfile">
-                    <select name="" value="noSix">
+                    {{-- <select name="" value="male">
                         <!-- <option  selected>Six</option> -->
-                        <option value="Mile">Mile</option>
-                        <option value="Mile">Femile</option>
-                    </select>
-                    <select name="" value="noSix">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select> --}}
+                    <select name="" value="">
                         <!-- <option  selected>Six</option> -->
                         <option value="-o">-o</option>
                         <option value="+o">+o</option>
@@ -391,7 +391,7 @@
                         <option value="-AB">-AB</option>
                     </select>
                 </div>
-                <input type="date" name="" >
+                <input type="date" name="" value="{{session('info.birth')}}">
             </div>
             <div class="rightProfile">
                 <input type="file" name="" id="editImgProfile" hidden>

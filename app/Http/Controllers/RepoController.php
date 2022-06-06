@@ -8,29 +8,18 @@ use Illuminate\Http\Request;
 class RepoController extends Controller
 {
     //
-    public function addRepo ($typ, $id){
-        switch($typ){
-            case 'con':
-                $type = 'reported_con';
-                break;
-            case 'com':
-                $type = 'reported_comm';
-                break;
-            case 'ans':
-                $type = 'reported_ans';
-                break;
-        }
+    public function addRepo ($id){
         if(session('type') == 'user'){
             $reporter = 'user';
         }elseif(session('type') == 'doctor'){
             $reporter = 'doctor';
         }else{
-            return 'login to report '.$typ.$id;
+            return 'login to report '.$id;
         }
         Report::create([
             $reporter     => session('info.username'),
-            $type         => $id,
+            'con'         => $id,
         ]);
-        return 'reported '.$typ.$id;
+        return 'reported '.$id;
     }
 }

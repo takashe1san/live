@@ -99,7 +99,13 @@ class FileController extends Controller
         }
         return $img;
     }
+
     public function test(Request $info){
         return $info;
+    }
+
+    public function getAttach($id){
+        $attach = Media::where('cons', $id)->get();
+        return $attach;
     }
 }

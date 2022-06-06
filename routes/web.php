@@ -31,7 +31,7 @@ Route::get('addrep', function () {
     return view('report');
 });
 
-Route::get('report/{typ}/{id}', 'RepoController@addRepo');
+Route::get('report/{id}', 'RepoController@addRepo');
 
 // files *********************************************************
 

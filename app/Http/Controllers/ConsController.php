@@ -35,8 +35,10 @@ class ConsController extends Controller
             $like[$con->con_id] = (new LikesController)->likeCount($con->con_id);
             $love[$con->con_id] = (new LikesController)->likeCheck($con->con_id);
             $imgs[$con->con_id] = (new FileController) ->showImg('user',$con->username);
+            $atta[$con->con_id] = (new FileController) ->getAttach($con->con_id);
         }
-        return view('index',['cons' => $cons, 'com' => $coms, 'comc' => $comc, 'likes' => $like, 'liked' => $love, 'consImgs' => $imgs]);
+        $info = (new InfoController)->showInfo();
+        return view('index',['cons' => $cons, 'attach' => $atta, 'com' => $coms, 'comc' => $comc, 'likes' => $like, 'liked' => $love, 'consImgs' => $imgs, 'info' => $info]);
     }
 
     public function getCons($id){
