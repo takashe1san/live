@@ -82,16 +82,27 @@
         
         <p class="post-text">{{$con->con_content}}</p>
         <div class="media">
-            <div class="fFile" data-tooltip="Image"><i class="bi biImage" ></i></div>
-            <div class="fFile" data-tooltip="Sound"><i class="bi biMusic" ></i></div>
-            <div class="fFile" data-tooltip="Pdf"><i class="bi biPdf" ></i></div>
-            <div class="fFile" data-tooltip="Video"><i class="bi biPlay" ></i></div>
-            
-            
-            
-            
+            <div class="fFile" data-tooltip="Image">
+                <i class="mediaType" hidden>img</i>
+                <i class="src" hidden>d</i>
+                <i class="bi biImage" ></i>
+            </div>
+            <div class="fFile" data-tooltip="Sound">
+                <i class="mediaType" hidden>audio</i>
+                <i class="src" hidden>d</i>
+                <i class="bi biMusic" ></i>
+            </div>
+            <div class="fFile" data-tooltip="Pdf">
+                <i class="mediaType" hidden>pdf</i>
+                <i class="src" hidden>d</i>
+                <i class="bi biPdf" ></i>
+            </div>
+            <div class="fFile" data-tooltip="Video">
+                <i class="mediaType" hidden>video</i>
+                <i class="src" hidden>d</i>
+                <i class="bi biPlay" ></i>
+            </div>
         </div>
-        
     </div>
     <div class="comm">
         <div class="comment">

@@ -307,49 +307,12 @@
                         <a href="#">More Info</a>
                     </div>
                 </div>
-                <div class="event">
-                    <div class="left-event">
-                        <h3>22</h3>
-                        <span>June</span>
-                    </div>
-                    <div class="right-event">
-                        <h4>Mobile Marketing</h4>
-                        <p>
-                            <i class="fa fa-map-marker"></i>
-                            Willson Tech Park
-                        </p>
-                        <a href="#">More Info</a>
-                    </div>
-                </div>
 
                 <div class="sidebar-title">
                     <h4>Advertisement</h4>
                     <a href="#">Close</a>
                 </div>
                 <img src="images/advertisement.png" class="sidebar-ads">
-
-                <div class="sidebar-title">
-                    <h4>Conversation</h4>
-                    <a href="#">Hide Chat</a>
-                </div>
-                <div class="online-list">
-                    <div class="online">
-                        <img src="images/member-1.png">
-                    </div>
-                    <p>Alison Mina</p>
-                </div>
-                <div class="online-list">
-                    <div class="online">
-                        <img src="images/member-2.png">
-                    </div>
-                    <p>Jackson Aston</p>
-                </div>
-                <div class="online-list">
-                    <div class="online">
-                        <img src="images/member-3.png">
-                    </div>
-                    <p>Samona Rose</p>
-                </div>
             </div>
         </section>
     
@@ -450,9 +413,18 @@
           </form>
         </div>
         @endif
+        <div class="showMedia">
+            <i id="closeShowMedia" class="bi bi-x-circle"></i>
+            <div class="showMediaJs"></div>
+        </div>
+        <div class="showAudio">
+            <i id="closeShowAudio" class="bi bi-x-circle"></i>
+            <div class="showAudioJs"></div>
+        </div>
     </section>
     <script src="{{URL::asset('post/script/script.js')}}"></script>
     <script src="{{URL::asset('post/script/app.js')}}"></script>
+    <script src="{{URL::asset('post/script/media.js')}}"></script>
 
 </body>
 </html>

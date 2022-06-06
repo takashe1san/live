@@ -1142,10 +1142,11 @@ form.Fwrit-comment {
 
 .container_postAc{top:0px;}
 .container_postSl{top: -1000px;}
-/*--elemt style strat here--*/.AlertBox,.profile{
+/*--elemt style strat here--*/
+.AlertBox,.profile ,.showMedia{
   width: 0;
   height: 0;
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transition: var(--tran-04);
@@ -1153,7 +1154,7 @@ form.Fwrit-comment {
   box-shadow: 0 0 10px rgb(0 0 0 / 10%);
   overflow: hidden;
 }
-.profile{
+.profile ,.showMedia{
   width:500px;
   background: var(--sidebar-color);
   border-radius: 5px;
@@ -1218,8 +1219,8 @@ span.commEmpty {
 }
 .profile{transition: var(--tran-03);height:0;width: 0;opacity: 0;top: -1000px;visibility: hidden;}
 .profile.showProfileRun{transition: var(--tran-03);height: 500px;width: 700px;opacity: 1;visibility: visible;top: 300px;}
-.profile :where(i , #btneditImgProfile){transition: var(--tran-03);cursor: pointer;position: absolute;font-size: 20px;right: 10px;top: 5px;}
-.profile i:hover::before{content: "\F622";}
+.profile :where(i , #btneditImgProfile) ,:is(.showMedia ,.showAudio ) I{transition: var(--tran-03);cursor: pointer;position: absolute;font-size: 20px;right: 10px;top: 5px;}
+:is(.showMedia ,.profile ,.showAudio) i:hover::before{content: "\F622";}
 .profile #btneditImgProfile:hover i::before{content: "\F4C9";}
 #formEditProfile{display: flex;position: relative;}
 #formEditProfile img{height: 150px;width: 150px;align-self: center;margin-top: 20px;}
@@ -1245,3 +1246,11 @@ span.commEmpty {
 .rightProfile{align-items: flex-end;display: flex;flex-direction: column;}
 .leftProfile{margin: 5px 10px;width: 50%;}
 span#showProfile {width: 40px;height: 40px;}
+.showMedia{transition: var(--tran-03);height:0;width: 0;opacity: 0;top: -1000px;visibility: hidden;}
+.showMedia.showMediaRun{padding: 0; transition: var(--tran-03);height: 500px;width: 700px;opacity: 1;visibility: visible;top: 300px;}
+.showMediaJs{height: 100%;width: 100%;}
+.showMediaJs :where(img ,video ,iframe) {height: 100%;width: 100%;}
+#closeShowMedia{z-index: 77;}
+#closeShowAudio{z-index: 77;right: 0px;top: 12px;}
+.showAudio{position: fixed;top: -100px;left: 400px;}
+.showAudio.showAudioRun{transition: var(--tran-04); position: fixed;top: 10px;left: 400px;}
