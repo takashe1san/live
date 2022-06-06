@@ -30,9 +30,19 @@ FormChangPass= document.querySelector("#ChangPass"),
 btnFormChangPass= document.querySelector("#ChangPass button"),
 Fwrit_comment= document.querySelectorAll(".Fwrit-comment"),
 backnot = document.querySelector(".backnot"),
-search_box = document.querySelector(".search-box");
+Profile = document.querySelector(".profile"),
+showProfile = document.querySelector("#showProfile"),
+closeProfile = document.querySelector("#closeShowProfile"),
+saveProfile = document.querySelector("#saveProfile"),
+editProfile = document.querySelector("#editProfile"),
+search_box = document.querySelector(".search-box"),
+btneditImgProfile = document.querySelector("#btneditImgProfile"),
+formProfile = document.querySelector("#formEditProfile");
 
 formPost.onsubmit = (e)=>{
+  e.preventDefault();
+}
+formProfile.onsubmit = (e)=>{
   e.preventDefault();
 }
 FormChangPass.onsubmit = (e)=>{
@@ -44,6 +54,47 @@ e.preventDefault();
 fileImg.onclick = ()=>{
 inputfile.click();
 }
+function refProfile(x) {
+  if (x == "ok") {
+    editProfile.classList.remove('btnOff')
+    saveProfile.classList.add('btnOff')
+    btneditImgProfile.classList.add('btnOff')
+} else {
+  console.log("ERROR")
+  }}
+showProfile.onclick= ()=>{
+  showProfile.classList.add('showProfileRun')
+  Profile.classList.add('showProfileRun')
+}
+closeProfile.onclick= ()=>{
+  showProfile.classList.remove('showProfileRun')
+  Profile.classList.remove('showProfileRun')
+}
+editProfile.onclick= ()=>{
+  // showProfile.classList.add('showProfileRun')
+  editProfile.classList.add('btnOff')
+  saveProfile.classList.remove('btnOff')
+  btneditImgProfile.classList.remove('btnOff')
+}
+saveProfile.onclick= ()=>{
+  refProfile("ok")
+  // let xhr = new XMLHttpRequest();
+  // xhr.open("POST", "http://localhost:8000/test", true);
+  // xhr.onload = ()=>{
+  //   if(xhr.readyState === XMLHttpRequest.DONE){
+  //       if(xhr.status === 200){
+          
+  //         let data = xhr.response;
+  //          console.log(data)
+  //         //  refProfile(x)
+  //       }
+  //   }
+  // }
+  // let formData = new FormData(formProfile);
+  // xhr.send(formData);
+  // // console.log(formData);
+}
+
 backnot.onclick = ()=>{
 showNotificationsv.style.left = '100%';
 backnot.classList.toggle('roro')
@@ -210,6 +261,7 @@ postes.forEach((item)=>{
           }
         }
         let formData = new FormData(form);
+        //  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.send(formData);
         // console.log(formData);
       })})

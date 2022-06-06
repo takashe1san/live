@@ -19,25 +19,35 @@
     <nav class="sidebar close">
         <header>
             @if(session('type') != null)
+            @php
+            $imgProfil = session('img');
+            $username = session('info.username');
+            $bio = session('info.bio');
+            @endphp
             <div class="image-text">
-                <span class="image">
-                    <img src="{{session('img')}}" alt="">
+                <span class="image" id="showProfile">
+                    <img src="{{session('img')}}" alt="" >
                 </span>
 
                 <div class="text logo-text">
-                    <span class="name">{{session('info.username')}}</span>
-                    <span class="profession">{{session('info.bio')}}</span>
+                    <span class="name">{{$username}}</span>
+                    <span class="profession">{{$bio}}</span>
                 </div>
             </div>
             @else
+            @php
+            $imgProfil = "URL::asset('post/icons/logo.png')";
+            $username = "LiveHealth";
+            $bio = "consultation & answer";
+            @endphp
             <div class="image-text">
-                <span class="image">
-                    <img src="{{URL::asset('post/icons/logo.png')}}" alt="">
+                <span class="image" id="showProfile">
+                    <img src="{{$imgProfil}}" alt="">
                 </span>
 
                 <div class="text logo-text">
-                    <span class="name">LiveHealth</span>
-                    <span class="profession">consultation & answer</span>
+                    <span class="name">{{$username}}</span>
+                    <span class="profession">{{$bio}}</span>
                 </div>
             </div>
             @endif
@@ -139,7 +149,6 @@
                     </li>
                     <div class="Setting">
                         <ul>
-                            <li class="sett_sl" >ChangInfo</li>
                             <li class="sett_sl" >ChangPassword</li>
                             <li class="sett_sl" >ChangViow</li>
                             <li class="sett_sl" >ChangLang</li>
@@ -388,6 +397,94 @@
                     <button>Reset my Password</button>
                 </form>
             </div>
+        </div>
+        @if (session('type') == 'user')
+        <div class="profile">
+            <i id="closeShowProfile" class="bi bi-x-circle"></i>
+          <form action="#" method="post" id="formEditProfile">
+            <div class="leftProfile">
+                <input type="file" hidden name=""  >
+                <input type="text" name=""  value="{{$username}}">
+                <input type="text" name=""  value="Full Name">
+                <input type="text" name=""  value="Email">
+                <input type="password" name=""  value="**********">
+                <div class="selectProfile">
+                    <select name="" value="noSix">
+                        <!-- <option  selected>Six</option> -->
+                        <option value="Mile">Mile</option>
+                        <option value="Mile">Femile</option>
+                    </select>
+                    <select name="" value="noSix">
+                        <!-- <option  selected>Six</option> -->
+                        <option value="-o">-o</option>
+                        <option value="+o">+o</option>
+                        <option value="+B">+B</option>
+                        <option value="-B">-B</option>
+                        <option value="-A">-A</option>
+                        <option value="+A">+A</option>
+                        <option value="+AB">+AB</option>
+                        <option value="-AB">-AB</option>
+                    </select>
+                </div>
+                <input type="date" name="" >
+            </div>
+            <div class="rightProfile">
+                <input type="file" name="" id="editImgProfile" hidden>
+                <label class="btnOff" for="editImgProfile" id="btneditImgProfile"><i class="bi bi-pencil"></i></label>
+                <img src="{{$imgProfil}}" alt="">
+                <textarea name=""  cols="30" rows="10">{{$bio}}</textarea>
+            </div>
+            <div class="btnProfile">
+                <button id="saveProfile" class="btnOff">SAVE</button>
+                <button id="editProfile">Edit</button>
+            </div>
+          </form>
+        </div>
+        @else
+        <div class="profile">
+            <i id="closeShowProfile" class="bi bi-x-circle"></i>
+          <form action="#" method="post" id="formEditProfile">
+            <div class="leftProfile">
+                <input type="file" hidden name=""  >
+                <input type="text" name=""  value="{{$username}}">
+                <input type="text" name=""  value="Full Name">
+                <input type="text" name=""  value="Email">
+                <input type="password" name=""  value="**********">
+                <div class="selectProfile">
+                    <select name="" value="noSix">
+                        <!-- <option  selected>Six</option> -->
+                        <option value="Mile">Mile</option>
+                        <option value="Mile">Femile</option>
+                    </select>
+                    <select name="" value="noSix">
+                        <!-- <option  selected>Six</option> -->
+                        <option value="-o">-o</option>
+                        <option value="+o">+o</option>
+                        <option value="+B">+B</option>
+                        <option value="-B">-B</option>
+                        <option value="-A">-A</option>
+                        <option value="+A">+A</option>
+                        <option value="+AB">+AB</option>
+                        <option value="-AB">-AB</option>
+                    </select>
+                </div>
+                <input type="date" name="" >
+                <input type="file" name="" id="shFile" hidden>
+                <label class="labelInput" for="shFile">Uplode Your Shahadaaa</label>
+            </div>
+            <div class="rightProfile">
+                <input type="file" name="" id="editImgProfile" hidden>
+                <label class="btnOff" for="editImgProfile" id="btneditImgProfile"><i class="bi bi-pencil"></i></label>
+                <img src="{{$imgProfil}}" alt="">
+                <textarea name=""  cols="30" rows="10">{{$bio}}</textarea>
+            </div>
+            <div class="btnProfile">
+                <button id="saveProfile" class="btnOff">SAVE</button>
+                <button id="editProfile">Edit</button>
+            </div>
+          </form>
+        </div>
+        @endif
     </section>
     <script src="{{URL::asset('post/script/script.js')}}"></script>
     <script src="{{URL::asset('post/script/app.js')}}"></script>

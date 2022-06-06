@@ -87,6 +87,7 @@ body.dark{
 .sidebar .icon{
     min-width: 60px;
     border-radius: 6px;
+    cursor: pointer;
 }
 
 .sidebar .icon{
@@ -149,6 +150,7 @@ header .image-text .profession{
 }
 
 .sidebar header .image img{
+  height: 40px;
     width: 40px;
     border-radius: 6px;
 }
@@ -510,7 +512,7 @@ opacity: 1;
 :where(.elelment , .Notifications , .search_box_sl) i{left: 270px;font-size: 20px;position: absolute;cursor: pointer;}
 .Notifications  .backnot:hover::before{content: "\F129";}
 .Notifications ul , .search_box_sl ul{margin-top: 27px;}
-.Notifications  img, .search_box_sl  img{width: 35px;border-radius: 50%;}
+.Notifications  img, .search_box_sl  img{height: 35px; width: 35px;border-radius: 50%;}
 .Notifications li p, .search_box_sl li p{font-size: 18px;}
 .Notifications li span, .search_box_sl li span{font-size: 10px;align-self: end;}
 .Notifications li:hover , .search_box_sl li:hover{
@@ -595,6 +597,7 @@ opacity: 1;
   .left img{
     cursor: default;
     max-width: 52px;
+    height: 40px;
   }
   .user-profile .details{
     margin: -3px 0 0 12px;
@@ -631,17 +634,17 @@ opacity: 1;
     outline: none;
     border: none;
   }
-  .post form textarea{
+  :is(.post form , #formEditProfile) textarea{
     background-color: inherit;
     resize: none;
     font-size: 18px;
     margin-top: 30px;
     min-height: 100px;
   }
-  .post form textarea::placeholder{
+  :is(.post form , #formEditProfile) textarea::placeholder{
     color: var(--text-color);
   }
-  .post form textarea:focus::placeholder{
+  :is(.post form , #formEditProfile) textarea:focus::placeholder{
     color: var(--text-color);
   }
   
@@ -830,6 +833,7 @@ opacity: 1;
 }
 .imp-links a img{
 	width: 25px;
+  height: 25px;
 	margin-right: 15px;	
 }
 .imp-links a:last-child{
@@ -840,6 +844,7 @@ opacity: 1;
 }
 .shortcut-links a img{
 	width: 40px;
+  height: 40px;
 	border-radius: 4px;
 	margin-right: 15px;
 }
@@ -909,6 +914,7 @@ opacity: 1;
 }
 .online-list .online img{
 	width:40px;
+  height: 40px;
 	border-radius: 50%;
 }
 .online-list .online{
@@ -1050,6 +1056,7 @@ opacity: 1;
 .commAc{} */
 .comm img{
   width: 35px;
+  height: 35px;
     border-radius: 50%;
     margin-right: 10px;
 }
@@ -1163,7 +1170,7 @@ form.Fwrit-comment {
 .container_postSl{top: -1000px;}
 /*--elemt style strat here--*/
 .ExSetting.ChangPassword  .elelment{height: 360px;width: 500px;}
-.elelment ,.AlertBox{
+.elelment ,.AlertBox,.profile{
   width: 0;
   height: 0;
   position: absolute;
@@ -1174,11 +1181,12 @@ form.Fwrit-comment {
   box-shadow: 0 0 10px rgb(0 0 0 / 10%);
   overflow: hidden;
 }
-.element-main {
+.element-main ,.profile{
   width:500px;
   background: var(--sidebar-color);
   border-radius: 5px;
   padding:3em 2em;
+  box-shadow: 1px 1px 15px rgb(0 0 0 / 10%);
 }
 .element-main h1 {
   text-align: center;
@@ -1193,7 +1201,7 @@ form.Fwrit-comment {
   margin: 1.5em 0em;
   text-align:center;
 }
-.element-main  input[type="text"] {
+.element-main  input[type="text"]{
   font-size: 1em;
   color: var(--text-color);
   padding: 1em 0.5em;
@@ -1206,7 +1214,7 @@ form.Fwrit-comment {
   border-radius: 6px;
   background-color: inherit;
 }
-:where(.element-main , .AlertBox) button {
+:where(.element-main , .AlertBox , .profile) button {
   position: relative;
   font-size: 1em;
   color: #fff;
@@ -1222,7 +1230,7 @@ form.Fwrit-comment {
   display: block;
   margin: 1.5em auto 0;
 }
-.element-main button:hover{
+.element-main button:hover ,.profile button:hover{
   background:var(--primary-color);
   border-bottom: 3px solid #2F2F2F;  
   transition: 0.5s all;
@@ -1267,3 +1275,32 @@ form.Fwrit-comment {
 span.commEmpty {
     align-self: center;
 }
+.profile{transition: var(--tran-03);height:0;width: 0;opacity: 0;top: -1000px;visibility: hidden;}
+.profile.showProfileRun{transition: var(--tran-03);height: 500px;width: 700px;opacity: 1;visibility: visible;top: 300px;}
+.profile :where(i , label){transition: var(--tran-03);cursor: pointer;position: absolute;font-size: 20px;right: 10px;top: 5px;}
+.profile i:hover::before{content: "\F622";}
+.profile label:hover i::before{content: "\F4C9";}
+#formEditProfile{display: flex;position: relative;}
+#formEditProfile img{height: 150px;width: 150px;align-self: center;margin-top: 20px;}
+#formEditProfile :where(textarea , input ,select, .labelInput){
+  font-size: 18px;
+  color: var(--text-color);
+  padding: 5px;
+  width: 100%;
+  height: 40px;
+  outline: none;
+  margin-bottom: 1em;
+  text-align:center;
+  border: 1px solid var(--text-color5);
+  border-radius: 6px;
+  background-color: inherit;
+}
+.btnOff{display: none;}
+#formEditProfile textarea{height: 230px;margin-top: 35px;}
+#formEditProfile select{width: 49%;}
+#formEditProfile .labelInput{cursor: pointer;padding: 3% 18.5%;}
+#formEditProfile label{top: 25px; right: 80px;}
+#formEditProfile button{position: absolute;height: 40px;width: 300px;left: 10px;top: 82%;}
+.rightProfile{align-items: flex-end;display: flex;flex-direction: column;}
+.leftProfile{margin: 5px 10px;width: 50%;}
+span#showProfile {width: 40px;height: 40px;}
