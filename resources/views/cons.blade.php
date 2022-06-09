@@ -71,7 +71,7 @@
                 <p>{{$con->username}}</p>
                 <div class="postTime">
                     <i class="ii bi bi-alarm"></i>
-                    <span>{{$date}}</span>
+                    <span>{{$date}} - {{$con->con_section}}</span>
                 </div>
                 </div>
             </div>
