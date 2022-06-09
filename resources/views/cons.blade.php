@@ -82,26 +82,53 @@
         
         <p class="post-text">{{$con->con_content}}</p>
         <div class="media">
-            <div class="fFile" data-tooltip="Image">
+            @foreach ($attach[$con->con_id] as $atta)
+                @if ($atta->ext == 'jpg' || $atta->ext == 'png' || $atta->ext == 'jpeg')
+                <div class="fFile" data-tooltip="Image">
+                    <i class="mediaType" hidden>img</i>
+                    <i class="src" hidden>{{$atta->mediaDir}}</i>
+                    <i class="bi biImage" ></i>
+                </div>
+                @elseif($atta->ext == 'mp4' || $atta->ext == 'mov')
+                <div class="fFile" data-tooltip="Video">
+                    <i class="mediaType" hidden>video</i>
+                    <i class="src" hidden>{{$atta->mediaDir}}</i>
+                    <i class="bi biPlay" ></i>
+                </div>
+                @elseif($atta->ext == 'pdf')
+                <div class="fFile" data-tooltip="Pdf">
+                    <i class="mediaType" hidden>pdf</i>
+                    <i class="src" hidden>{{$atta->mediaDir}}</i>
+                    <i class="bi biPdf" ></i>
+                </div>
+                @elseif($atta->ext == 'mp3' || $atta->ext == 'wav')
+                <div class="fFile" data-tooltip="Sound">
+                    <i class="mediaType" hidden>audio</i>
+                    <i class="src" hidden>{{$atta->mediaDir}}</i>
+                    <i class="bi biMusic" ></i>
+                </div>
+                @endif
+            @endforeach
+            {{-- <div class="fFile" data-tooltip="Image">
                 <i class="mediaType" hidden>img</i>
                 <i class="src" hidden>/images/users/first/cons/75/3554304.png</i>
                 <i class="bi biImage" ></i>
-            </div>
-            <div class="fFile" data-tooltip="Sound">
+            </div> --}}
+            {{-- <div class="fFile" data-tooltip="Sound">
                 <i class="mediaType" hidden>audio</i>
                 <i class="src" hidden>d</i>
                 <i class="bi biMusic" ></i>
-            </div>
-            <div class="fFile" data-tooltip="Pdf">
+            </div> --}}
+            {{-- <div class="fFile" data-tooltip="Pdf">
                 <i class="mediaType" hidden>pdf</i>
                 <i class="src" hidden>/images/users/first/cons/75/Unit 1 - Bonus Features Solutions.pdf</i>
                 <i class="bi biPdf" ></i>
-            </div>
-            <div class="fFile" data-tooltip="Video">
+            </div> --}}
+            {{-- <div class="fFile" data-tooltip="Video">
                 <i class="mediaType" hidden>video</i>
                 <i class="src" hidden>d</i>
                 <i class="bi biPlay" ></i>
-            </div>
+            </div> --}}
         </div>
     </div>
     <div class="comm">

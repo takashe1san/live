@@ -22,10 +22,10 @@ class ConsController extends Controller
         }
     }
 
-    public function showCons(){
-        $a = Consultation::where('username',session('info.username'))->get();
-        return view('consultation',['value' => $a]);
-    }
+    // public function showCons(){
+    //     $a = Consultation::where('username',session('info.username'))->get();
+    //     return view('consultation',['value' => $a]);
+    // }
 
     public function showAllCons(){
         $cons = Consultation::orderByDesc('con_id')->get();

@@ -9,7 +9,6 @@ class CommController extends Controller
 {
     //
     public function insComm(Request $info){
-        // return $info;
         if (session('type') == 'user'){
             $usertype = 'username';
         }else if (session('type') == 'doctor'){
