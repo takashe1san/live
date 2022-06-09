@@ -39,9 +39,6 @@ formPost.onsubmit = (e)=>{
 formProfile.onsubmit = (e)=>{
   e.preventDefault();
 }
-Fwrit_comment.forEach((item)=>item.onsubmit = (e)=>{
-e.preventDefault();
-})
 fileImg.onclick = ()=>{
 inputfile.click();
 }
@@ -228,27 +225,26 @@ postes.forEach((item)=>
         s.classList.add('bi-check-lg')
       })
       ///   This is Tha takekat
-postes.forEach((item)=>{
-      const form = item.querySelector(".Fwrit-comment");
     postes.forEach((item)=>
-      item.querySelector(".btnFwrit-comment").onclick =function ss(){
+      item.querySelector(".Fwrit-comment").onsubmit =(e)=>{
+        e.preventDefault();
         let xhr = new XMLHttpRequest();
-        xhr.open("POST", "http://localhost:8000/test", true);
+        xhr.open("POST", "http://localhost:8000/insertCom", true);
         xhr.onload = ()=>{
           if(xhr.readyState === XMLHttpRequest.DONE){
               if(xhr.status === 200){
                 
                 let data = xhr.response;
                  console.log(data)
-                 form.querySelector('.comm_content').value='';
+                 this.querySelector('.comm_content').value='';
               }
           }
         }
-        let formData = new FormData(form);
+        let formData = new FormData(this);
         //  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.send(formData);
         // console.log(formData);
-      })})
+      })
 Add.onclick = ()=>{
 container_post.classList.toggle('container_postSl');
 container_post.classList.toggle('container_postAc');

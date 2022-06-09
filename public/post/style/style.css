@@ -30,7 +30,7 @@
     --tran-04: all 0.3s ease;
     --tran-05: all 0.3s ease;
 }
-
+html{scroll-behavior: smooth;}
 body{
     min-height: 100vh;
     background-color: var(--body-color);
@@ -320,6 +320,7 @@ body.dark .switch::before{
 .cont{
 	display: flex;
 	justify-content: space-between;
+  /* overflow: hidden; */
 	/* padding: 13px 5%; */
 }
 

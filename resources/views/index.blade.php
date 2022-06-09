@@ -316,9 +316,16 @@
                                 <p>
                                     Willson Tech Park
                                 </p>
+<<<<<<< HEAD
                                 <a>More Info</a>
                             </div>
                         </li> --}}
+=======
+                                <a></a>
+                            </div>
+                        </li>
+                        
+>>>>>>> 5bc69f3559a7e94bd9fa8c3caafa685ddd1a3f25
                     </ul>
                     
                 </div>
@@ -429,6 +436,11 @@
         <div class="showAudio">
             <i id="closeShowAudio" class="bi bi-x-circle"></i>
             <div class="showAudioJs"></div>
+        </div>
+        <div class="btnGoToUp">
+        <i class="bi bi-arrow-up-circle">
+        <i class="bi bi-arrow-up-circle-fill"></i>
+        </i>
         </div>
     </section>
     <script src="{{URL::asset('post/script/script.js')}}"></script>
