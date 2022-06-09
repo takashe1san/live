@@ -3,7 +3,8 @@ const body = document.querySelector('body'),
       toggle = body.querySelector(".toggle"),
       searchBtn = body.querySelector(".search-box"),
       modeSwitch = body.querySelector(".toggle-switch"),
-      modeText = body.querySelector(".mode-text");
+      modeText = body.querySelector(".mode-text"),
+      btnGoToUp = document.querySelector(".btnGoToUp");
 
 
 toggle.addEventListener("click" , () =>{
@@ -24,3 +25,30 @@ modeSwitch.addEventListener("click" , () =>{
         
     }
 });
+
+console.log(window.innerHeight)
+
+window.onscroll = function()
+{
+    if(window.pageYOffset >= 400)
+    {
+        btnGoToUp.style.display = " block " ;
+    }
+    else
+    {
+        btnGoToUp.style.display = " none " ;
+    }
+}
+
+btnGoToUp.onclick = ()=>
+{
+    window.scrollTo(0,0);
+}
+
+// let scrollToBottom = document.querySelector('#scroll-to-bottom');
+// let pageBottom = document.querySelector('#page-bottom');
+
+// scrollToBottom.addEventListener('click', function () {
+  
+//   pageBottom.scrollIntoView();
+// })

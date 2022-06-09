@@ -159,7 +159,7 @@
             @endforelse
         </div>
         <div class="writ-comment">
-            <form action="/insertCom" method="post" class="Fwrit-comment">
+            <form action="#" method="post" class="Fwrit-comment">
                 @csrf
                 <input type="hidden" name="con_id" value={{$con->con_id}}>
                 <input type="text" name="content" class="comm_content" placeholder="Write Your Comment">

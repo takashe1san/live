@@ -306,17 +306,10 @@
                                 <p>
                                     Willson Tech Park
                                 </p>
-                                <a>More Info</a>
+                                <a></a>
                             </div>
                         </li>
-                        <li class="eventSel">
-                            <div class="right-event">
-                                <p>
-                                    Willson Tech Park
-                                </p>
-                                <a>More Info</a>
-                            </div>
-                        </li>
+                        
                     </ul>
                     
                 </div>
@@ -427,6 +420,11 @@
         <div class="showAudio">
             <i id="closeShowAudio" class="bi bi-x-circle"></i>
             <div class="showAudioJs"></div>
+        </div>
+        <div class="btnGoToUp">
+        <i class="bi bi-arrow-up-circle">
+        <i class="bi bi-arrow-up-circle-fill"></i>
+        </i>
         </div>
     </section>
     <script src="{{URL::asset('post/script/script.js')}}"></script>
