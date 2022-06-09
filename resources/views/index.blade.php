@@ -106,14 +106,14 @@
                         <i class="backnot  bi bi-arrow-left-circle"></i>
                         <ul>
                             <li class="NotificationsSle">
-                                <img src="./icons/logo.png" class="imgNotsmal">
+                                <img src="{{URL::asset('post/icons/logo.png')}}" class="imgNotsmal">
                                 <p class="pNotsmal">ssssssssssssss</p>
                                 <span class="sendersmal" hidden>user: AboIbrahem</span>
                                 <span class="subsmal" hidden>sub: Hello</span>
                                 <span class="timeNotsmal">3h ago</span>
                             </li>
                             <li class="NotificationsSle">
-                                <img src="./icons/logo.png" class="imgNotsmal">
+                                <img src="{{URL::asset('post/icons/logo.png')}}" class="imgNotsmal">
                                 <p class="pNotsmal">ggggggg</p>
                                 <span class="sendersmal" hidden>user: Ahmad</span>
                                 <span class="subsmal" hidden>sub: Hello</span>
@@ -122,7 +122,7 @@
                         </ul>
                         <div class="showNotifications">
                             <div>
-                                <img src="./icons/logo.png"class="imgNotlarg" >
+                                <img src="{{URL::asset('post/icons/logo.png')}}"class="imgNotlarg" >
                                 <span class="timeNotlarg"></span>
                             </div>
                             <span class="sender"></span>
