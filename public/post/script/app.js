@@ -273,9 +273,9 @@ item.onclick = function activeLink(){
     // var 
     ii.classList.replace(iiClass,detailsI)
     ss.innerHTML = detailsP;
-    pp.value = detailsP[0];
+    pp.value = detailsP;
     console.log(ss.innerHTML = detailsP
-      , pp.value = detailsP[0])
+      , pp.value = detailsP)
   });
 privacy.onclick = () => {
  oo();

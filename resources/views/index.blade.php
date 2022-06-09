@@ -188,7 +188,7 @@
                             <div class="details">
                                 <p>{{session('info.username')}}</p>
                                 <div class="privacy">
-                                    <input type="text" name="section" value="General" hidden>
+                                    <input type="hidden" name="section" value="General">
                                     <i class="ii bi bi-globe"></i>
                                     <span alt="Anyone on or off Facebook">General</span>
                                     <i class="bi bi-caret-down-fill"></i>
