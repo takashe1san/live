@@ -84,7 +84,7 @@
         <div class="media">
             <div class="fFile" data-tooltip="Image">
                 <i class="mediaType" hidden>img</i>
-                <i class="src" hidden>d</i>
+                <i class="src" hidden>/images/users/first/cons/75/3554304.png</i>
                 <i class="bi biImage" ></i>
             </div>
             <div class="fFile" data-tooltip="Sound">
@@ -94,7 +94,7 @@
             </div>
             <div class="fFile" data-tooltip="Pdf">
                 <i class="mediaType" hidden>pdf</i>
-                <i class="src" hidden>d</i>
+                <i class="src" hidden>/images/users/first/cons/75/Unit 1 - Bonus Features Solutions.pdf</i>
                 <i class="bi biPdf" ></i>
             </div>
             <div class="fFile" data-tooltip="Video">

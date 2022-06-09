@@ -19,37 +19,37 @@ use Illuminate\Validation\Rules\Unique;
 |
 */
 // home ********************************************************************
-Route::get('/home', function () {
-    return view('welcome');
-});
+// Route::get('/home', function () {
+//     return view('welcome');
+// });
 
 Route::get('/', 'ConsController@showAllCons');
 
 // report ********************************************************
 
-Route::get('addrep', function () {
-    return view('report');
-});
+// Route::get('addrep', function () {
+//     return view('report');
+// });
 
 Route::get('report/{id}', 'RepoController@addRepo');
 
 // files *********************************************************
 
-Route::get('write/{text}', function ($text) {
-    Storage::disk('local')->put('t.txt', $text);
-});
+// Route::get('write/{text}', function ($text) {
+//     Storage::disk('local')->put('t.txt', $text);
+// });
 
-Route::get('read', function () {
-    return Storage::path('t.txt');
-});
+// Route::get('read', function () {
+//     return Storage::path('t.txt');
+// });
 
 Route::post('img', 'FileController@personal');
 
 Route::post('upload','FileController@multiFile')->name('up');
 
-Route::get('file', function () {
-    return view('file');
-});
+// Route::get('file', function () {
+//     return view('file');
+// });
 
 Route::get('del-img', 'FileController@imgDelete');
 

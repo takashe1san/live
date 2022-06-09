@@ -41,4 +41,15 @@ class AdminController extends Controller
         $reports          = (new RepoController)  ->getReports();
         return view('admin', ['counter' => $count, 'reports' => $reports]);
     }
+
+    public function delCons($id){
+        (new ConsController)->delFrAd($id);
+        return redirect()->back();
+    }
+
+    public function delPub($id){
+        $username = (new ConsController)->getPublisher($id);
+        (new UsersController)->deleteU($username);
+        return redirect()->back();
+    }
 }

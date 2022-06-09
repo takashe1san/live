@@ -2,21 +2,21 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/addCons', function () {
-    return view('addConsultation');
-})->middleware('isUser');
+// Route::get('/addCons', function () {
+//     return view('addConsultation');
+// })->middleware('isUser');
 
 Route::post('/insertCon','ConsController@insCons');
 
-Route::get('/showcon','ConsController@showCons')
-    ->name('showcon');
+// Route::get('/showcon','ConsController@showCons')
+//     ->name('showcon');
 
-Route::get('showallcon','ConsController@showAllCons');
+// Route::get('showallcon','ConsController@showAllCons');
 
 Route::get('/delCon/{id}','ConsController@deleteCons')
     ->name('dcons');
 
-Route::get('getCon/{id}','ConsController@getCons');
+// Route::get('getCon/{id}','ConsController@getCons');
 
 Route::get('lastid', 'ConsController@getID');
 

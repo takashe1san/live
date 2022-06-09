@@ -64,7 +64,7 @@
                 </li>
                 <div class="search_box_sl">
                         <ul>
-
+                           D. second
                         </ul>
                     </div>
                 <ul class="menu-links" >
@@ -184,13 +184,13 @@
                         @csrf
                         <i id="postType" hidden>user</i>
                         <div class=" user-profile">
-                            <img src="icons/logo.png" alt="logo">
+                            <img src="{{session('img')}}" alt="logo">
                             <div class="details">
                                 <p>{{session('info.username')}}</p>
                                 <div class="privacy">
                                     <input type="text" name="section" value="General" hidden>
                                     <i class="ii bi bi-globe"></i>
-                                    <span alt="Anyone on or off Facebook">Public</span>
+                                    <span alt="Anyone on or off Facebook">General</span>
                                     <i class="bi bi-caret-down-fill"></i>
                                 </div>
                             </div>
@@ -214,12 +214,12 @@
                                 <div class="privacy">
                                     <input type="text" name="section" value="General" hidden>
                                     <i class="ii bi bi-globe"></i>
-                                    <span alt="Anyone on or off Facebook">Public</span>
+                                    <span alt="Anyone on or off Facebook">General</span>
                                     <i class="bi bi-caret-down-fill"></i>
                                 </div>
                             </div>
                         </div>
-                        <textarea name="content" placeholder="Write your Consultation here" spellcheck="false" required></textarea>
+                        <textarea name="content" placeholder="Write your Quick info here" spellcheck="false" required></textarea>
                         <div class="options">
                             <p id="fileConfig">Add to Your Post</p>
                             <i class="bi bi-images" alt="gallery" id="fileImg" ></i>
@@ -301,22 +301,24 @@
                 </div>
                 <div class="event">
                     <ul>
+                        @foreach ($info as $item)
                         <li class="eventSel">
+                            <div class="right-event">
+                                <p>
+                                    {{$item->info_content}}
+                                </p>
+                                {{-- <a>More Info</a> --}}
+                            </div>
+                        </li>
+                        @endforeach
+                        {{-- <li class="eventSel">
                             <div class="right-event">
                                 <p>
                                     Willson Tech Park
                                 </p>
                                 <a>More Info</a>
                             </div>
-                        </li>
-                        <li class="eventSel">
-                            <div class="right-event">
-                                <p>
-                                    Willson Tech Park
-                                </p>
-                                <a>More Info</a>
-                            </div>
-                        </li>
+                        </li> --}}
                     </ul>
                     
                 </div>

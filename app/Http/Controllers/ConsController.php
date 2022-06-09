@@ -60,6 +60,15 @@ class ConsController extends Controller
         }
     }
 
+    public function delFrAd($id){
+        Consultation::where('con_id',$id)->first()->delete();
+    }
+
+    public function getPublisher($id){
+        $publisher = Consultation::where('con_id', $id)->first()->username;
+        return $publisher;
+    }
+
     public function consCount(){
         $count = Consultation::count();
         return $count;

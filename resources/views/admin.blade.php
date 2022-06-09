@@ -118,13 +118,20 @@
               <p class="box-progress-header">Progress</p>
             </div>
             <div class="project-box-footer">
-              <div class="participants">
+              {{-- <div class="participants">
                 <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80" alt="participant">
                 <img src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTB8fG1hbnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60" alt="participant">
-              </div>
-              <div class="days-left" style="color: #ff942e;">
-                2 Days Left
-              </div>
+              </div> --}}
+              <a href="/delcfrmad/{{$repo->reported_con}}">
+                <div class="days-left" style="color: #ff942e;">
+                  delete cons
+                </div>
+              </a>
+              <a href="/delpfrma/{{$repo->reported_con}}">
+                <div class="days-left" style="color: #ff942e;">
+                  delete user
+                </div>
+              </a>
             </div>
           </div>
         </div>
@@ -132,7 +139,7 @@
       </div>
 
 </div>
-<div class="messages-section">
+{{-- <div class="messages-section">
   <button class="messages-close">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle">
       <circle cx="12" cy="12" r="10" />
@@ -158,7 +165,7 @@
         </p>
       </div>
     </div>
-    </div>
+    </div> --}}
 <!-- partial -->
  
 <script src="{{URL::asset('admin/app.js')}}"></script>

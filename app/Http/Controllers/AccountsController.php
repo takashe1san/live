@@ -13,7 +13,7 @@ class AccountsController extends Controller
     public function signup(Request $info){
 
         $rules = [
-            'susername' => [
+            'username' => [
                 'required',
                 'max:40',
                 'min:5',
@@ -29,7 +29,7 @@ class AccountsController extends Controller
                 'required',
                 'max:50'
             ],
-            'spassword' => [
+            'password' => [
                 'required',
                 'max:70',
                 'min:7',
@@ -41,19 +41,19 @@ class AccountsController extends Controller
         ];
 
         $msgs = [
-            'susername.required' => 'username is required',
-            'susername.max'      => 'username must be <40 character',
-            'susername.min'      => 'username must be >5 character',
-            'susername.unique'   => 'this username is used',
+            'username.required' => 'username is required',
+            'username.max'      => 'username must be <40 character',
+            'username.min'      => 'username must be >5 character',
+            'username.unique'   => 'this username is used',
             'email.required'    => 'email is required',
             'email.email'       => 'wronge formula',
             'email.max'         => 'email must be <60 character',
             'email.unique'      => 'this email is exist',
             'name.required'     => 'name is required',
             'name.max'          => 'name must be <50 character',
-            'spassword.required' => 'password is required',
-            'spassword.max'      => 'password must be <70 character',
-            'spassword.min'      => 'password must be >7 character',
+            'password.required' => 'password is required',
+            'password.max'      => 'password must be <70 character',
+            'password.min'      => 'password must be >7 character',
             'birth.required'    => 'birth is required',
             'birth.date'        => 'wronge formula',
         ];

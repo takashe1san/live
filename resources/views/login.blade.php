@@ -36,7 +36,7 @@
             </ul>
           </div>
           <input class="form__input" type="text" name="username" placeholder="Username">
-          @error('susername')
+          @error('username')
           <span class="spanError">{{$message}}</span>
           @enderror
           <input class="form__input" type="text" name="username" placeholder="Fullname">
@@ -48,7 +48,7 @@
               <span class="spanError">{{$message}}</span>
             @enderror
           <input class="form__input" type="password" name='password' placeholder="Password">
-          @error('spassword')
+          @error('password')
                 <span class="spanError">{{$message}}</span>
           @enderror
           <input class="form__input" type="date"  name='birth'/>
