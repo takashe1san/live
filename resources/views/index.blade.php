@@ -64,7 +64,6 @@
                 </li>
                 <div class="search_box_sl">
                         <ul>
-                           D. second
                         </ul>
                     </div>
                 <ul class="menu-links" >
