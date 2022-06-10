@@ -17,6 +17,14 @@ class AdminController extends Controller
         return 'succuss';
     }
 
+    public function login(){
+        if(session('type') == 'admin'){
+            return redirect('dashboard');
+        }else{
+            return view('adminLog');
+        }
+    }
+
     public function adminLog(Request $info){
         $userInfo = Admin::where('username', $info->username)->first();
 
@@ -35,11 +43,15 @@ class AdminController extends Controller
     }
 
     public function dash(){
-        $count['doctors'] = (new DoctorController)->doctorCount();
-        $count['users']   = (new UsersController) ->usersCount();
-        $count['cons']    = (new ConsController)  ->consCount();
-        $reports          = (new RepoController)  ->getReports();
-        return view('admin', ['counter' => $count, 'reports' => $reports]);
+        if(session('type') == 'admin'){
+            $count['doctors'] = (new DoctorController)->doctorCount();
+            $count['users']   = (new UsersController) ->usersCount();
+            $count['cons']    = (new ConsController)  ->consCount();
+            $reports          = (new RepoController)  ->getReports();
+            return view('admin', ['counter' => $count, 'reports' => $reports]);
+        }else{
+            return redirect('adminlog');
+        }
     }
 
     public function delCons($id){

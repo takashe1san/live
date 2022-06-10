@@ -7,9 +7,7 @@ Route::get('dashboard', 'AdminController@dash');
 
 Route::post('addAdd', 'AdminController@addAdd');
 
-Route::get('adminlog', function () {
-    return view('adminLog');
-});
+Route::get('adminlog', 'AdminController@login');
 
 Route::post('adlog', 'AdminController@adminLog');
 
