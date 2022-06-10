@@ -30,7 +30,7 @@ class AdminController extends Controller
 
             (new FileController)->imgCheck();
 
-            return redirect('show');
+            return redirect('dashboard');
         }
     }
 
