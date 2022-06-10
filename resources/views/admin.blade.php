@@ -31,7 +31,7 @@
       </button>
       <a href="/logout">
         <button class="profile-btn">
-          <img src="https://assets.codepen.io/3306515/IMG_2025.jpg" />
+          <img src="{{session('img')}}" />
           <span>{{session('info.username')}}</span>
         </button>
       </a>
