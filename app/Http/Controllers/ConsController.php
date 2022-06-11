@@ -36,9 +36,24 @@ class ConsController extends Controller
             $love[$con->con_id] = (new LikesController)->likeCheck($con->con_id);
             $imgs[$con->con_id] = (new FileController) ->showImg('user',$con->username);
             $atta[$con->con_id] = (new FileController) ->getAttach($con->con_id);
+            foreach($coms[$con->con_id] as $com){
+                if($com->username != null){
+                    $comi[$com->com_id] = (new FileController) ->showImg('user',$com->username);
+                }elseif($com->doctor != null){
+                    $comi[$com->com_id] = (new FileController) ->showImg('doctor',$com->doctor);
+                }
+            }
         }
         $info = (new InfoController)->showInfo();
-        return view('index',['cons' => $cons, 'attach' => $atta, 'com' => $coms, 'comc' => $comc, 'likes' => $like, 'liked' => $love, 'consImgs' => $imgs, 'info' => $info]);
+        return view('index',['cons' => $cons,
+                             'attach' => $atta,
+                             'com' => $coms,
+                             'comc' => $comc, 
+                             'likes' => $like, 
+                             'liked' => $love, 
+                             'consImgs' => $imgs, 
+                             'info' => $info,
+                             'comImgs' => $comi]);
     }
 
     public function getCons($id){

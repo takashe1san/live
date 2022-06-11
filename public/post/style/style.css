@@ -881,6 +881,7 @@ opacity: 1;
 }
 
 .media{
+  height: 50px;
   border: 1px solid;
   border-radius: 6px;
   font-size: 35px;
@@ -963,6 +964,7 @@ opacity: 1;
   margin: 5px;
   display: flex;
   align-items: center;
+  position: relative;
 }
 .comment p{
   background: var(--sidebar-color);

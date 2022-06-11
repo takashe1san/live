@@ -159,23 +159,23 @@
 
                 @if($item->doctor != null)
                     <div class="doc">
-                        <img src="./icons/logo.png" alt="">
-                        <span class="commUserName">{{$dateC}} ago</span>
+                        <img src="{{$comImgs[$item->com_id]}}" alt="">
+                        <span class="commUserName">{{$item->doctor}} </span>
                         <p>{{$item->com_content}}</p>
                         <span>{{$dateC}} ago</span>
                     </div>
                 @else
                     @if($item->username == $con->username)
                         <div class="user">
-                            <img src="./icons/logo.png" alt="">
-                            <span class="commUserName">{{$dateC}} ago</span>
+                            <img src="{{$comImgs[$item->com_id]}}" alt="">
+                            <span class="commUserName">{{$item->username}} </span>
                             <p>{{$item->com_content}}</p>
                             <span>{{$dateC}} ago</span>
                         </div>
                     @else
                         <div class="users">
-                            <img src="./icons/logo.png" alt="">
-                            <span class="commUserName">{{$dateC}} ago</span>
+                            <img src="{{$comImgs[$item->com_id]}}" alt="">
+                            <span class="commUserName">{{$item->username}} </span>
                             <p>{{$item->com_content}}</p>
                             <span>{{$dateC}} ago</span>
                         </div>
