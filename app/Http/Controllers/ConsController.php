@@ -29,6 +29,68 @@ class ConsController extends Controller
 
     public function showAllCons(){
         $cons = Consultation::orderByDesc('con_id')->get();
+        $atta[-1]="";$coms[-1]=''; $comc[-1]='';$like[-1]='';$love[-1]='';$imgs[-1]='';$comi[-1]='';
+        foreach($cons as $con){
+            $coms[$con->con_id] = (new CommController) ->showComm($con->con_id);
+            $comc[$con->con_id] = (new CommController) ->comCount($con->con_id);
+            $like[$con->con_id] = (new LikesController)->likeCount($con->con_id);
+            $love[$con->con_id] = (new LikesController)->likeCheck($con->con_id);
+            $imgs[$con->con_id] = (new FileController) ->showImg('user',$con->username);
+            $atta[$con->con_id] = (new FileController) ->getAttach($con->con_id);
+            foreach($coms[$con->con_id] as $com){
+                if($com->username != null){
+                    $comi[$com->com_id] = (new FileController) ->showImg('user',$com->username);
+                }elseif($com->doctor != null){
+                    $comi[$com->com_id] = (new FileController) ->showImg('doctor',$com->doctor);
+                }
+            }
+        }
+        $info = (new InfoController)->showInfo();
+        return view('index',['cons' => $cons,
+                             'attach' => $atta,
+                             'com' => $coms,
+                             'comc' => $comc, 
+                             'likes' => $like, 
+                             'liked' => $love, 
+                             'consImgs' => $imgs, 
+                             'info' => $info,
+                             'comImgs' => $comi]);
+    }
+
+    public function showMyCons(){
+        $cons = Consultation::where('username', session('info.username'))->orderByDesc('con_id')->get();
+        $atta[-1]="";$coms[-1]=''; $comc[-1]='';$like[-1]='';$love[-1]='';$imgs[-1]='';$comi[-1]='';
+        foreach($cons as $con){
+            $coms[$con->con_id] = (new CommController) ->showComm($con->con_id);
+            $comc[$con->con_id] = (new CommController) ->comCount($con->con_id);
+            $like[$con->con_id] = (new LikesController)->likeCount($con->con_id);
+            $love[$con->con_id] = (new LikesController)->likeCheck($con->con_id);
+            $imgs[$con->con_id] = (new FileController) ->showImg('user',$con->username);
+            $atta[$con->con_id] = (new FileController) ->getAttach($con->con_id);
+            foreach($coms[$con->con_id] as $com){
+                if($com->username != null){
+                    $comi[$com->com_id] = (new FileController) ->showImg('user',$com->username);
+                }elseif($com->doctor != null){
+                    $comi[$com->com_id] = (new FileController) ->showImg('doctor',$com->doctor);
+                }
+            }
+        }
+        $info = (new InfoController)->showInfo();
+        return view('index',['cons' => $cons,
+                             'attach' => $atta,
+                             'com' => $coms,
+                             'comc' => $comc, 
+                             'likes' => $like, 
+                             'liked' => $love, 
+                             'consImgs' => $imgs, 
+                             'info' => $info,
+                             'comImgs' => $comi]);
+    }
+
+    public function showLikedCons(){
+        $liked = (new LikesController)->likedCons();
+        $cons = Consultation::whereIn('con_id', $liked)->orderByDesc('con_id')->get();
+        $atta[-1]="";$coms[-1]=''; $comc[-1]='';$like[-1]='';$love[-1]='';$imgs[-1]='';$comi[-1]='';
         foreach($cons as $con){
             $coms[$con->con_id] = (new CommController) ->showComm($con->con_id);
             $comc[$con->con_id] = (new CommController) ->comCount($con->con_id);

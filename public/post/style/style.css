@@ -56,7 +56,9 @@ body.dark{
     --text-color3: #93ff9380;
 }
 
-
+li.po_sl a {
+  color: inherit;
+}
 
 /* ===== Sidebar ===== */
  .sidebar{

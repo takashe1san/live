@@ -52,4 +52,9 @@ class LikesController extends Controller
         $likes = Like::where('cons', $id)->count();
         return $likes;
     }
+
+    public function likedCons(){
+        $ids = Like::select('cons')->where('user', session('info.username'))->get();
+        return $ids;
+    }
 }

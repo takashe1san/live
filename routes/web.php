@@ -25,6 +25,10 @@ use Illuminate\Validation\Rules\Unique;
 
 Route::get('/', 'ConsController@showAllCons');
 
+Route::get('/myCons', 'ConsController@showMyCons');
+
+Route::get('/likedCons', 'ConsController@showLikedCons');
+
 // report ********************************************************
 
 // Route::get('addrep', function () {

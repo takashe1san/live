@@ -89,9 +89,9 @@
                     </li>
                     <div class="postssett">
                         <ul>
-                            <li class="po_sl">All Post</li>
-                            <li class="po_sl">My Post</li>
-                            <li class="po_sl">Doc Post</li>
+                            <li class="po_sl"><a href="/">All Consultations</a></li>
+                            <li class="po_sl"><a href="/myCons">My Consultations</a></li>
+                            <li class="po_sl"><a href="/likedCons">Liked Consultations</a></li>
                         </ul>
                     </div>
                     <li class="btnNotifications nav-link sle">
