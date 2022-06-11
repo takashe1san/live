@@ -236,11 +236,13 @@ postes.forEach((item)=>
                 
                 let data = xhr.response;
                  console.log(data)
-                 this.querySelector('.comm_content').value='';
+                 item.querySelector('.comm_content').value='';
               }
           }
         }
-        let formData = new FormData(this);
+        let f = item.querySelector(".Fwrit-comment");
+        console.log(f);
+        let formData = new FormData(f);
         //  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.send(formData);
         // console.log(formData);

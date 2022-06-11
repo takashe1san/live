@@ -24,6 +24,7 @@ class CommController extends Controller
             $usertype => session('info.username'),
             $commentTo => $info->con_id,
         ]);
+        return 's';
         // return redirect('showallcon');
     }
 
