@@ -90,7 +90,9 @@
                     <div class="postssett">
                         <ul>
                             <li class="po_sl"><a href="/">All Consultations</a></li>
-                            <li class="po_sl"><a href="/myCons">My Consultations</a></li>
+                            @if (session('type') == 'user')
+                                <li class="po_sl"><a href="/myCons">My Consultations</a></li>
+                            @endif
                             <li class="po_sl"><a href="/likedCons">Liked Consultations</a></li>
                         </ul>
                     </div>
@@ -213,7 +215,7 @@
                         @csrf
                         <i id="postType" hidden>doctor</i>
                         <div class=" user-profile">
-                            <img src="icons/logo.png" alt="logo">
+                            <img src="{{session('img')}}" alt="logo">
                             <div class="details">
                                 <p>{{session('info.username')}}</p>
                                 <div class="privacy">
@@ -309,6 +311,7 @@
                         @foreach ($info as $item)
                         <li class="eventSel">
                             <div class="right-event">
+                                <p>{{$item->doctor}} - {{$item->section}}:</p>
                                 <p>
                                     {{$item->info_content}}
                                 </p>
