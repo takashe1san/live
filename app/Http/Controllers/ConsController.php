@@ -22,8 +22,8 @@ class ConsController extends Controller
         }
     }
 
-    public function showCons($id){
-        $cons = Consultation::where('con_id', $id)->orderByDesc('con_id')->get();
+    public function showAllCons(){
+            $cons = Consultation::orderByDesc('con_id')->get();
         $atta[-1]="";$coms[-1]=''; $comc[-1]='';$like[-1]='';$love[-1]='';$imgs[-1]='';$comi[-1]='';
         foreach($cons as $con){
             $coms[$con->con_id] = (new CommController) ->showComm($con->con_id);
@@ -52,12 +52,8 @@ class ConsController extends Controller
                              'comImgs' => $comi]);
     }
 
-    public function showAllCons($id = null){
-        if($id != null){
-            $cons = Consultation::where('con_id', $id)->orderByDesc('con_id')->get();
-        }else{
-            $cons = Consultation::orderByDesc('con_id')->get();
-        }
+    public function showCons($id){        
+        $cons = Consultation::where('con_id', $id)->orderByDesc('con_id')->get();
         $atta[-1]="";$coms[-1]=''; $comc[-1]='';$like[-1]='';$love[-1]='';$imgs[-1]='';$comi[-1]='';
         foreach($cons as $con){
             $coms[$con->con_id] = (new CommController) ->showComm($con->con_id);
@@ -76,15 +72,15 @@ class ConsController extends Controller
         }
         $info = (new InfoController)->showInfo();
         return view('index',['cons' => $cons,
-                             'attach' => $atta,
-                             'com' => $coms,
-                             'comc' => $comc, 
-                             'likes' => $like, 
-                             'liked' => $love, 
-                             'consImgs' => $imgs, 
-                             'info' => $info,
-                             'comImgs' => $comi]);
-    }
+                            'attach' => $atta,
+                            'com' => $coms,
+                            'comc' => $comc, 
+                            'likes' => $like, 
+                            'liked' => $love, 
+                            'consImgs' => $imgs, 
+                            'info' => $info,
+                            'comImgs' => $comi]);
+}
 
     public function showMyCons(){
         $cons = Consultation::where('username', session('info.username'))->orderByDesc('con_id')->get();

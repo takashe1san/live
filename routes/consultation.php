@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/insertCon','ConsController@insCons');
 
-// Route::get('/showcon/{id}','ConsController@showCons');
+Route::get('/con/{id}','ConsController@showCons');
 
 // Route::get('showallcon','ConsController@showAllCons');
 

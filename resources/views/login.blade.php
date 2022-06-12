@@ -14,27 +14,10 @@
         <form action=" {{ route('signup') }} " class="form" id="a-form" method="POST">
         @csrf
           <h2 class="form_title title">Create Account</h2>
-          <div class="select-box">
-            <div class="select-box__current" tabindex="1">
-              <div class="select-box__value">
-                <input class="select-box__input" type="radio" id="0" value="user" name="type" checked="checked"/>
-                <p class="select-box__input-text">User</p>
-              </div>
-              <div class="select-box__value">
-                <input class="select-box__input" type="radio" id="1" value="doctor" name="type"/>
-                <p class="select-box__input-text">Doctor</p>
-              </div>
-              <i class="bi bi-caret-down-fill"></i>
-            </div>
-            <ul class="select-box__list">
-              <li>
-                <label class="select-box__option" for="0" aria-hidden="aria-hidden">User</label>
-              </li>
-              <li>
-                <label class="select-box__option" for="1" aria-hidden="aria-hidden">Doctor</label>
-              </li>
-            </ul>
-          </div>
+          <select name="type" class="select-box">
+            <option value="user">user</option>
+            <option value="doctor">doctor</option>
+          </select>
           <input class="form__input" type="text" name="username" placeholder="Username">
           @error('username')
           <span class="spanError">{{$message}}</span>
@@ -62,27 +45,10 @@
         <form action=" {{route('login')}} " class="form" id="b-form" method="POST">
         @csrf
           <h2 class="form_title title">Sign in to Website</h2>
-          <div class="select-box">
-            <div class="select-box__current" tabindex="1">
-              <div class="select-box__value">
-                <input class="select-box__input" type="radio" id="0" value="user" name="type" checked="checked"/>
-                <p class="select-box__input-text">User</p>
-              </div>
-              <div class="select-box__value">
-                <input class="select-box__input" type="radio" id="1" value="doctor" name="type"/>
-                <p class="select-box__input-text">Doctor</p>
-              </div>
-              <i class="bi bi-caret-down-fill"></i>
-            </div>
-            <ul class="select-box__list">
-              <li>
-                <label class="select-box__option" for="0" aria-hidden="aria-hidden">User</label>
-              </li>
-              <li>
-                <label class="select-box__option" for="1" aria-hidden="aria-hidden">Doctor</label>
-              </li>
-            </ul>
-          </div>
+            <select name="type" class="select-box">
+              <option value="user">user</option>
+              <option value="doctor">doctor</option>
+            </select>
           <input class="form__input" type="text" name='username' placeholder="Username">
           <input class="form__input" type="password" name='password' placeholder="Password">
           <a class="form__link">Forgot your password?</a>

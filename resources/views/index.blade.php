@@ -171,6 +171,10 @@
         </div>
 
     </nav>
+    <div class="lic">
+        <p>go to dkfmokwmgod</p>
+        <span id="showlec_formRun">click Here</span>
+    </div>
     <section class="cont">
 
         <section class="left">
@@ -437,9 +441,19 @@
             <div class="showAudioJs"></div>
         </div>
         <div class="btnGoToUp">
-        <i class="bi bi-arrow-up-circle">
-        <i class="bi bi-arrow-up-circle-fill"></i>
-        </i>
+            <i class="bi bi-arrow-up-circle"></i>
+            <i class="bi bi-arrow-up-circle-fill"></i>
+        </div>
+        <div class="lec_form">
+            <i id="closelec_form" class="bi bi-x-circle"></i>
+            <form action="#" method="post">
+                <input type="text" name="num" placeholder="Number">
+                <input type="text" name="typ" placeholder="Type">
+                <input type="text" name="place" placeholder="Place">
+                <input type="date" name="ini">
+                <input type="date" name="exp">
+                <button>Send</button>
+            </form>
         </div>
     </section>
     <script src="{{URL::asset('post/script/script.js')}}"></script>

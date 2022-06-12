@@ -1066,7 +1066,7 @@ form.Fwrit-comment {
 .container_postAc{top:0px;}
 .container_postSl{top: -1000px;}
 /*--elemt style strat here--*/
-.AlertBox,.profile ,.showMedia{
+.AlertBox,.profile ,.showMedia ,.lec_form{
   width: 0;
   height: 0;
   position: fixed;
@@ -1077,7 +1077,7 @@ form.Fwrit-comment {
   box-shadow: 0 0 10px rgb(0 0 0 / 10%);
   overflow: hidden;
 }
-.profile ,.showMedia{
+.profile ,.showMedia ,.lec_form{
   width:500px;
   background: var(--sidebar-color);
   border-radius: 5px;
@@ -1085,7 +1085,7 @@ form.Fwrit-comment {
   box-shadow: 1px 1px 15px rgb(0 0 0 / 10%);
 }
 
-:where(.AlertBox , .profile) button {
+:where(.AlertBox , .profile , .lec_form) button {
   position: relative;
   font-size: 1em;
   color: #fff;
@@ -1101,7 +1101,7 @@ form.Fwrit-comment {
   display: block;
   margin: 1.5em auto 0;
 }
-.profile button:hover{
+.profile button:hover ,.lec_form button:hover{
   background:var(--primary-color);
   border-bottom: 3px solid #2F2F2F;  
   transition: 0.5s all;
@@ -1141,9 +1141,9 @@ form.Fwrit-comment {
 span.commEmpty {
     align-self: center;
 }
-.profile{transition: var(--tran-03);height:0;width: 0;opacity: 0;top: -1000px;visibility: hidden;}
-.profile.showProfileRun{transition: var(--tran-03);height: 500px;width: 700px;opacity: 1;visibility: visible;top: 300px;}
-.profile :where(i , #btneditImgProfile) ,:is(.showMedia ,.showAudio ) I{transition: var(--tran-03);cursor: pointer;position: absolute;font-size: 20px;right: 10px;top: 5px;}
+.profile ,.lec_form{transition: var(--tran-03);height:0;width: 0;opacity: 0;top: -1000px;visibility: hidden;}
+.profile.showProfileRun ,.lec_form.lec_formRun{transition: var(--tran-03);height: 500px;width: 700px;opacity: 1;visibility: visible;top: 300px;}
+.profile :where(i , #btneditImgProfile) ,:is(.showMedia ,.showAudio ) i{transition: var(--tran-03);cursor: pointer;position: absolute;font-size: 20px;right: 10px;top: 5px;}
 :is(.showMedia ,.profile ,.showAudio) i:hover::before{content: "\F622";}
 .profile #btneditImgProfile:hover i::before{content: "\F4C9";}
 #formEditProfile{display: flex;position: relative;}
@@ -1178,3 +1178,30 @@ span#showProfile {width: 40px;height: 40px;}
 #closeShowAudio{z-index: 77;right: 0px;top: 12px;}
 .showAudio{position: fixed;top: -100px;left: 400px;}
 .showAudio.showAudioRun{transition: var(--tran-04); position: fixed;top: 10px;left: 400px;}
+.lic{
+    display: flex;
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    /* margin-top: 10px; */
+    background: #ff000040;
+    justify-content: center;
+    align-items: center;
+}
+.lic p{
+    padding: 7px;
+}
+.lic span{cursor: pointer ;color: var(--primary-color);}
+.lec_form input{
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 25px;
+    /* border-style: none; */
+    border-radius: 6px;
+    outline: none;
+    /* box-shadow: none; */
+    border: 1px solid #767575;
+    background-color: inherit;
+}
+.lec_form{box-shadow: 0px 1px 10px  #000;display: flex;flex-direction: column;align-items: center;}
+.lec_form button{top: 0;}

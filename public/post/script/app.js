@@ -9,6 +9,8 @@ stetp = document.querySelectorAll('.list li'),
 formPost = container_post.querySelector("#formPost"),
 sendPost = container_post.querySelector("#sendPost"),
 fileImg= formPost.querySelector("#fileImg"),
+showlec_formRun= formPost.querySelector("#showlec_formRun"),
+lec_form= formPost.querySelector(".lec_form"),
 fileConfig= formPost.querySelector("#fileConfig"),
 inputfile= formPost.querySelector("#inputfile"),
 postes = document.querySelectorAll(".postes"),
@@ -82,7 +84,9 @@ saveProfile.onclick= ()=>{
   // xhr.send(formData);
   // // console.log(formData);
 }
-
+showlec_formRun.onclick = () => {
+  lec_form.classList.toggle('lec_formRun');
+}
 backnot.onclick = ()=>{
 showNotificationsv.style.left = '100%';
 backnot.classList.toggle('roro')
