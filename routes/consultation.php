@@ -23,3 +23,7 @@ Route::get('lastid', 'ConsController@getID');
 //********************** LIKES > *********************** */
 
 Route::get('/like/{id}', 'LikesController@like');
+
+//********************** Search *************************/
+
+Route::get('/docsearch/{content?}', 'ConsController@Csearch');

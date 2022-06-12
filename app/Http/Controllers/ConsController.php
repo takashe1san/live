@@ -150,4 +150,15 @@ class ConsController extends Controller
         $count = Consultation::count();
         return $count;
     }
+
+    public function Csearch($content=null){
+        $a='';
+        if($content != null){
+            $cons = Consultation::where('con_content', 'LIKE','%'.$content.'%')->get();
+            foreach($cons as $con){
+                $a .= '<ul>'.$con->con_content.'     <a href="/con/'.$con->con_id.'">more...</a></ul> ';
+            }
+        }
+        return $a;
+    }
 }
