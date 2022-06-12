@@ -171,7 +171,7 @@
         </div>
 
     </nav>
-    @if (session('type') == 'doctor')
+    @if (!$lic)
         <div class="lic">
             <p>add License</p>
             <a href="/addLic">click Here</a>

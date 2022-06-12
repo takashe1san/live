@@ -8,11 +8,11 @@ arrowBack = container_post.querySelector(".audience .arrow-back"),
 stetp = document.querySelectorAll('.list li'),
 formPost = container_post.querySelector("#formPost"),
 sendPost = container_post.querySelector("#sendPost"),
-fileImg= formPost.querySelector("#fileImg"),
+fileImg= formPost.querySelectorAll("#fileImg"),
 showlec_formRun= formPost.querySelector("#showlec_formRun"),
 lec_form= formPost.querySelector(".lec_form"),
 fileConfig= formPost.querySelector("#fileConfig"),
-inputfile= formPost.querySelector("#inputfile"),
+inputfile= formPost.querySelectorAll("#inputfile"),
 postes = document.querySelectorAll(".postes"),
 menu_links = document.querySelectorAll(".sle"),
 po_sl = document.querySelectorAll(".po_sl"),
@@ -41,9 +41,9 @@ formPost.onsubmit = (e)=>{
 formProfile.onsubmit = (e)=>{
   e.preventDefault();
 }
-fileImg.onclick = ()=>{
+fileImg.forEach((item)=>item.onclick = ()=>{
 inputfile.click();
-}
+})
 function refProfile(x) {
   if (x == "ok") {
     editProfile.classList.remove('btnOff')
@@ -254,7 +254,7 @@ container_post.classList.toggle('container_postSl');
 container_post.classList.toggle('container_postAc');
 Add.classList.toggle('ac');
 }
-inputfile.onchange = (e) => {
+inputfile.forEach((item)=>item.onchange = (e) => {
 // Get the selected file
 let [file] = e.target.files;
 // Get the file name and size
@@ -265,7 +265,7 @@ let fileSize = formatSizeUnits(size);
 // Set the text content
 let fileNameAndSize = `${fileName} - ${fileSize}`;
 fileConfig.textContent = fileNameAndSize;
-}
+})
 stetp.forEach((item)=>
 item.onclick = function activeLink(){
     stetp.forEach((item)=>item.classList.remove('active'));
@@ -347,7 +347,4 @@ function alertBox(str,color) {
     AlertBoxP.innerHTML = str;
    }
   
-}
-showlec_formRun.onclick = () => {
-  lec_form.classList.toggle('lec_formRun')
 }

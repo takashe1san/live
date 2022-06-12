@@ -18,9 +18,21 @@ class LicensesController extends Controller
                 'lic_issuing_place' => $info->place,
                 'doctor' => session('info.username'),
             ]);
-            return 'License added';
+            return redirect('/');
         }else{
             return 'something went wronge!!';
+        }
+    }
+
+    public function LicExists(){
+        if(session('type') == 'doctor'){
+            if(License::where('doctor', session('info.username'))->exists()){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
         }
     }
 

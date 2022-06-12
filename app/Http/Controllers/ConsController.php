@@ -23,7 +23,7 @@ class ConsController extends Controller
     }
 
     public function showAllCons(){
-            $cons = Consultation::orderByDesc('con_id')->get();
+        $cons = Consultation::orderByDesc('con_id')->get();
         $atta[-1]="";$coms[-1]=''; $comc[-1]='';$like[-1]='';$love[-1]='';$imgs[-1]='';$comi[-1]='';
         foreach($cons as $con){
             $coms[$con->con_id] = (new CommController) ->showComm($con->con_id);
@@ -40,16 +40,18 @@ class ConsController extends Controller
                 }
             }
         }
+        $lic = (new LicensesController)->LicExists();
         $info = (new InfoController)->showInfo();
-        return view('index',['cons' => $cons,
-                             'attach' => $atta,
-                             'com' => $coms,
-                             'comc' => $comc, 
-                             'likes' => $like, 
-                             'liked' => $love, 
+        return view('index',['cons'     => $cons,
+                             'attach'   => $atta,
+                             'com'      => $coms,
+                             'comc'     => $comc, 
+                             'likes'    => $like, 
+                             'liked'    => $love, 
                              'consImgs' => $imgs, 
-                             'info' => $info,
-                             'comImgs' => $comi]);
+                             'info'     => $info,
+                             'comImgs'  => $comi,
+                             'lic'      => $lic]);
     }
 
     public function showCons($id){        
