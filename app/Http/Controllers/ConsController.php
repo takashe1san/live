@@ -22,10 +22,35 @@ class ConsController extends Controller
         }
     }
 
-    // public function showCons(){
-    //     $a = Consultation::where('username',session('info.username'))->get();
-    //     return view('consultation',['value' => $a]);
-    // }
+    public function showCons($id){
+        $cons = Consultation::where('con_id', $id)->orderByDesc('con_id')->get();
+        $atta[-1]="";$coms[-1]=''; $comc[-1]='';$like[-1]='';$love[-1]='';$imgs[-1]='';$comi[-1]='';
+        foreach($cons as $con){
+            $coms[$con->con_id] = (new CommController) ->showComm($con->con_id);
+            $comc[$con->con_id] = (new CommController) ->comCount($con->con_id);
+            $like[$con->con_id] = (new LikesController)->likeCount($con->con_id);
+            $love[$con->con_id] = (new LikesController)->likeCheck($con->con_id);
+            $imgs[$con->con_id] = (new FileController) ->showImg('user',$con->username);
+            $atta[$con->con_id] = (new FileController) ->getAttach($con->con_id);
+            foreach($coms[$con->con_id] as $com){
+                if($com->username != null){
+                    $comi[$com->com_id] = (new FileController) ->showImg('user',$com->username);
+                }elseif($com->doctor != null){
+                    $comi[$com->com_id] = (new FileController) ->showImg('doctor',$com->doctor);
+                }
+            }
+        }
+        $info = (new InfoController)->showInfo();
+        return view('index',['cons' => $cons,
+                             'attach' => $atta,
+                             'com' => $coms,
+                             'comc' => $comc, 
+                             'likes' => $like, 
+                             'liked' => $love, 
+                             'consImgs' => $imgs, 
+                             'info' => $info,
+                             'comImgs' => $comi]);
+    }
 
     public function showAllCons(){
         $cons = Consultation::orderByDesc('con_id')->get();
@@ -156,7 +181,7 @@ class ConsController extends Controller
         if($content != null){
             $cons = Consultation::where('con_content', 'LIKE','%'.$content.'%')->get();
             foreach($cons as $con){
-                $a .= '<ul>'.$con->con_content.'     <a href="/con/'.$con->con_id.'">more...</a></ul> ';
+                $a .= '<ul>'.$con->con_content.'     <a href="/showcon/'.$con->con_id.'">more...</a></ul> ';
             }
         }
         return $a;
