@@ -72,6 +72,7 @@ class ConsController extends Controller
                 }
             }
         }
+        $lic = (new LicensesController)->LicExists();
         $info = (new InfoController)->showInfo();
         return view('index',['cons' => $cons,
                             'attach' => $atta,
@@ -81,7 +82,8 @@ class ConsController extends Controller
                             'liked' => $love, 
                             'consImgs' => $imgs, 
                             'info' => $info,
-                            'comImgs' => $comi]);
+                            'comImgs' => $comi,
+                            'lic'      => $lic]);
 }
 
     public function showMyCons(){
@@ -102,6 +104,7 @@ class ConsController extends Controller
                 }
             }
         }
+        $lic = (new LicensesController)->LicExists();
         $info = (new InfoController)->showInfo();
         return view('index',['cons' => $cons,
                              'attach' => $atta,
@@ -111,7 +114,8 @@ class ConsController extends Controller
                              'liked' => $love, 
                              'consImgs' => $imgs, 
                              'info' => $info,
-                             'comImgs' => $comi]);
+                             'comImgs' => $comi,
+                             'lic'      => $lic]);
     }
 
     public function showLikedCons(){
@@ -133,6 +137,7 @@ class ConsController extends Controller
                 }
             }
         }
+        $lic = (new LicensesController)->LicExists();
         $info = (new InfoController)->showInfo();
         return view('index',['cons' => $cons,
                              'attach' => $atta,
@@ -142,7 +147,8 @@ class ConsController extends Controller
                              'liked' => $love, 
                              'consImgs' => $imgs, 
                              'info' => $info,
-                             'comImgs' => $comi]);
+                             'comImgs' => $comi,
+                             'lic'      => $lic]);
     }
 
     public function getCons($id){
@@ -183,7 +189,7 @@ class ConsController extends Controller
         if($content != null){
             $cons = Consultation::where('con_content', 'LIKE','%'.$content.'%')->get();
             foreach($cons as $con){
-                $a .= '<ul>'.$con->con_content.'     <a href="/'.$con->con_id.'">more...</a></ul> ';
+                $a .= '<ul>'.$con->con_content.'     <a href="/con/'.$con->con_id.'">more...</a></ul> ';
             }
         }
         return $a;
