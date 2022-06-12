@@ -84,9 +84,7 @@ saveProfile.onclick= ()=>{
   // xhr.send(formData);
   // // console.log(formData);
 }
-showlec_formRun.onclick = () => {
-  lec_form.classList.toggle('lec_formRun');
-}
+
 backnot.onclick = ()=>{
 showNotificationsv.style.left = '100%';
 backnot.classList.toggle('roro')
@@ -349,4 +347,7 @@ function alertBox(str,color) {
     AlertBoxP.innerHTML = str;
    }
   
+}
+showlec_formRun.onclick = () => {
+  lec_form.classList.toggle('lec_formRun')
 }

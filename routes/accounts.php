@@ -45,3 +45,7 @@ Route::get('doctors', 'DoctorController@showAll');
 // ***************** search > *********************
 
 // Route::get('/docsearch/{username?}', 'DoctorController@Dsearch');
+
+Route::get('/addLic', function(){
+    return view('lic');
+});
