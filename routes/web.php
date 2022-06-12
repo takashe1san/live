@@ -23,7 +23,7 @@ use Illuminate\Validation\Rules\Unique;
 //     return view('welcome');
 // });
 
-Route::get('/', 'ConsController@showAllCons');
+Route::get('/{id?}', 'ConsController@showAllCons');
 
 Route::get('/myCons', 'ConsController@showMyCons');
 

@@ -95,7 +95,7 @@ class FileController extends Controller
             $imgInfo = Media::where( $type , $username)->first();
             $img = $imgInfo->mediaDir."/$imgInfo->name";
         }else{
-            $img = "/images/".session('type')."s/personal.png"; 
+            $img = "images/".session('type')."s/personal.png"; 
         }
         return $img;
     }
