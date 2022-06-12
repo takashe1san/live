@@ -20,13 +20,14 @@
     <div class="lec_form lec_formRun">
         <p>add License</p>
         {{-- <i id="closelec_form" class="bi bi-x-circle"></i> --}}
-        <form action="#" method="post">
+        <form action="{{ url('insLic')}}" method="post">
+            @csrf
             <input type="text" name="num" placeholder="Number">
             <input type="text" name="typ" placeholder="Type">
             <input type="text" name="place" placeholder="Place">
             <input type="date" name="ini">
             <input type="date" name="exp">
-            <button>Send</button>
+            <button type="submit">Send</button>
         </form>
     </div>
 

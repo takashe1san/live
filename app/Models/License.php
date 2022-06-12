@@ -14,6 +14,7 @@ class License extends Model
         'lic_ini_date',
         'lic_exp_date',
         'lic_issuing_place',
+        'doctor',
     ];
 
     protected $primaryKey = 'lic_id';

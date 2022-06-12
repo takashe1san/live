@@ -171,10 +171,12 @@
         </div>
 
     </nav>
-    <div class="lic">
-        <p>go to dkfmokwmgod</p>
-        <span id="showlec_formRun">click Here</span>
-    </div>
+    @if (session('type') == 'doctor')
+        <div class="lic">
+            <p>add License</p>
+            <a href="/addLic">click Here</a>
+        </div>
+    @endif
     <section class="cont">
 
         <section class="left">
@@ -206,7 +208,7 @@
                         </div>
                         <button id="sendPost" name="s">Post</button>
                     </form>
-                    @else
+                @elseif(session('type') == 'doctor')
                     <form  action="#" method="post" id="formPost" enctype="multipart/form-data">
                         @csrf
                         <i id="postType" hidden>doctor</i>
@@ -230,7 +232,7 @@
                         </div> --}}
                         <button id="sendPost" name="s">Post</button>
                     </form>
-                    @endif
+                @endif
                 </section>
                 <section class="audience">
                     <header>

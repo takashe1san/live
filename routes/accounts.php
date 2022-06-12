@@ -49,3 +49,5 @@ Route::get('doctors', 'DoctorController@showAll');
 Route::get('/addLic', function(){
     return view('lic');
 });
+
+Route::post('/insLic', 'LicensesController@addLic');
