@@ -73,7 +73,7 @@ button, a {
   max-width: 1800px;
 }
 .app-container button, .app-container input, .app-container optgroup, .app-container select, .app-container textarea {
-  font-family: "DM Sans", sans-serif;
+  /* font-family: "DM Sans", sans-serif; */
 }
 .app-content {
   display: flex;
@@ -859,4 +859,17 @@ button, a {
     right: 2px;
     top: 10px;
   }
+}
+
+.btnLic.check{
+  background-color: rgba(16, 230, 16, 0.858);
+}
+button {
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+}
+button:hover{
+  background-color: var(--link-color-hover);
+  color: var(--link-color-active);
 }

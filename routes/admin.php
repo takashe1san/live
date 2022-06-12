@@ -14,3 +14,5 @@ Route::post('adlog', 'AdminController@adminLog');
 Route::get('delcfrmad/{id}', 'AdminController@delCons');
 
 Route::get('delpfrma/{id}', 'AdminController@delPub');
+
+Route::get('validLic/{id}', 'LicensesController@validLic');

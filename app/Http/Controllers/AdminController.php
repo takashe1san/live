@@ -44,11 +44,14 @@ class AdminController extends Controller
 
     public function dash(){
         if(session('type') == 'admin'){
-            $count['doctors'] = (new DoctorController)->doctorCount();
-            $count['users']   = (new UsersController) ->usersCount();
-            $count['cons']    = (new ConsController)  ->consCount();
-            $reports          = (new RepoController)  ->getReports();
-            return view('admin', ['counter' => $count, 'reports' => $reports]);
+            $count['doctors'] = (new DoctorController)   -> doctorCount();
+            $count['users']   = (new UsersController)    -> usersCount();
+            $count['cons']    = (new ConsController)     -> consCount();
+            $reports          = (new RepoController)     -> getReports();
+            $license          = (new LicensesController) -> notValid();
+            return view('admin', ['counter' => $count,
+                                  'reports' => $reports,
+                                  'lic'     => $license, ]);
         }else{
             return redirect('adminlog');
         }

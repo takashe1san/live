@@ -46,4 +46,9 @@ class LicensesController extends Controller
             return 'something went wronge!!!';
         }
     }
+
+    public function notValid(){
+        $lic = License::where('valid_date', null)->get();
+        return $lic;
+    }
 }

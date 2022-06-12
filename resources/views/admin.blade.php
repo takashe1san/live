@@ -141,7 +141,7 @@
       </div>
 
 </div>
-{{-- <div class="messages-section">
+<div class="messages-section">
   <button class="messages-close">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle">
       <circle cx="12" cy="12" r="10" />
@@ -149,25 +149,28 @@
       <line x1="9" y1="9" x2="15" y2="15" /></svg>
   </button>
   <div class="projects-section-header">
-    <p>Client Messages</p>
+    <p>Validating License</p>
   </div>
   <div class="messages">
+    @foreach ($lic as $item)
     <div class="message-box">
-      <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80" alt="profile image">
+      {{-- <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80" alt="profile image"> --}}
       <div class="message-content">
         <div class="message-header">
-          <div class="name">Stephanie</div>
-
+          <div class="name">{{$item->doctor}}</div>
         </div>
         <p class="message-line">
-          I got your first assignment. It was quite good. 🥳 We can continue with the next assignment.
+          {{$item->lic_num}} - {{$item->lic_typ}} - {{$item->lic_issuing_place}}
+          <br>
+          ({{$item->lic_ini_date}} &rArr; {{$item->lic_exp_date}})
         </p>
         <p class="message-line time">
-          Dec, 12
+          <button class="btnLic"><i hidden>{{$item->lic_id}}</i> Valid</button>
         </p>
       </div>
     </div>
-    </div> --}}
+    @endforeach
+    </div>
 <!-- partial -->
  
 <script src="{{URL::asset('admin/app.js')}}"></script>

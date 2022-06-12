@@ -31,3 +31,24 @@ document.addEventListener('DOMContentLoaded', function () {
       document.querySelector('.messages-section').classList.remove('show');
     });
   });
+
+  const btnLic = document.querySelectorAll('.btnLic');
+
+  btnLic.forEach((item)=>item.onclick = ()=>{
+    let id = item.querySelector('i').innerHTML;
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://localhost:8000/validLic/"+id, true);
+    xhr.onload = ()=>{
+    if(xhr.readyState === XMLHttpRequest.DONE){
+        if(xhr.status === 200){
+          
+          let data = xhr.response;
+          console.log(`server say: ${data}`)
+          item.classList.add('btnLic.check')
+          // item.innerHTML = `<i class="bi bi-check-circle-fill"></i>`;
+        }
+    }
+    }
+    xhr.send();
+// 
+  })
