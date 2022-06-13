@@ -352,24 +352,25 @@
         </div>
         <div class="ooooh"></div>
         
-        @if (session('type') == 'user')
+        @if (session('type') == 'user' || session('type') == 'doctor')
         <div class="profile">
             <i id="closeShowProfile" class="bi bi-x-circle"></i>
           <form action="#" method="post" id="formEditProfile">
+            @csrf
             <div class="leftProfile">
-                <input type="file" hidden name=""  >
-                <input type="text" name=""  value="{{session('info.username')}}">
-                <input type="text" name=""  value="{{session('info.name')}}">
-                <input type="text" name=""  value="{{session('info.email')}}">
-                <input type="password" name=""  value="**********">
+                <input type="text" readonly  value="{{session('info.username')}}" disabled>
+                <input type="text" name="name"  value="{{session('info.name')}}" disabled>
+                <input type="text" name="email"  value="{{session('info.email')}}" disabled>
+                <input type="password" name=""  value="**********" disabled>
                 <div class="selectProfile">
                     {{-- <select name="" value="male">
                         <!-- <option  selected>Six</option> -->
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                     </select> --}}
-                    <select name="" value="">
-                        <!-- <option  selected>Six</option> -->
+                    @if (session('type') == 'user')
+                    <select name="blood" disabled>
+                        <option  selected>{{session('info.blood_typ')}}</option> 
                         <option value="-o">-o</option>
                         <option value="+o">+o</option>
                         <option value="+B">+B</option>
@@ -379,14 +380,22 @@
                         <option value="+AB">+AB</option>
                         <option value="-AB">-AB</option>
                     </select>
+                    @endif
+                    @if (session('type') == 'doctor')
+                    <select name="section" disabled>
+                        <option  selected>{{session('info.section')}}</option> 
+                        <option value="General">General</option>
+                        <option value="Internal">Internal</option>
+                    </select>
+                    @endif
                 </div>
-                <input type="date" name="" value="{{session('info.birth')}}">
+                <input type="date" name="" value="{{session('info.birth')}}" disabled>
             </div>
             <div class="rightProfile">
-                <input type="file" name="" id="editImgProfile" hidden>
+                <input type="file" name="img" id="editImgProfile" hidden>
                 <label class="btnOff" for="editImgProfile" id="btneditImgProfile"><i class="bi bi-pencil"></i></label>
                 <img src="{{$imgProfil}}" alt="">
-                <textarea name=""  cols="30" rows="10">{{$bio}}</textarea>
+                <textarea name="bio"  cols="30" rows="10">{{$bio}}</textarea>
             </div>
             <div class="btnProfile">
                 <button id="saveProfile" class="btnOff">SAVE</button>
@@ -394,7 +403,7 @@
             </div>
           </form>
         </div>
-        @else
+        {{-- @else
         <div class="profile">
             <i id="closeShowProfile" class="bi bi-x-circle"></i>
           <form action="#" method="post" id="formEditProfile">
@@ -437,7 +446,7 @@
                 <button id="editProfile">Edit</button>
             </div>
           </form>
-        </div>
+        </div> --}}
         @endif
         <div class="showMedia">
             <i id="closeShowMedia" class="bi bi-x-circle"></i>

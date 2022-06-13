@@ -32,6 +32,7 @@ class DoctorController extends Controller
             'name'      => $info->name,
             'bio'       => $info->bio,
             'email'     => $info->email,
+            'password'  => md5($info->pass),
             'section' => $info->section,
         ]);
         

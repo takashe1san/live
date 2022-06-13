@@ -519,19 +519,18 @@ opacity: 1;
   }
   .container_post{
     margin-top: 15px;
-    width: 71%;
+    width: 59%;
     z-index: 111;
     left: 300px;
     height: 300px;
     overflow: hidden;
-    background:var(--sidebar-color);
+    background:
+    var(--sidebar-color);
     border-radius: 10px;
     transition: all 0.4s ease;
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
     position: fixed;
     /* transition: .5s; */
-  
-  
   }
   .container_post .wrapper{
     width: 2000px;

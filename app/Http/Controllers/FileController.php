@@ -31,7 +31,7 @@ class FileController extends Controller
 
             $this->imgCheck();
 
-            return redirect('/');
+            // return redirect('/');
         }
     }
     

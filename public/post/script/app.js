@@ -27,6 +27,8 @@ AlertBoxP= document.querySelector(".AlertBox p"),
 Fwrit_comment= document.querySelectorAll(".Fwrit-comment"),
 backnot = document.querySelector(".backnot"),
 Profile = document.querySelector(".profile"),
+ProfileInput = Profile.querySelectorAll("input"),
+ProfileSelect = Profile.querySelector("select"),
 showProfile = document.querySelector("#showProfile"),
 closeProfile = document.querySelector("#closeShowProfile"),
 saveProfile = document.querySelector("#saveProfile"),
@@ -49,6 +51,8 @@ function refProfile(x) {
     editProfile.classList.remove('btnOff')
     saveProfile.classList.add('btnOff')
     btneditImgProfile.classList.add('btnOff')
+    ProfileInput.forEach((item)=>item.setAttribute("disabled", ""))
+    ProfileSelect.setAttribute("disabled", "")
 } else {
   console.log("ERROR")
   }}
@@ -65,24 +69,26 @@ editProfile.onclick= ()=>{
   editProfile.classList.add('btnOff')
   saveProfile.classList.remove('btnOff')
   btneditImgProfile.classList.remove('btnOff')
+  ProfileInput.forEach((item)=>item.removeAttribute('disabled'))
+  ProfileSelect.removeAttribute('disabled')
 }
 saveProfile.onclick= ()=>{
   refProfile("ok")
-  // let xhr = new XMLHttpRequest();
-  // xhr.open("POST", "http://localhost:8000/test", true);
-  // xhr.onload = ()=>{
-  //   if(xhr.readyState === XMLHttpRequest.DONE){
-  //       if(xhr.status === 200){
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", "http://localhost:8000/upinfo", true);
+  xhr.onload = ()=>{
+    if(xhr.readyState === XMLHttpRequest.DONE){
+        if(xhr.status === 200){
           
-  //         let data = xhr.response;
-  //          console.log(data)
-  //         //  refProfile(x)
-  //       }
-  //   }
-  // }
-  // let formData = new FormData(formProfile);
-  // xhr.send(formData);
-  // // console.log(formData);
+          let data = xhr.response;
+           console.log(data)
+          //  refProfile(x)
+        }
+    }
+  }
+  let formData = new FormData(formProfile);
+  xhr.send(formData);
+  // console.log(formData);
 }
 
 backnot.onclick = ()=>{

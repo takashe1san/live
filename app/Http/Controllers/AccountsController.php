@@ -137,6 +137,10 @@ class AccountsController extends Controller
         }elseif(session('type') == 'doctor'){
             (new DoctorController)->upInfo($info);
         }else return 'failed';
+
+        (new FileController)->personal($info);
+
+        return 'updated';
     }
 
     public function deleteAcc(){
