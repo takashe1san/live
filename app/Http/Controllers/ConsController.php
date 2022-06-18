@@ -189,7 +189,7 @@ class ConsController extends Controller
         if($content != null){
             $cons = Consultation::where('con_content', 'LIKE','%'.$content.'%')->get();
             foreach($cons as $con){
-                $a .= '<ul>'.$con->con_content.'     <a href="/con/'.$con->con_id.'">more...</a></ul> ';
+                $a .= '<li>'.$con->con_content.'     <a href="/con/'.$con->con_id.'">more...</a></li> ';
             }
         }
         return $a;

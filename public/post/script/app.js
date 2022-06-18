@@ -110,7 +110,7 @@ xhr.onload = ()=>{
  if(xhr.readyState === XMLHttpRequest.DONE){
      if(xhr.status === 200){
        let data = xhr.response;
-       document.querySelector(".search_box_sl").innerHTML = data;
+       document.querySelector(".search_box_sl ul").innerHTML = data;
       console.log(data)
        
      }

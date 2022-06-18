@@ -208,7 +208,7 @@
                         <div class="options">
                             <p id="fileConfig">Add to Your Post</p>
                             <i class="bi bi-images" alt="gallery" id="fileImg" ></i>
-                            <input type="file" name="attach[]" id="inputfile" multiple hidden>
+                            <input type="file" name="attach[]" id="inputfile" multiple >
                         </div>
                         <button id="sendPost" name="s">Post</button>
                     </form>

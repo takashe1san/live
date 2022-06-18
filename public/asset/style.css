@@ -74,7 +74,7 @@ body {
   height: 100%;
 }
 
-.form__input {
+.form__input ,select {
   width: 350px;
   height: 40px;
   margin: 4px 0;

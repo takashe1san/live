@@ -45,6 +45,9 @@
         <form action=" {{route('login')}} " class="form" id="b-form" method="POST">
         @csrf
           <h2 class="form_title title">Sign in to Website</h2>
+          @error('log')
+                <span class="spanError">{{$message}}</span>
+          @enderror
             <select name="type" class="select-box">
               <option value="user">user</option>
               <option value="doctor">doctor</option>

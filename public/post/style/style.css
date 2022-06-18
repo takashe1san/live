@@ -1204,3 +1204,11 @@ span#showProfile {width: 40px;height: 40px;}
 }
 .lec_form{box-shadow: 0px 1px 10px  #000;display: flex;flex-direction: column;align-items: center;}
 .lec_form button{top: 0;}
+.search_box_sl li:hover{}
+.search_box_sl li{
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.search_box_sl ul{margin: 0;}

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\DoctorController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator ;
 
 class AccountsController extends Controller
@@ -76,49 +77,19 @@ class AccountsController extends Controller
     }
 
     public function login(Request $info){
-        if($info->type == 'user'){
-            $userInfo = (new UsersController)->userInfo($info);
-        }elseif($info->type == 'doctor'){
-            $userInfo = (new DoctorController)->docInfo($info);
-        }
-
-        
-        $rules = [
-            'username' => [
-                'required',
-            ],
-            'password' => [
-                'required',
-            ]
-        ];
-        
-        $msgs = [
-            'username.required' => 'required field',
-            'password.required' => 'required field',
-        ];
-
-        $valid = Validator::make($info->all() , $rules , $msgs);
-        
-        if($valid->fails()){
-            return redirect()->back()->withErrors($valid)->withInput($info->all());
-        }
-
-        $password = md5($info->password);
-        
-        if($userInfo->password == $password){
-            session([
-                'type' => $info->type,
-                'info' => $userInfo,
+            $credentials = $info->validate([
+                'username' => ['required'],
+                'password' => ['required'],
             ]);
-
-            (new FileController)->imgCheck();
-
-            return redirect('/');
-        }else{
-            $valid->errors()->add('password', 'wronge password');
-            return redirect()->back()->withErrors($valid)->withInput($info->all());
-            // return $valid->errors();
-        }
+            if (Auth::guard($info->type)->attempt($credentials)) {
+                $info->session()->regenerate();
+                session([ 'type' => $info->type, ]);
+                (new FileController)->imgCheck();
+                return redirect('/');
+            }
+            return back()->withErrors([
+                'log' => 'wronge username or password',
+            ])->onlyInput('username');
     }
 
     public function logout(){

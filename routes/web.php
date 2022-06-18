@@ -4,6 +4,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DoctorController;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\Unique;
@@ -28,6 +30,14 @@ Route::get('/', 'ConsController@showAllCons');
 Route::get('/myCons', 'ConsController@showMyCons');
 
 Route::get('/likedCons', 'ConsController@showLikedCons');
+
+Route::get('/logcheck', function(){
+    return Auth::guard(session('type'))->user();
+});
+
+Route::get('hash/{w}', function($w){
+    return  Hash::make($w);
+});
 
 // report ********************************************************
 
