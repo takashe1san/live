@@ -32,7 +32,8 @@ Route::get('/myCons', 'ConsController@showMyCons');
 Route::get('/likedCons', 'ConsController@showLikedCons');
 
 Route::get('/logcheck', function(){
-    return Auth::guard(session('type'))->user();
+    // return Auth::guard(session('type'))->user();
+    return Auth::check();
 });
 
 Route::get('hash/{w}', function($w){

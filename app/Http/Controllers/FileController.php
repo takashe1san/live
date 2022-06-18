@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Media;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FileController extends Controller
 {
@@ -36,7 +37,7 @@ class FileController extends Controller
     }
     
     public function imgCheck(){
-        $img = $this->showImg(session('type'), session('info.username'));
+        $img = $this->showImg(session('type'), Auth::guard(session('type'))->user()->username);
         session(['img' => $img]);
     }
 

@@ -21,8 +21,8 @@
             @if(session('type') != null)
             @php
             $imgProfil = session('img');
-            $username = session('info.username');
-            $bio = session('info.bio');
+            $username = Auth::guard(session('type'))->user()->username;
+            $bio = Auth::guard(session('type'))->user()->bio;
             @endphp
             <div class="image-text">
                 <span class="image">
