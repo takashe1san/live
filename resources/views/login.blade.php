@@ -22,7 +22,7 @@
           @error('username')
           <span class="spanError">{{$message}}</span>
           @enderror
-          <input class="form__input" type="text" name="username" placeholder="Fullname">
+          <input class="form__input" type="text" name="name" placeholder="Fullname">
           @error('name')
                 <span class="spanError">{{$message}}</span>
           @enderror

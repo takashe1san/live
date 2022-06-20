@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Doctor;
+use Illuminate\Support\Facades\Hash;
 
 class DoctorController extends Controller
 {
@@ -14,7 +15,7 @@ class DoctorController extends Controller
             'username' => $info->susername,
             'name'     => $info->name,
             'email'    => $info->email,
-            'password' => md5($info->spassword),
+            'password' => Hash::make($info->spassword),
             'birth'    => $info->birth,
             'blood_typ'=> $info->bloodtyp,
         ]);

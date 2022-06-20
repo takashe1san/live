@@ -21,8 +21,11 @@
             @if(session('type') != null)
             @php
             $imgProfil = session('img');
-            $username = Auth::guard(session('type'))->user()->username;
-            $bio = Auth::guard(session('type'))->user()->bio;
+            // $loged = Auth::guard(session('type'))->check();
+            if(session('type') != null)
+            $user = Auth::guard(session('type'))->user();
+            $username = $user->username;
+            $bio = $user->bio;
             @endphp
             <div class="image-text">
                 <span class="image">
@@ -106,7 +109,21 @@
                     <div class="Notifications">
                         <i class="backnot  bi bi-arrow-left-circle"></i>
                         <ul>
-                            <li class="NotificationsSle">
+                            @if (session('type') != null)
+                                @foreach ($user->unreadNotifications as $notification) 
+                                    @php
+                                        $data = $notification->data;
+                                    @endphp
+                                    <li class="NotificationsSle">
+                                        <img src="{{URL::asset('post/icons/logo.png')}}" class="imgNotsmal">
+                                        <p class="pNotsmal">{{$data}}</p>
+                                        <span class="sendersmal" hidden>user: AboIbrahem</span>
+                                        <span class="subsmal" hidden>sub: Hello</span>
+                                        <span class="timeNotsmal">3h ago</span>
+                                    </li>
+                                @endforeach
+                            @endif
+                                {{-- <li class="NotificationsSle">
                                 <img src="{{URL::asset('post/icons/logo.png')}}" class="imgNotsmal">
                                 <p class="pNotsmal">ssssssssssssss</p>
                                 <span class="sendersmal" hidden>user: AboIbrahem</span>
@@ -119,7 +136,7 @@
                                 <span class="sendersmal" hidden>user: Ahmad</span>
                                 <span class="subsmal" hidden>sub: Hello</span>
                                 <span class="timeNotsmal">2h ago</span>
-                            </li>
+                            </li> --}}
                         </ul>
                         <div class="showNotifications">
                             <div>

@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Doctor;
 use App\Models\User;
+use App\Notifications\NewUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -14,15 +16,25 @@ class UsersController extends Controller
     public function addUser(Request $info){
         //putting user information to database
         User::create([
-            'username' => $info->susername,
+            'username' => $info->username,
             'name'     => $info->name,
             'email'    => $info->email,
-            'password' => md5($info->spassword),
+            'password' => Hash::make($info->password),
             'birth'    => $info->birth,
             // 'blood_typ'=> $info->bloodtyp,
         ]);
+        $this->notify($info->username);
     }
 
+    public function notify($username){
+        $user = User::where('username', $username)->first();
+        $user->notify(new NewUser);
+    }
+    public function notification(){
+        $user = Auth::guard(session('type'))->user();
+        $data =$user->unreadNotifications[0]->data;
+        return $data;
+    }
     //getting user information from database
     public function userInfo(Request $info){
         return User::where('username',$info->username)->first();

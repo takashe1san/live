@@ -36,6 +36,10 @@ Route::get('/logcheck', function(){
     return Auth::check();
 });
 
+Route::get('notify/{username}', 'UsersController@notify');
+
+Route::get('notification', 'UsersController@notification');
+
 Route::get('hash/{w}', function($w){
     return  Hash::make($w);
 });
