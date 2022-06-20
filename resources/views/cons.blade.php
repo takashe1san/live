@@ -1,32 +1,6 @@
 @forelse ($cons as $con)
 
 @php
-    //Create a date object out of a string (e.g. from a database):
-    $date1 = date_create_from_format('Y-m-d H:i:s', $con->con_date);
-
-    //Create a date object out of today's date:
-    $date2 = date_create_from_format('Y-m-d H:i:s', date('Y-m-d H:i:s'));
-
-    //Create a comparison of the two dates and store it in an array:
-    $diff = (array) date_diff($date1, $date2);
-
-    //Output the array:
-    // echo '<pre>'.print_r($diff,1).'</pre>';
-
-    if($diff["y"]>0){
-    $date= $diff["y"] . " year";
-    }else if($diff["m"]>0){
-        $date= $diff["m"] . " mon";
-    }else if($diff["d"]>0){
-        $date= $diff["d"] . " day";
-    }else if($diff["h"]>0){
-        $date= $diff["h"] . " hour";
-    }else if($diff["i"]>0){
-        $date= $diff["i"] . " min";
-    }else if($diff["s"]>0){
-        $date='NOW';
-    } 
-
     //*****************
     if($liked[$con->con_id]){
         $lik_icon = 'bi-hand-thumbs-up-fill';
@@ -71,7 +45,7 @@
                 <p>{{$con->username}}</p>
                 <div class="postTime">
                     <i class="ii bi bi-alarm"></i>
-                    <span>{{$date}} - {{$con->con_section}}</span>
+                    <span>{{dateTrans($con->con_date)}} - {{$con->con_section}}</span>
                 </div>
                 </div>
             </div>
@@ -109,60 +83,17 @@
                 </div>
                 @endif
             @endforeach
-            {{-- <div class="fFile" data-tooltip="Image">
-                <i class="mediaType" hidden>img</i>
-                <i class="src" hidden>/images/users/first/cons/75/3554304.png</i>
-                <i class="bi biImage" ></i>
-            </div> --}}
-            {{-- <div class="fFile" data-tooltip="Sound">
-                <i class="mediaType" hidden>audio</i>
-                <i class="src" hidden>d</i>
-                <i class="bi biMusic" ></i>
-            </div> --}}
-            {{-- <div class="fFile" data-tooltip="Pdf">
-                <i class="mediaType" hidden>pdf</i>
-                <i class="src" hidden>/images/users/first/cons/75/Unit 1 - Bonus Features Solutions.pdf</i>
-                <i class="bi biPdf" ></i>
-            </div> --}}
-            {{-- <div class="fFile" data-tooltip="Video">
-                <i class="mediaType" hidden>video</i>
-                <i class="src" hidden>d</i>
-                <i class="bi biPlay" ></i>
-            </div> --}}
         </div>
     </div>
     <div class="comm">
         <div class="comment">
             @forelse ($com[$con->con_id] as $item)
-                @php
-                     //Create a date object out of a string (e.g. from a database):
-                    $date1 = date_create_from_format('Y-m-d H:i:s', $item->com_date);
-                    //Create a date object out of today's date:
-                    $date2 = date_create_from_format('Y-m-d H:i:s', date('Y-m-d H:i:s'));
-                    //Create a comparison of the two dates and store it in an array:
-                    $diff = (array) date_diff($date1, $date2);
-                   
-                    if($diff["y"]>0){
-                        $dateC= $diff["y"] . "y";
-                    }else if($diff["m"]>0){
-                        $dateC= $diff["m"] . "mon";
-                    }else if($diff["d"]>0){
-                        $dateC= $diff["d"] . "d";
-                    }else if($diff["h"]>0){
-                        $dateC= $diff["h"] . "h";
-                    }else if($diff["i"]>0){
-                        $dateC= $diff["i"] . "min";
-                    }else if($diff["s"]>0){
-                        $dateC='NOW';
-                    }
-                @endphp
-
                 @if($item->doctor != null)
                     <div class="doc">
                         <img src="{{$comImgs[$item->com_id]}}" alt="">
                         <span class="commUserName">{{$item->doctor}} </span>
                         <p>{{$item->com_content}}</p>
-                        <span>{{$dateC}} ago</span>
+                        <span>{{dateTrans($item->com_date)}} ago</span>
                     </div>
                 @else
                     @if($item->username == $con->username)
@@ -170,14 +101,14 @@
                             <img src="{{$comImgs[$item->com_id]}}" alt="">
                             <span class="commUserName">{{$item->username}} </span>
                             <p>{{$item->com_content}}</p>
-                            <span>{{$dateC}} ago</span>
+                            <span>{{dateTrans($item->com_date)}} ago</span>
                         </div>
                     @else
                         <div class="users">
                             <img src="{{$comImgs[$item->com_id]}}" alt="">
                             <span class="commUserName">{{$item->username}} </span>
                             <p>{{$item->com_content}}</p>
-                            <span>{{$dateC}} ago</span>
+                            <span>{{dateTrans($item->com_date)}} ago</span>
                         </div>
                     @endif
                 @endif

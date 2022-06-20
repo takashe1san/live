@@ -1,3 +1,4 @@
+@include('parts.date')
 <!DOCTYPE html>
 <html>
 <head>
@@ -110,16 +111,16 @@
                         <i class="backnot  bi bi-arrow-left-circle"></i>
                         <ul>
                             @if (session('type') != null)
-                                @foreach ($user->unreadNotifications as $notification) 
+                                @foreach ($user->unreadNotifications as $noti) 
                                     @php
-                                        $data = $notification->data;
+                                        $data = $noti->data;
                                     @endphp
                                     <li class="NotificationsSle">
                                         <img src="{{URL::asset('post/icons/logo.png')}}" class="imgNotsmal">
                                         <p class="pNotsmal">{{$data}}</p>
                                         <span class="sendersmal" hidden>user: AboIbrahem</span>
                                         <span class="subsmal" hidden>sub: Hello</span>
-                                        <span class="timeNotsmal">3h ago</span>
+                                        <span class="timeNotsmal">{{dateTrans($noti->created_at)}} ago</span>
                                     </li>
                                 @endforeach
                             @endif
